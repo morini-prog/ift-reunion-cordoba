@@ -5,6 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Reunión Específica IFT · DGETyFP Córdoba | Instituto Leibnitz</title>
   
+  <!-- Metadatos de Accesibilidad e Indexación Institucional -->
+  <meta name="description" content="Documento ejecutivo e informativo sobre la Reunión Específica para Institutos de Formación Técnica (IFT) convocada por la DGETyFP de Córdoba.">
+  <meta name="theme-color" content="#0F294A">
+
   <!-- Google Fonts: Plus Jakarta Sans & Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -40,7 +44,7 @@
   </script>
 
   <style>
-    /* Estilos base y transiciones fluidas */
+    /* Estilos base y tipografía */
     body {
       background-color: #F8FAFC;
       color: #1E293B;
@@ -54,56 +58,131 @@
     .accordion-content {
       max-height: 0;
       overflow: hidden;
-      transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease, padding 0.3s ease;
+      transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
       opacity: 0;
     }
     .accordion-content.expanded {
-      max-height: 1200px;
+      max-height: 1400px;
       opacity: 1;
     }
     
     /* Rotación de Chevron */
     .chevron-icon {
-      transition: transform 0.3s ease;
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
     .chevron-icon.rotate-180 {
       transform: rotate(180deg);
     }
 
-    /* Print styles para directivos */
+    /* Resaltado de Navegación Activa (ScrollSpy) */
+    .nav-link.active-nav {
+      background-color: rgba(255, 255, 255, 0.18);
+      color: #FFFFFF !important;
+      border-color: #38BDF8;
+    }
+
+    /* ======================================================= */
+    /* ESTILOS DE IMPRESIÓN Y EXPORTACIÓN A PDF DE ALTA FIDELIDAD */
+    /* ======================================================= */
     @media print {
-      header, nav, #global-accordion-btn, #floating-controls {
+      /* Ocultar elementos de navegación e interactividad de pantalla */
+      header, nav, #progress-bar-container, #print-action-bar, #scroll-top-btn, #toggle-all-btn, .no-print {
         display: none !important;
       }
+
       body {
-        background: #ffffff !important;
-        color: #000000 !important;
+        background: #FFFFFF !important;
+        color: #0F172A !important;
+        font-size: 11pt !important;
+        line-height: 1.4 !important;
       }
+
+      /* Encabezado especial para versión impresa */
+      .print-header-banner {
+        display: block !important;
+        border-bottom: 2px solid #0F294A !important;
+        margin-bottom: 1.5rem !important;
+        padding-bottom: 0.75rem !important;
+      }
+
+      /* Expandir obligatoriamente todos los acordeones */
       .accordion-content {
         max-height: none !important;
         opacity: 1 !important;
         display: block !important;
+        overflow: visible !important;
       }
-      .shadow-subtle, .shadow-cardHover, .shadow-lg {
-        box-shadow: none !important;
-        border: 1px solid #E2E8F0 !important;
+
+      .chevron-icon {
+        display: none !important;
       }
+
+      /* Control estricto de saltos de página */
       section {
-        page-break-inside: avoid;
+        page-break-inside: auto;
+      }
+
+      .card-printable, .bg-white, .border {
+        box-shadow: none !important;
+        border: 1px solid #CBD5E1 !important;
+        break-inside: avoid !important;
+        page-break-inside: avoid !important;
+      }
+
+      /* Asegurar contraste legible y fondo claro en Hero al imprimir */
+      #hero {
+        background: #FFFFFF !important;
+        color: #0F172A !important;
+        border-bottom: 2px solid #0F294A !important;
+        padding: 1rem 0 !important;
+      }
+      #hero h1 {
+        color: #0F294A !important;
+      }
+      #hero p, #hero span, #hero div {
+        color: #1E293B !important;
+      }
+      #hero .bg-white\/10 {
+        background: #F8FAFC !important;
+        border: 1px solid #CBD5E1 !important;
+      }
+      #hero .text-amber-300, #hero .text-sky-300, #hero .text-blue-300, #hero .text-emerald-300 {
+        color: #0F294A !important;
+      }
+
+      /* Mostrar URLs completas de hipervínculos oficiales al imprimir */
+      a[href^="http"]:after {
+        content: " (" attr(href) ")";
+        font-size: 8pt;
+        color: #475569;
+        word-break: break-all;
+      }
+    }
+
+    @media screen {
+      .print-header-banner {
+        display: none;
       }
     }
   </style>
 </head>
-<body class="min-h-screen flex flex-col antialiased selection:bg-sky-100 selection:text-sky-900">
+<body class="min-h-screen flex flex-col antialiased selection:bg-sky-100 selection:text-sky-900 relative">
+
+  <!-- ========================================== -->
+  <!-- BARRA DE PROGRESO DE LECTURA (SUPERIOR)   -->
+  <!-- ========================================== -->
+  <div id="progress-bar-container" class="fixed top-0 left-0 w-full h-1 bg-transparent z-[60] pointer-events-none">
+    <div id="reading-progress-bar" class="h-full bg-gradient-to-r from-amber-400 via-sky-400 to-blue-600 w-0 transition-all duration-100"></div>
+  </div>
 
   <!-- ========================================== -->
   <!-- BARRA DE NAVEGACIÓN SUPERIOR FIJA (STICKY) -->
   <!-- ========================================== -->
   <header class="sticky top-0 z-50 bg-[#0F294A]/95 backdrop-blur-md border-b border-slate-700/60 text-white shadow-md transition-all duration-200">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
       
       <!-- Identidad y Escudo Institucional -->
-      <a href="#hero" class="flex items-center gap-3 group">
+      <a href="#hero" class="flex items-center gap-3 group focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-400 rounded-lg p-1">
         <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-sky-400 to-blue-600 flex items-center justify-center font-heading font-black text-white text-xl shadow-md group-hover:scale-105 transition-transform">
           L
         </div>
@@ -117,47 +196,77 @@
         </div>
       </a>
 
-      <!-- Navegación de Bloques -->
-      <nav class="hidden md:flex items-center gap-1.5 text-xs font-semibold">
-        <a href="#bloque-1" class="px-3 py-2 rounded-lg text-slate-200 hover:text-white hover:bg-white/10 transition-colors flex items-center gap-1.5">
-          <span class="w-2 h-2 rounded-full bg-amber-400"></span>
+      <!-- Navegación de Bloques con ScrollSpy -->
+      <nav id="desktop-nav" class="hidden lg:flex items-center gap-1.5 text-xs font-semibold" aria-label="Navegación principal de la agenda">
+        <a href="#bloque-1" id="nav-bloque-1" class="nav-link px-3 py-2 rounded-lg text-slate-200 hover:text-white hover:bg-white/10 transition-colors flex items-center gap-1.5 border border-transparent focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-400">
+          <span class="w-2 h-2 rounded-full bg-amber-400" aria-hidden="true"></span>
           09:00 hs · Apertura
         </a>
-        <a href="#bloque-2" class="px-3 py-2 rounded-lg text-slate-200 hover:text-white hover:bg-white/10 transition-colors flex items-center gap-1.5">
-          <span class="w-2 h-2 rounded-full bg-sky-400"></span>
+        <a href="#bloque-2" id="nav-bloque-2" class="nav-link px-3 py-2 rounded-lg text-slate-200 hover:text-white hover:bg-white/10 transition-colors flex items-center gap-1.5 border border-transparent focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-400">
+          <span class="w-2 h-2 rounded-full bg-sky-400" aria-hidden="true"></span>
           09:20 hs · Saberes & FP
         </a>
-        <a href="#bloque-3" class="px-3 py-2 rounded-lg text-slate-200 hover:text-white hover:bg-white/10 transition-colors flex items-center gap-1.5">
-          <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+        <a href="#bloque-3" id="nav-bloque-3" class="nav-link px-3 py-2 rounded-lg text-slate-200 hover:text-white hover:bg-white/10 transition-colors flex items-center gap-1.5 border border-transparent focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-400">
+          <span class="w-2 h-2 rounded-full bg-emerald-400" aria-hidden="true"></span>
           10:00 hs · Propedéutico
         </a>
       </nav>
 
-      <!-- Botón de Control Global de Acordeones -->
+      <!-- Botones de Acción: Imprimir y Expandir Todo -->
       <div class="flex items-center gap-2">
-        <button id="toggle-all-btn" onclick="toggleAllAccordions()" class="inline-flex items-center gap-2 px-3 py-1.5 text-xs font-semibold rounded-lg bg-white/10 hover:bg-white/20 text-white border border-white/20 transition-all hover:scale-[1.02] active:scale-95 shadow-sm">
-          <svg id="toggle-icon-expand" class="w-4 h-4 text-sky-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        
+        <!-- Botón Imprimir / PDF -->
+        <button type="button" onclick="window.print()" class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg bg-sky-500/20 hover:bg-sky-500/30 text-sky-200 border border-sky-400/40 transition-all hover:scale-[1.02] active:scale-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-400" title="Imprimir o Guardar como PDF" aria-label="Imprimir documento ejecutivo">
+          <svg class="w-4 h-4 text-sky-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path>
+          </svg>
+          <span class="hidden sm:inline">Imprimir / PDF</span>
+        </button>
+
+        <!-- Botón Global de Acordeones -->
+        <button id="toggle-all-btn" type="button" onclick="toggleAllAccordions()" class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg bg-white/10 hover:bg-white/20 text-white border border-white/20 transition-all hover:scale-[1.02] active:scale-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-400" aria-label="Expandir o contraer todos los acordeones">
+          <svg id="toggle-icon-expand" class="w-4 h-4 text-sky-400 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
           </svg>
           <span id="toggle-all-text">Expandir todo</span>
         </button>
+
       </div>
 
     </div>
+
+    <!-- Menú Rápido Móvil / Tablet (Sub-barra visible en pantallas menores a lg) -->
+    <div class="lg:hidden flex items-center justify-around border-t border-slate-700/50 bg-[#0B213B] px-2 py-1.5 text-[11px] font-semibold text-slate-300">
+      <a href="#bloque-1" class="hover:text-white px-2 py-1 flex items-center gap-1">
+        <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>09:00 Apertura
+      </a>
+      <a href="#bloque-2" class="hover:text-white px-2 py-1 flex items-center gap-1">
+        <span class="w-1.5 h-1.5 rounded-full bg-sky-400"></span>09:20 Saberes
+      </a>
+      <a href="#bloque-3" class="hover:text-white px-2 py-1 flex items-center gap-1">
+        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>10:00 Propedéutico
+      </a>
+    </div>
   </header>
+
+  <!-- Encabezado exclusivo de Impresión -->
+  <div class="print-header-banner">
+    <div style="font-weight: 800; font-size: 16pt; color: #0F294A;">INSTITUTO LEIBNITZ · CÓRDOBA</div>
+    <div style="font-size: 10pt; color: #475569;">Documento Ejecutivo Institucional · Política Educativa Provincial (DGETyFP)</div>
+  </div>
 
   <!-- ========================================== -->
   <!-- 1. HERO / ENCABEZADO EJECUTIVO             -->
   <!-- ========================================== -->
   <section id="hero" class="relative bg-gradient-to-b from-[#0F294A] via-[#13335D] to-[#1E40AF] text-white pt-12 pb-16 px-4 sm:px-6 lg:px-8 border-b-4 border-amber-500 overflow-hidden">
-    <!-- Efecto visual de fondo -->
-    <div class="absolute inset-0 opacity-10 pointer-events-none bg-[radial-gradient(#38bdf8_1px,transparent_1px)] [background-size:20px_20px]"></div>
+    <!-- Efecto visual de fondo sutil -->
+    <div class="absolute inset-0 opacity-10 pointer-events-none bg-[radial-gradient(#38bdf8_1px,transparent_1px)] [background-size:20px_20px]" aria-hidden="true"></div>
 
     <div class="max-w-6xl mx-auto relative z-10">
       
       <!-- Etiqueta Superior -->
       <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-sky-500/20 border border-sky-400/30 text-sky-200 text-xs font-semibold tracking-wider uppercase mb-5 backdrop-blur-sm">
-        <span class="w-2 h-2 rounded-full bg-sky-400 animate-pulse"></span>
+        <span class="w-2 h-2 rounded-full bg-sky-400 animate-pulse" aria-hidden="true"></span>
         Política Educativa Provincial · Nivel Superior Técnico
       </div>
 
@@ -170,10 +279,10 @@
       </p>
 
       <!-- Tarjeta de Datos del Encuentro -->
-      <div class="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20 shadow-2xl mb-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div class="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20 shadow-2xl mb-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 card-printable">
         
         <div class="flex items-start gap-3.5">
-          <div class="p-2.5 rounded-xl bg-amber-500/20 border border-amber-400/30 text-amber-300 shrink-0">
+          <div class="p-2.5 rounded-xl bg-amber-500/20 border border-amber-400/30 text-amber-300 shrink-0" aria-hidden="true">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
             </svg>
@@ -185,7 +294,7 @@
         </div>
 
         <div class="flex items-start gap-3.5">
-          <div class="p-2.5 rounded-xl bg-sky-500/20 border border-sky-400/30 text-sky-300 shrink-0">
+          <div class="p-2.5 rounded-xl bg-sky-500/20 border border-sky-400/30 text-sky-300 shrink-0" aria-hidden="true">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
             </svg>
@@ -197,7 +306,7 @@
         </div>
 
         <div class="flex items-start gap-3.5">
-          <div class="p-2.5 rounded-xl bg-blue-500/20 border border-blue-400/30 text-blue-300 shrink-0">
+          <div class="p-2.5 rounded-xl bg-blue-500/20 border border-blue-400/30 text-blue-300 shrink-0" aria-hidden="true">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
@@ -211,7 +320,7 @@
         </div>
 
         <div class="flex items-start gap-3.5">
-          <div class="p-2.5 rounded-xl bg-emerald-500/20 border border-emerald-400/30 text-emerald-300 shrink-0">
+          <div class="p-2.5 rounded-xl bg-emerald-500/20 border border-emerald-400/30 text-emerald-300 shrink-0" aria-hidden="true">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
             </svg>
@@ -226,7 +335,7 @@
       </div>
 
       <!-- Introducción Oficial -->
-      <div class="bg-[#0F294A]/80 border-l-4 border-amber-400 p-5 rounded-r-xl text-slate-200 text-sm sm:text-base leading-relaxed">
+      <div class="bg-[#0F294A]/80 border-l-4 border-amber-400 p-5 rounded-r-xl text-slate-200 text-sm sm:text-base leading-relaxed card-printable">
         <strong class="text-white font-semibold block mb-1">Propósito del Encuentro:</strong>
         El encuentro fue convocado por la Dirección General de Educación Técnica y Formación Profesional para alinear las líneas de política educativa vigentes en el Nivel Superior Técnico, integrando la convergencia normativa para la continuidad de trayectorias, la vinculación socioproductiva y el diseño operativo del nuevo Seminario de Ingreso y las Familias Profesionales.
       </div>
@@ -246,7 +355,7 @@
       <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 mb-6 border-b border-slate-200">
         <div>
           <div class="flex items-center gap-3 mb-2">
-            <span class="px-3 py-1 rounded-full bg-amber-100 text-amber-800 font-semibold text-xs uppercase tracking-wider border border-amber-300">
+            <span class="px-3 py-1 rounded-full bg-amber-100 text-amber-900 font-semibold text-xs uppercase tracking-wider border border-amber-300">
               09:00 hs · Bloque 1
             </span>
             <span class="text-xs font-medium text-slate-500 uppercase tracking-wider">Apertura Institucional</span>
@@ -256,14 +365,14 @@
           </h2>
         </div>
         
-        <div class="bg-white p-3.5 rounded-xl border border-slate-200 shadow-sm flex items-center gap-3 shrink-0">
-          <div class="w-10 h-10 rounded-full bg-[#1E40AF] text-white flex items-center justify-center font-bold font-heading text-sm shadow">
+        <div class="bg-white p-3.5 rounded-xl border border-slate-200 shadow-sm flex items-center gap-3 shrink-0 card-printable">
+          <div class="w-10 h-10 rounded-full bg-[#1E40AF] text-white flex items-center justify-center font-bold font-heading text-sm shadow" aria-hidden="true">
             HF
           </div>
           <div>
             <div class="text-xs text-slate-500 font-semibold">Disertante principal</div>
             <div class="font-heading font-bold text-sm text-[#0F294A]">Dr. Horacio Ademar Ferreyra</div>
-            <div class="text-[11px] text-slate-600">Ministro de Educación de la Provincia de Córdoba</div>
+            <div class="text-[11px] text-slate-600 font-medium">Ministro de Educación de la Provincia de Córdoba</div>
           </div>
         </div>
       </div>
@@ -272,9 +381,9 @@
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
         
         <!-- Eje 1: Articulación Secundario -->
-        <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-subtle hover:shadow-cardHover transition-all flex flex-col justify-between group">
+        <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-subtle hover:shadow-cardHover transition-all flex flex-col justify-between group card-printable">
           <div>
-            <div class="w-12 h-12 rounded-xl bg-sky-50 text-[#0EA5E9] border border-sky-100 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+            <div class="w-12 h-12 rounded-xl bg-sky-50 text-[#0EA5E9] border border-sky-100 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform" aria-hidden="true">
               <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
               </svg>
@@ -295,9 +404,9 @@
         </div>
 
         <!-- Eje 2: Sector Productivo -->
-        <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-subtle hover:shadow-cardHover transition-all flex flex-col justify-between group">
+        <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-subtle hover:shadow-cardHover transition-all flex flex-col justify-between group card-printable">
           <div>
-            <div class="w-12 h-12 rounded-xl bg-amber-50 text-[#D97706] border border-amber-100 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+            <div class="w-12 h-12 rounded-xl bg-amber-50 text-[#D97706] border border-amber-100 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform" aria-hidden="true">
               <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
               </svg>
@@ -318,11 +427,11 @@
         </div>
 
         <!-- Eje 3: Apertura y Certificación Modular -->
-        <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-subtle hover:shadow-cardHover transition-all flex flex-col justify-between group">
+        <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-subtle hover:shadow-cardHover transition-all flex flex-col justify-between group card-printable">
           <div>
-            <div class="w-12 h-12 rounded-xl bg-blue-50 text-[#1E40AF] border border-blue-100 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+            <div class="w-12 h-12 rounded-xl bg-blue-50 text-[#1E40AF] border border-blue-100 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform" aria-hidden="true">
               <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138z"></path>
               </svg>
             </div>
             <span class="inline-block px-2.5 py-0.5 rounded text-[11px] font-bold bg-blue-100 text-blue-800 uppercase tracking-wider mb-2">
@@ -333,15 +442,15 @@
             </h3>
             <ul class="text-slate-600 text-sm space-y-2 leading-relaxed">
               <li class="flex items-start gap-2">
-                <span class="text-sky-500 font-bold">•</span>
+                <span class="text-sky-500 font-bold" aria-hidden="true">•</span>
                 <span>Implementación de <strong>Cátedras Abiertas</strong> con certificación por materias aprobadas.</span>
               </li>
               <li class="flex items-start gap-2">
-                <span class="text-sky-500 font-bold">•</span>
+                <span class="text-sky-500 font-bold" aria-hidden="true">•</span>
                 <span>Evaluación e implementación de <strong>microcredenciales</strong>.</span>
               </li>
               <li class="flex items-start gap-2">
-                <span class="text-sky-500 font-bold">•</span>
+                <span class="text-sky-500 font-bold" aria-hidden="true">•</span>
                 <span>Convocatoria activa a <strong>egresados</strong> para actualización y certificaciones continuas.</span>
               </li>
             </ul>
@@ -354,10 +463,10 @@
       </div>
 
       <!-- Acordeón Especial: Priorización Wooclap TransFORMAR@Cba -->
-      <div class="bg-white rounded-2xl border border-slate-200 shadow-subtle overflow-hidden">
-        <button type="button" class="accordion-header w-full px-6 py-4 text-left flex items-center justify-between bg-gradient-to-r from-slate-50 to-white hover:bg-slate-50 transition-colors" onclick="toggleAccordion('acc-wooclap')">
+      <div class="bg-white rounded-2xl border border-slate-200 shadow-subtle overflow-hidden card-printable">
+        <button type="button" id="btn-acc-wooclap" aria-expanded="false" aria-controls="acc-wooclap" class="accordion-header w-full px-6 py-4 text-left flex items-center justify-between bg-gradient-to-r from-slate-50 to-white hover:bg-slate-50 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500" onclick="toggleAccordion('acc-wooclap')">
           <div class="flex items-center gap-3.5">
-            <div class="w-8 h-8 rounded-lg bg-sky-100 text-[#0EA5E9] flex items-center justify-center font-bold text-sm">
+            <div class="w-8 h-8 rounded-lg bg-sky-100 text-[#0EA5E9] flex items-center justify-center font-bold text-sm" aria-hidden="true">
               #
             </div>
             <div>
@@ -367,12 +476,12 @@
               <p class="text-xs text-slate-500">Orden de priorización resultante de la participación de los directivos</p>
             </div>
           </div>
-          <svg id="chevron-acc-wooclap" class="chevron-icon w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg id="chevron-acc-wooclap" class="chevron-icon w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
           </svg>
         </button>
         
-        <div id="acc-wooclap" class="accordion-content">
+        <div id="acc-wooclap" role="region" aria-labelledby="btn-acc-wooclap" class="accordion-content">
           <div class="p-6 bg-white border-t border-slate-100">
             <p class="text-sm text-slate-600 mb-4">
               Durante la sesión inicial se realizó un relevamiento en tiempo real mediante la plataforma <strong>Wooclap</strong>, en el cual los equipos directivos e inspectores priorizaron los 7 ejes de la política <strong>TransFORMAR@Cba</strong> en el siguiente orden de jerarquía:
@@ -443,7 +552,7 @@
       <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 mb-6 border-b border-slate-200">
         <div>
           <div class="flex items-center gap-3 mb-2">
-            <span class="px-3 py-1 rounded-full bg-sky-100 text-sky-800 font-semibold text-xs uppercase tracking-wider border border-sky-300">
+            <span class="px-3 py-1 rounded-full bg-sky-100 text-sky-900 font-semibold text-xs uppercase tracking-wider border border-sky-300">
               09:20 hs · Bloque 2
             </span>
             <span class="text-xs font-medium text-slate-500 uppercase tracking-wider">Marco Normativo & Acreditación</span>
@@ -453,21 +562,21 @@
           </h2>
         </div>
         
-        <div class="bg-white p-3.5 rounded-xl border border-slate-200 shadow-sm flex items-center gap-3 shrink-0">
-          <div class="w-10 h-10 rounded-full bg-[#0EA5E9] text-white flex items-center justify-center font-bold font-heading text-sm shadow">
+        <div class="bg-white p-3.5 rounded-xl border border-slate-200 shadow-sm flex items-center gap-3 shrink-0 card-printable">
+          <div class="w-10 h-10 rounded-full bg-[#0EA5E9] text-white flex items-center justify-center font-bold font-heading text-sm shadow" aria-hidden="true">
             DS
           </div>
           <div>
             <div class="text-xs text-slate-500 font-semibold">Disertante principal</div>
             <div class="font-heading font-bold text-sm text-[#0F294A]">Ing. Diego Suárez</div>
-            <div class="text-[11px] text-slate-600">Director General de ETyFP Córdoba</div>
+            <div class="text-[11px] text-slate-600 font-medium">Director General de ETyFP Córdoba</div>
           </div>
         </div>
       </div>
 
       <!-- LEMA DESTACADO / BANNER VISUAL -->
-      <div class="bg-gradient-to-r from-[#0F294A] via-[#1E40AF] to-[#0EA5E9] rounded-2xl p-6 sm:p-8 text-white shadow-lg mb-8 relative overflow-hidden">
-        <div class="absolute -right-8 -bottom-8 w-48 h-48 bg-white/5 rounded-full blur-2xl"></div>
+      <div class="bg-gradient-to-r from-[#0F294A] via-[#1E40AF] to-[#0EA5E9] rounded-2xl p-6 sm:p-8 text-white shadow-lg mb-8 relative overflow-hidden card-printable">
+        <div class="absolute -right-8 -bottom-8 w-48 h-48 bg-white/5 rounded-full blur-2xl" aria-hidden="true"></div>
         <div class="relative z-10 text-center md:text-left flex flex-col md:flex-row items-center justify-between gap-6">
           <div class="space-y-2">
             <span class="inline-block px-3 py-1 rounded-full bg-amber-400 text-[#0F294A] font-extrabold text-xs uppercase tracking-wider">
@@ -491,31 +600,31 @@
       <div class="space-y-4 mb-10">
         
         <!-- Resolución 1: RM 371/24 -->
-        <div class="bg-white rounded-2xl border border-slate-200 shadow-subtle overflow-hidden">
-          <button type="button" class="accordion-header w-full px-6 py-4 text-left flex items-center justify-between hover:bg-slate-50 transition-colors" onclick="toggleAccordion('norm-371')">
+        <div class="bg-white rounded-2xl border border-slate-200 shadow-subtle overflow-hidden card-printable">
+          <button type="button" id="btn-norm-371" aria-expanded="false" aria-controls="norm-371" class="accordion-header w-full px-6 py-4 text-left flex items-center justify-between hover:bg-slate-50 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500" onclick="toggleAccordion('norm-371')">
             <div class="flex items-center gap-3">
-              <span class="px-2.5 py-1 rounded-md bg-blue-100 text-blue-900 font-bold text-xs">RM N° 371/24</span>
+              <span class="px-2.5 py-1 rounded-md bg-blue-100 text-blue-900 font-bold text-xs shrink-0">RM N° 371/24</span>
               <span class="font-heading font-bold text-sm sm:text-base text-[#0F294A]">
                 Programa de Articulación Operativa: Secundaria Técnica y Tecnicaturas Superiores
               </span>
             </div>
-            <svg id="chevron-norm-371" class="chevron-icon w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg id="chevron-norm-371" class="chevron-icon w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
             </svg>
           </button>
           
-          <div id="norm-371" class="accordion-content">
+          <div id="norm-371" role="region" aria-labelledby="btn-norm-371" class="accordion-content">
             <div class="p-6 bg-slate-50/50 border-t border-slate-100 space-y-4">
               <p class="text-sm text-slate-700 leading-relaxed">
                 Aprueba el <strong>Programa de Articulación Operativa entre la Educación Secundaria Técnica y las Tecnicaturas de Nivel Superior</strong>, permitiendo validar espacios curriculares aprobados en el secundario técnico para evitar su recursado y acelerar la titulación superior.
               </p>
               <div>
-                <a href="https://dges-cba.infd.edu.ar/sitio/wp-content/uploads/2026/09/ResMin_371-2024.pdf" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#1E40AF] hover:bg-[#0F294A] text-white text-xs font-semibold shadow-sm transition-all hover:scale-[1.02] active:scale-95">
-                  <svg class="w-4 h-4 text-sky-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <a href="https://dges-cba.infd.edu.ar/sitio/wp-content/uploads/2026/09/ResMin_371-2024.pdf" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#1E40AF] hover:bg-[#0F294A] text-white text-xs font-semibold shadow-sm transition-all hover:scale-[1.02] active:scale-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-400">
+                  <svg class="w-4 h-4 text-sky-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
                   </svg>
                   <span>Ver PDF Oficial RM 371/24</span>
-                  <svg class="w-3.5 h-3.5 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg class="w-3.5 h-3.5 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
                   </svg>
                 </a>
@@ -525,31 +634,31 @@
         </div>
 
         <!-- Resolución 2: RM 218/25 -->
-        <div class="bg-white rounded-2xl border border-slate-200 shadow-subtle overflow-hidden">
-          <button type="button" class="accordion-header w-full px-6 py-4 text-left flex items-center justify-between hover:bg-slate-50 transition-colors" onclick="toggleAccordion('norm-218')">
+        <div class="bg-white rounded-2xl border border-slate-200 shadow-subtle overflow-hidden card-printable">
+          <button type="button" id="btn-norm-218" aria-expanded="false" aria-controls="norm-218" class="accordion-header w-full px-6 py-4 text-left flex items-center justify-between hover:bg-slate-50 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500" onclick="toggleAccordion('norm-218')">
             <div class="flex items-center gap-3">
-              <span class="px-2.5 py-1 rounded-md bg-amber-100 text-amber-900 font-bold text-xs">RM N° 218/25</span>
+              <span class="px-2.5 py-1 rounded-md bg-amber-100 text-amber-900 font-bold text-xs shrink-0">RM N° 218/25</span>
               <span class="font-heading font-bold text-sm sm:text-base text-[#0F294A]">
                 Incorporación Explícita de Instituciones de Gestión Privada (DIPE)
               </span>
             </div>
-            <svg id="chevron-norm-218" class="chevron-icon w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg id="chevron-norm-218" class="chevron-icon w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
             </svg>
           </button>
           
-          <div id="norm-218" class="accordion-content">
+          <div id="norm-218" role="region" aria-labelledby="btn-norm-218" class="accordion-content">
             <div class="p-6 bg-slate-50/50 border-t border-slate-100 space-y-4">
               <p class="text-sm text-slate-700 leading-relaxed">
                 Amplía los alcances de la RM 371/24 incorporando explícitamente a las instituciones de <strong>gestión privada</strong> dentro del esquema operativo de articulación entre secundaria técnica y tecnicaturas superiores, garantizando universalidad e igualdad de condiciones para los estudiantes de toda la provincia.
               </p>
               <div>
-                <a href="https://dges-cba.infd.edu.ar/sitio/wp-content/uploads/2026/09/ResMin_08-2026.pdf" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#1E40AF] hover:bg-[#0F294A] text-white text-xs font-semibold shadow-sm transition-all hover:scale-[1.02] active:scale-95">
-                  <svg class="w-4 h-4 text-amber-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <a href="https://dges-cba.infd.edu.ar/sitio/wp-content/uploads/2026/09/ResMin_08-2026.pdf" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#1E40AF] hover:bg-[#0F294A] text-white text-xs font-semibold shadow-sm transition-all hover:scale-[1.02] active:scale-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-400">
+                  <svg class="w-4 h-4 text-amber-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
                   </svg>
                   <span>Ver Referencia en RM 08/26 PDF</span>
-                  <svg class="w-3.5 h-3.5 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg class="w-3.5 h-3.5 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
                   </svg>
                 </a>
@@ -559,31 +668,31 @@
         </div>
 
         <!-- Resolución 3: Res Conjunta DGES 01/2024 -->
-        <div class="bg-white rounded-2xl border border-slate-200 shadow-subtle overflow-hidden">
-          <button type="button" class="accordion-header w-full px-6 py-4 text-left flex items-center justify-between hover:bg-slate-50 transition-colors" onclick="toggleAccordion('norm-dges01')">
+        <div class="bg-white rounded-2xl border border-slate-200 shadow-subtle overflow-hidden card-printable">
+          <button type="button" id="btn-norm-dges01" aria-expanded="false" aria-controls="norm-dges01" class="accordion-header w-full px-6 py-4 text-left flex items-center justify-between hover:bg-slate-50 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500" onclick="toggleAccordion('norm-dges01')">
             <div class="flex items-center gap-3">
-              <span class="px-2.5 py-1 rounded-md bg-emerald-100 text-emerald-900 font-bold text-xs">Res. Conj. DGES 01/24</span>
+              <span class="px-2.5 py-1 rounded-md bg-emerald-100 text-emerald-900 font-bold text-xs shrink-0">Res. Conj. DGES 01/24</span>
               <span class="font-heading font-bold text-sm sm:text-base text-[#0F294A]">
                 Instrumento Formal de Acreditación y Reconocimiento de Saberes
               </span>
             </div>
-            <svg id="chevron-norm-dges01" class="chevron-icon w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg id="chevron-norm-dges01" class="chevron-icon w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
             </svg>
           </button>
           
-          <div id="norm-dges01" class="accordion-content">
+          <div id="norm-dges01" role="region" aria-labelledby="btn-norm-dges01" class="accordion-content">
             <div class="p-6 bg-slate-50/50 border-t border-slate-100 space-y-4">
               <p class="text-sm text-slate-700 leading-relaxed">
                 Aprueba el instrumento formal de <strong>Acreditación y Reconocimiento de Saberes</strong> en el Nivel Superior. Valida aprendizajes previos provenientes de escuelas técnicas, formación profesional o experiencia laboral demostrable bajo la modalidad de <strong>aprobación directa</strong> (sin calificación numérica), jerarquizando las competencias reales adquiridas.
               </p>
               <div>
-                <a href="https://dges-cba.edu.ar/wp/institucional/equipo-tecnico/reconocimiento-de-saberes/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#0EA5E9] hover:bg-[#0284C7] text-white text-xs font-semibold shadow-sm transition-all hover:scale-[1.02] active:scale-95">
-                  <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <a href="https://dges-cba.edu.ar/wp/institucional/equipo-tecnico/reconocimiento-de-saberes/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#0EA5E9] hover:bg-[#0284C7] text-white text-xs font-semibold shadow-sm transition-all hover:scale-[1.02] active:scale-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-400">
+                  <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path>
                   </svg>
                   <span>Portal Reconocimiento de Saberes</span>
-                  <svg class="w-3.5 h-3.5 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg class="w-3.5 h-3.5 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
                   </svg>
                 </a>
@@ -593,40 +702,40 @@
         </div>
 
         <!-- Resolución 4: Res 83/25 Sec. Educación -->
-        <div class="bg-white rounded-2xl border border-slate-200 shadow-subtle overflow-hidden">
-          <button type="button" class="accordion-header w-full px-6 py-4 text-left flex items-center justify-between hover:bg-slate-50 transition-colors" onclick="toggleAccordion('norm-83')">
+        <div class="bg-white rounded-2xl border border-slate-200 shadow-subtle overflow-hidden card-printable">
+          <button type="button" id="btn-norm-83" aria-expanded="false" aria-controls="norm-83" class="accordion-header w-full px-6 py-4 text-left flex items-center justify-between hover:bg-slate-50 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500" onclick="toggleAccordion('norm-83')">
             <div class="flex items-center gap-3">
-              <span class="px-2.5 py-1 rounded-md bg-purple-100 text-purple-900 font-bold text-xs">Res. N° 83/25</span>
+              <span class="px-2.5 py-1 rounded-md bg-purple-100 text-purple-900 font-bold text-xs shrink-0">Res. N° 83/25</span>
               <span class="font-heading font-bold text-sm sm:text-base text-[#0F294A]">
                 Lineamientos de Política Educativa 2026: TransFORMAR@Cba y Certificaciones Intermedias
               </span>
             </div>
-            <svg id="chevron-norm-83" class="chevron-icon w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg id="chevron-norm-83" class="chevron-icon w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
             </svg>
           </button>
           
-          <div id="norm-83" class="accordion-content">
+          <div id="norm-83" role="region" aria-labelledby="btn-norm-83" class="accordion-content">
             <div class="p-6 bg-slate-50/50 border-t border-slate-100 space-y-4">
               <p class="text-sm text-slate-700 leading-relaxed">
                 Define los lineamientos de la Política Educativa 2026 dentro del programa <strong>TransFORMAR@Cba</strong> (Secretaría de Educación), regulando la flexibilización curricular, la estructuración por <strong>familias profesionales</strong> y la expedición sistemática de <strong>certificaciones intermedias</strong> con valor en el mercado productivo.
               </p>
               <div class="flex flex-wrap items-center gap-3">
-                <a href="https://dges-cba.edu.ar/wp/transformarcba/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#1E40AF] hover:bg-[#0F294A] text-white text-xs font-semibold shadow-sm transition-all hover:scale-[1.02] active:scale-95">
-                  <svg class="w-4 h-4 text-sky-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <a href="https://dges-cba.edu.ar/wp/transformarcba/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#1E40AF] hover:bg-[#0F294A] text-white text-xs font-semibold shadow-sm transition-all hover:scale-[1.02] active:scale-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-400">
+                  <svg class="w-4 h-4 text-sky-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
                   </svg>
                   <span>Portal TransFORMAR@Cba</span>
-                  <svg class="w-3.5 h-3.5 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg class="w-3.5 h-3.5 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
                   </svg>
                 </a>
-                <a href="https://dges-cba.infd.edu.ar/sitio/resoluciones-ministerio-de-educacion/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-semibold border border-slate-300 transition-all hover:scale-[1.02] active:scale-95">
-                  <svg class="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <a href="https://dges-cba.infd.edu.ar/sitio/resoluciones-ministerio-de-educacion/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-semibold border border-slate-300 transition-all hover:scale-[1.02] active:scale-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-400">
+                  <svg class="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
                   </svg>
                   <span>Repositorio Resoluciones DGES</span>
-                  <svg class="w-3.5 h-3.5 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg class="w-3.5 h-3.5 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
                   </svg>
                 </a>
@@ -638,7 +747,7 @@
       </div>
 
       <!-- VISUALIZACIÓN DE FLUJO — FAMILIAS PROFESIONALES Y CERTIFICACIÓN POR ETAPAS -->
-      <div class="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-subtle">
+      <div class="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-subtle card-printable">
         <div class="max-w-3xl mb-6">
           <span class="text-xs font-bold uppercase tracking-wider text-[#0EA5E9] block mb-1">
             Ruta de Aprendizaje Modular
@@ -655,7 +764,7 @@
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4 relative">
           
           <!-- Paso 1 -->
-          <div class="p-5 rounded-xl bg-slate-50 border-2 border-dashed border-sky-200 relative group hover:border-sky-400 transition-colors">
+          <div class="p-5 rounded-xl bg-slate-50 border-2 border-dashed border-sky-200 relative group hover:border-sky-400 transition-colors card-printable">
             <div class="flex items-center justify-between mb-3">
               <span class="w-7 h-7 rounded-full bg-sky-500 text-white font-heading font-bold text-xs flex items-center justify-center">1</span>
               <span class="text-[11px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-sky-100 text-sky-800">Iniciación</span>
@@ -668,14 +777,14 @@
           </div>
 
           <!-- Flecha conectora (en pantallas medianas) -->
-          <div class="hidden md:flex absolute left-1/3 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10 w-8 h-8 rounded-full bg-white border border-slate-300 items-center justify-center shadow-sm text-slate-400">
+          <div class="hidden md:flex absolute left-1/3 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10 w-8 h-8 rounded-full bg-white border border-slate-300 items-center justify-center shadow-sm text-slate-400" aria-hidden="true">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"></path>
             </svg>
           </div>
 
           <!-- Paso 2 -->
-          <div class="p-5 rounded-xl bg-slate-50 border-2 border-dashed border-blue-200 relative group hover:border-blue-400 transition-colors">
+          <div class="p-5 rounded-xl bg-slate-50 border-2 border-dashed border-blue-200 relative group hover:border-blue-400 transition-colors card-printable">
             <div class="flex items-center justify-between mb-3">
               <span class="w-7 h-7 rounded-full bg-[#1E40AF] text-white font-heading font-bold text-xs flex items-center justify-center">2</span>
               <span class="text-[11px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-blue-100 text-blue-800">Consolidación</span>
@@ -688,14 +797,14 @@
           </div>
 
           <!-- Flecha conectora (en pantallas medianas) -->
-          <div class="hidden md:flex absolute left-2/3 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10 w-8 h-8 rounded-full bg-white border border-slate-300 items-center justify-center shadow-sm text-slate-400">
+          <div class="hidden md:flex absolute left-2/3 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10 w-8 h-8 rounded-full bg-white border border-slate-300 items-center justify-center shadow-sm text-slate-400" aria-hidden="true">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"></path>
             </svg>
           </div>
 
           <!-- Paso 3 -->
-          <div class="p-5 rounded-xl bg-amber-50/50 border-2 border-dashed border-amber-300 relative group hover:border-amber-500 transition-colors">
+          <div class="p-5 rounded-xl bg-amber-50/50 border-2 border-dashed border-amber-300 relative group hover:border-amber-500 transition-colors card-printable">
             <div class="flex items-center justify-between mb-3">
               <span class="w-7 h-7 rounded-full bg-[#D97706] text-white font-heading font-bold text-xs flex items-center justify-center">3</span>
               <span class="text-[11px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-amber-100 text-amber-800">Titulación</span>
@@ -721,7 +830,7 @@
       <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 mb-6 border-b border-slate-200">
         <div>
           <div class="flex items-center gap-3 mb-2">
-            <span class="px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 font-semibold text-xs uppercase tracking-wider border border-emerald-300">
+            <span class="px-3 py-1 rounded-full bg-emerald-100 text-emerald-900 font-semibold text-xs uppercase tracking-wider border border-emerald-300">
               10:00 hs · Bloque 3
             </span>
             <span class="text-xs font-medium text-slate-500 uppercase tracking-wider">Innovación Pedagógica en el Ingreso</span>
@@ -731,20 +840,20 @@
           </h2>
         </div>
         
-        <div class="bg-white p-3.5 rounded-xl border border-slate-200 shadow-sm flex items-center gap-3 shrink-0">
-          <div class="w-10 h-10 rounded-full bg-emerald-600 text-white flex items-center justify-center font-bold font-heading text-sm shadow">
+        <div class="bg-white p-3.5 rounded-xl border border-slate-200 shadow-sm flex items-center gap-3 shrink-0 card-printable">
+          <div class="w-10 h-10 rounded-full bg-emerald-600 text-white flex items-center justify-center font-bold font-heading text-sm shadow" aria-hidden="true">
             SL
           </div>
           <div>
             <div class="text-xs text-slate-500 font-semibold">Disertante principal</div>
             <div class="font-heading font-bold text-sm text-[#0F294A]">Sandra López</div>
-            <div class="text-[11px] text-slate-600">Inspectora General de la DIPE Córdoba</div>
+            <div class="text-[11px] text-slate-600 font-medium">Inspectora General de la DIPE Córdoba</div>
           </div>
         </div>
       </div>
 
       <!-- Enfoque y Criterio Pedagógico -->
-      <div class="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-subtle mb-8 space-y-6">
+      <div class="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-subtle mb-8 space-y-6 card-printable">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
           
           <div class="border-l-4 border-rose-400 bg-rose-50/50 p-4 rounded-r-xl">
@@ -766,9 +875,9 @@
         </div>
 
         <!-- Pregunta Disparadora y Criterio -->
-        <div class="bg-gradient-to-br from-[#0F294A] to-[#1E40AF] p-6 rounded-xl text-white space-y-3">
+        <div class="bg-gradient-to-br from-[#0F294A] to-[#1E40AF] p-6 rounded-xl text-white space-y-3 card-printable">
           <div class="flex items-center gap-2 text-amber-300 text-xs font-bold uppercase tracking-wider">
-            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
               <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path>
             </svg>
             Pregunta Disparadora Central
@@ -797,7 +906,7 @@
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
           
           <!-- BLOQUE A: Tronco Común Transversal -->
-          <div class="bg-white rounded-2xl p-6 border-2 border-sky-100 shadow-subtle flex flex-col justify-between">
+          <div class="bg-white rounded-2xl p-6 border-2 border-sky-100 shadow-subtle flex flex-col justify-between card-printable">
             <div>
               <div class="flex items-center justify-between pb-3 mb-4 border-b border-sky-100">
                 <span class="font-heading font-bold text-base text-[#1E40AF]">
@@ -857,7 +966,7 @@
           </div>
 
           <!-- BLOQUE B: Inmersión Disciplinar Situada -->
-          <div class="bg-white rounded-2xl p-6 border-2 border-emerald-100 shadow-subtle flex flex-col justify-between">
+          <div class="bg-white rounded-2xl p-6 border-2 border-emerald-100 shadow-subtle flex flex-col justify-between card-printable">
             <div>
               <div class="flex items-center justify-between pb-3 mb-4 border-b border-emerald-100">
                 <span class="font-heading font-bold text-base text-emerald-900">
@@ -922,10 +1031,10 @@
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
           
           <!-- Familia 1: Administración -->
-          <div class="bg-white rounded-2xl border border-slate-200 shadow-subtle overflow-hidden">
-            <button type="button" class="accordion-header w-full px-5 py-4 text-left flex items-center justify-between hover:bg-slate-50 transition-colors" onclick="toggleAccordion('fp-admin')">
+          <div class="bg-white rounded-2xl border border-slate-200 shadow-subtle overflow-hidden card-printable">
+            <button type="button" id="btn-fp-admin" aria-expanded="false" aria-controls="fp-admin" class="accordion-header w-full px-5 py-4 text-left flex items-center justify-between hover:bg-slate-50 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500" onclick="toggleAccordion('fp-admin')">
               <div class="flex items-center gap-3">
-                <div class="w-8 h-8 rounded-lg bg-blue-100 text-blue-700 flex items-center justify-center font-bold text-xs">
+                <div class="w-8 h-8 rounded-lg bg-blue-100 text-blue-700 flex items-center justify-center font-bold text-xs" aria-hidden="true">
                   ADM
                 </div>
                 <div>
@@ -933,11 +1042,11 @@
                   <span class="text-xs text-slate-500">Procesos, dashboards y optimización</span>
                 </div>
               </div>
-              <svg id="chevron-fp-admin" class="chevron-icon w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg id="chevron-fp-admin" class="chevron-icon w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
               </svg>
             </button>
-            <div id="fp-admin" class="accordion-content">
+            <div id="fp-admin" role="region" aria-labelledby="btn-fp-admin" class="accordion-content">
               <div class="p-5 bg-slate-50 border-t border-slate-100 text-xs space-y-3">
                 <div>
                   <strong class="text-slate-800 block mb-1 text-xs uppercase font-bold text-[#1E40AF]">Desafío Real:</strong>
@@ -954,10 +1063,10 @@
           </div>
 
           <!-- Familia 2: Desarrollo Web -->
-          <div class="bg-white rounded-2xl border border-slate-200 shadow-subtle overflow-hidden">
-            <button type="button" class="accordion-header w-full px-5 py-4 text-left flex items-center justify-between hover:bg-slate-50 transition-colors" onclick="toggleAccordion('fp-web')">
+          <div class="bg-white rounded-2xl border border-slate-200 shadow-subtle overflow-hidden card-printable">
+            <button type="button" id="btn-fp-web" aria-expanded="false" aria-controls="fp-web" class="accordion-header w-full px-5 py-4 text-left flex items-center justify-between hover:bg-slate-50 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500" onclick="toggleAccordion('fp-web')">
               <div class="flex items-center gap-3">
-                <div class="w-8 h-8 rounded-lg bg-sky-100 text-[#0EA5E9] flex items-center justify-center font-bold text-xs">
+                <div class="w-8 h-8 rounded-lg bg-sky-100 text-[#0EA5E9] flex items-center justify-center font-bold text-xs" aria-hidden="true">
                   DEV
                 </div>
                 <div>
@@ -965,11 +1074,11 @@
                   <span class="text-xs text-slate-500">Algoritmos, software y automatización</span>
                 </div>
               </div>
-              <svg id="chevron-fp-web" class="chevron-icon w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg id="chevron-fp-web" class="chevron-icon w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
               </svg>
             </button>
-            <div id="fp-web" class="accordion-content">
+            <div id="fp-web" role="region" aria-labelledby="btn-fp-web" class="accordion-content">
               <div class="p-5 bg-slate-50 border-t border-slate-100 text-xs space-y-3">
                 <div>
                   <strong class="text-slate-800 block mb-1 text-xs uppercase font-bold text-[#0EA5E9]">Desafío Real:</strong>
@@ -986,10 +1095,10 @@
           </div>
 
           <!-- Familia 3: Agropecuario -->
-          <div class="bg-white rounded-2xl border border-slate-200 shadow-subtle overflow-hidden">
-            <button type="button" class="accordion-header w-full px-5 py-4 text-left flex items-center justify-between hover:bg-slate-50 transition-colors" onclick="toggleAccordion('fp-agro')">
+          <div class="bg-white rounded-2xl border border-slate-200 shadow-subtle overflow-hidden card-printable">
+            <button type="button" id="btn-fp-agro" aria-expanded="false" aria-controls="fp-agro" class="accordion-header w-full px-5 py-4 text-left flex items-center justify-between hover:bg-slate-50 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500" onclick="toggleAccordion('fp-agro')">
               <div class="flex items-center gap-3">
-                <div class="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold text-xs">
+                <div class="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold text-xs" aria-hidden="true">
                   AGR
                 </div>
                 <div>
@@ -997,11 +1106,11 @@
                   <span class="text-xs text-slate-500">Clima, IoT y agroindustria sustentable</span>
                 </div>
               </div>
-              <svg id="chevron-fp-agro" class="chevron-icon w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg id="chevron-fp-agro" class="chevron-icon w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
               </svg>
             </button>
-            <div id="fp-agro" class="accordion-content">
+            <div id="fp-agro" role="region" aria-labelledby="btn-fp-agro" class="accordion-content">
               <div class="p-5 bg-slate-50 border-t border-slate-100 text-xs space-y-3">
                 <div>
                   <strong class="text-slate-800 block mb-1 text-xs uppercase font-bold text-emerald-700">Desafío Real:</strong>
@@ -1018,10 +1127,10 @@
           </div>
 
           <!-- Familia 4: Salud -->
-          <div class="bg-white rounded-2xl border border-slate-200 shadow-subtle overflow-hidden">
-            <button type="button" class="accordion-header w-full px-5 py-4 text-left flex items-center justify-between hover:bg-slate-50 transition-colors" onclick="toggleAccordion('fp-salud')">
+          <div class="bg-white rounded-2xl border border-slate-200 shadow-subtle overflow-hidden card-printable">
+            <button type="button" id="btn-fp-salud" aria-expanded="false" aria-controls="fp-salud" class="accordion-header w-full px-5 py-4 text-left flex items-center justify-between hover:bg-slate-50 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500" onclick="toggleAccordion('fp-salud')">
               <div class="flex items-center gap-3">
-                <div class="w-8 h-8 rounded-lg bg-rose-100 text-rose-700 flex items-center justify-center font-bold text-xs">
+                <div class="w-8 h-8 rounded-lg bg-rose-100 text-rose-700 flex items-center justify-center font-bold text-xs" aria-hidden="true">
                   SLD
                 </div>
                 <div>
@@ -1029,11 +1138,11 @@
                   <span class="text-xs text-slate-500">Protocolos odontológicos y bioseguridad</span>
                 </div>
               </div>
-              <svg id="chevron-fp-salud" class="chevron-icon w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg id="chevron-fp-salud" class="chevron-icon w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
               </svg>
             </button>
-            <div id="fp-salud" class="accordion-content">
+            <div id="fp-salud" role="region" aria-labelledby="btn-fp-salud" class="accordion-content">
               <div class="p-5 bg-slate-50 border-t border-slate-100 text-xs space-y-3">
                 <div>
                   <strong class="text-slate-800 block mb-1 text-xs uppercase font-bold text-rose-700">Desafío Real:</strong>
@@ -1053,10 +1162,10 @@
       </div>
 
       <!-- ACORDEÓN: EXPERIENCIAS MÍNIMAS, EVALUACIÓN Y ESTILOS DE APRENDIZAJE -->
-      <div class="bg-white rounded-2xl border border-slate-200 shadow-subtle overflow-hidden">
-        <button type="button" class="accordion-header w-full px-6 py-4 text-left flex items-center justify-between bg-gradient-to-r from-emerald-50/50 to-white hover:bg-emerald-50 transition-colors" onclick="toggleAccordion('acc-eval-experiencias')">
+      <div class="bg-white rounded-2xl border border-slate-200 shadow-subtle overflow-hidden card-printable">
+        <button type="button" id="btn-acc-eval" aria-expanded="false" aria-controls="acc-eval-experiencias" class="accordion-header w-full px-6 py-4 text-left flex items-center justify-between bg-gradient-to-r from-emerald-50/50 to-white hover:bg-emerald-50 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500" onclick="toggleAccordion('acc-eval-experiencias')">
           <div class="flex items-center gap-3.5">
-            <div class="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-800 flex items-center justify-center font-bold text-sm">
+            <div class="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-800 flex items-center justify-center font-bold text-sm" aria-hidden="true">
               ✓
             </div>
             <div>
@@ -1066,18 +1175,18 @@
               <p class="text-xs text-slate-500">Criterios pedagógicos, dispositivos evaluativos y modelos cognitivos</p>
             </div>
           </div>
-          <svg id="chevron-acc-eval-experiencias" class="chevron-icon w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg id="chevron-acc-eval-experiencias" class="chevron-icon w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
           </svg>
         </button>
 
-        <div id="acc-eval-experiencias" class="accordion-content">
+        <div id="acc-eval-experiencias" role="region" aria-labelledby="btn-acc-eval" class="accordion-content">
           <div class="p-6 bg-white border-t border-slate-100 space-y-6">
             
             <!-- 3 Experiencias Mínimas Obligatorias -->
             <div>
               <h4 class="font-heading font-bold text-sm text-[#0F294A] uppercase tracking-wider mb-3 flex items-center gap-2">
-                <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                <span class="w-2 h-2 rounded-full bg-emerald-500" aria-hidden="true"></span>
                 3 Experiencias Mínimas Obligatorias
               </h4>
               <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
@@ -1109,7 +1218,7 @@
             <!-- Estilos de Aprendizaje -->
             <div>
               <h4 class="font-heading font-bold text-sm text-[#0F294A] uppercase tracking-wider mb-3 flex items-center gap-2">
-                <span class="w-2 h-2 rounded-full bg-sky-500"></span>
+                <span class="w-2 h-2 rounded-full bg-sky-500" aria-hidden="true"></span>
                 Estilos y Modelos de Aprendizaje a Contemplar
               </h4>
               <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 text-xs">
@@ -1141,6 +1250,15 @@
   </main>
 
   <!-- ========================================== -->
+  <!-- BOTÓN FLOTANTE: VOLVER ARRIBA             -->
+  <!-- ========================================== -->
+  <button id="scroll-top-btn" type="button" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="fixed bottom-6 right-6 z-40 p-3 rounded-full bg-[#0F294A] text-white shadow-xl border border-white/20 hover:bg-[#1E40AF] transition-all opacity-0 pointer-events-none translate-y-3 hover:scale-110 active:scale-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-400" aria-label="Volver arriba">
+    <svg class="w-5 h-5 text-sky-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
+    </svg>
+  </button>
+
+  <!-- ========================================== -->
   <!-- PIE DE PÁGINA (FOOTER LIMPIO INSTITUCIONAL)-->
   <!-- ========================================== -->
   <footer class="bg-[#0F294A] text-white border-t border-slate-800 py-10 mt-16">
@@ -1148,7 +1266,7 @@
       
       <!-- Crédito Institucional -->
       <div class="flex flex-col items-center justify-center gap-2">
-        <div class="w-8 h-8 rounded-lg bg-sky-400 text-[#0F294A] flex items-center justify-center font-heading font-black text-base shadow">
+        <div class="w-8 h-8 rounded-lg bg-sky-400 text-[#0F294A] flex items-center justify-center font-heading font-black text-base shadow" aria-hidden="true">
           L
         </div>
         <div class="font-heading font-bold text-base tracking-wide text-white">
@@ -1161,8 +1279,8 @@
 
       <!-- Único Enlace de Contacto Requerido -->
       <div class="pt-4 border-t border-slate-800">
-        <a href="mailto:marcelomorini@institutoleibnitz.edu.ar" class="inline-flex items-center gap-2 text-xs font-medium text-sky-300 hover:text-white transition-colors bg-white/5 hover:bg-white/10 px-4 py-2 rounded-lg border border-white/10">
-          <svg class="w-4 h-4 text-sky-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <a href="mailto:marcelomorini@institutoleibnitz.edu.ar" class="inline-flex items-center gap-2 text-xs font-medium text-sky-300 hover:text-white transition-colors bg-white/5 hover:bg-white/10 px-4 py-2 rounded-lg border border-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-400">
+          <svg class="w-4 h-4 text-sky-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
           </svg>
           <span>marcelomorini@institutoleibnitz.edu.ar</span>
@@ -1176,10 +1294,11 @@
   <!-- JAVASCRIPT VANILLA INTERACTIVO             -->
   <!-- ========================================== -->
   <script>
-    // Gestión individual de acordeón
+    // Gestión individual de acordeón con ARIA y foco accesible
     function toggleAccordion(id) {
       const content = document.getElementById(id);
       const chevron = document.getElementById('chevron-' + id);
+      const button = document.querySelector(`[aria-controls="${id}"]`);
       
       if (!content) return;
 
@@ -1188,9 +1307,11 @@
       if (isExpanded) {
         content.classList.remove('expanded');
         if (chevron) chevron.classList.remove('rotate-180');
+        if (button) button.setAttribute('aria-expanded', 'false');
       } else {
         content.classList.add('expanded');
         if (chevron) chevron.classList.add('rotate-180');
+        if (button) button.setAttribute('aria-expanded', 'true');
       }
       
       updateToggleAllButtonState();
@@ -1206,13 +1327,16 @@
       allContents.forEach(content => {
         const id = content.id;
         const chevron = document.getElementById('chevron-' + id);
+        const button = document.querySelector(`[aria-controls="${id}"]`);
         
         if (allExpandedState) {
           content.classList.add('expanded');
           if (chevron) chevron.classList.add('rotate-180');
+          if (button) button.setAttribute('aria-expanded', 'true');
         } else {
           content.classList.remove('expanded');
           if (chevron) chevron.classList.remove('rotate-180');
+          if (button) button.setAttribute('aria-expanded', 'false');
         }
       });
 
@@ -1243,6 +1367,67 @@
         if (iconElem) iconElem.classList.remove('rotate-180');
       }
     }
+
+    // Barra de Progreso de Lectura y Botón Volver Arriba
+    const progressBar = document.getElementById('reading-progress-bar');
+    const scrollTopBtn = document.getElementById('scroll-top-btn');
+
+    window.addEventListener('scroll', () => {
+      const scrollTop = window.scrollY || document.documentElement.scrollTop;
+      const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      
+      if (progressBar) {
+        progressBar.style.width = progress + '%';
+      }
+
+      // Mostrar/Ocultar botón de scroll top
+      if (scrollTopBtn) {
+        if (scrollTop > 350) {
+          scrollTopBtn.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-3');
+          scrollTopBtn.classList.add('opacity-100', 'pointer-events-auto', 'translate-y-0');
+        } else {
+          scrollTopBtn.classList.add('opacity-0', 'pointer-events-none', 'translate-y-3');
+          scrollTopBtn.classList.remove('opacity-100', 'pointer-events-auto', 'translate-y-0');
+        }
+      }
+
+      // ScrollSpy para la barra de navegación superior
+      updateScrollSpy();
+    }, { passive: true });
+
+    // ScrollSpy de secciones
+    const sections = ['bloque-1', 'bloque-2', 'bloque-3'];
+    function updateScrollSpy() {
+      const scrollPos = window.scrollY + 120;
+      
+      sections.forEach(secId => {
+        const secElem = document.getElementById(secId);
+        const navLink = document.getElementById('nav-' + secId);
+        if (secElem && navLink) {
+          const top = secElem.offsetTop;
+          const height = secElem.offsetHeight;
+          if (scrollPos >= top && scrollPos < top + height) {
+            navLink.classList.add('active-nav');
+          } else {
+            navLink.classList.remove('active-nav');
+          }
+        }
+      });
+    }
+
+    // Inicializar accesibilidad por teclado
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.accordion-header').forEach(header => {
+        header.addEventListener('keydown', (e) => {
+          if (e.key === ' ' || e.key === 'Spacebar') {
+            e.preventDefault();
+            header.click();
+          }
+        });
+      });
+      updateScrollSpy();
+    });
   </script>
 
 </body>
