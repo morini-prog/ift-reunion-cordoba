@@ -1,0 +1,1249 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reunión Específica IFT · DGETyFP Córdoba | Instituto Leibnitz</title>
+  
+  <!-- Google Fonts: Plus Jakarta Sans & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            leibnitz: {
+              navy: '#0F294A',
+              blue: '#1E40AF',
+              cyan: '#0EA5E9',
+              amber: '#D97706',
+              bg: '#F8FAFC',
+              card: '#FFFFFF'
+            }
+          },
+          fontFamily: {
+            heading: ['"Plus Jakarta Sans"', 'sans-serif'],
+            sans: ['"Inter"', 'sans-serif']
+          },
+          boxShadow: {
+            subtle: '0 4px 20px -2px rgba(15, 41, 74, 0.06), 0 2px 6px -1px rgba(15, 41, 74, 0.04)',
+            cardHover: '0 12px 30px -4px rgba(15, 41, 74, 0.12), 0 4px 10px -2px rgba(15, 41, 74, 0.06)'
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Estilos base y transiciones fluidas */
+    body {
+      background-color: #F8FAFC;
+      color: #1E293B;
+      font-family: 'Inter', sans-serif;
+    }
+    h1, h2, h3, h4, .font-heading {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    
+    /* Animación del contenido de acordeones */
+    .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease, padding 0.3s ease;
+      opacity: 0;
+    }
+    .accordion-content.expanded {
+      max-height: 1200px;
+      opacity: 1;
+    }
+    
+    /* Rotación de Chevron */
+    .chevron-icon {
+      transition: transform 0.3s ease;
+    }
+    .chevron-icon.rotate-180 {
+      transform: rotate(180deg);
+    }
+
+    /* Print styles para directivos */
+    @media print {
+      header, nav, #global-accordion-btn, #floating-controls {
+        display: none !important;
+      }
+      body {
+        background: #ffffff !important;
+        color: #000000 !important;
+      }
+      .accordion-content {
+        max-height: none !important;
+        opacity: 1 !important;
+        display: block !important;
+      }
+      .shadow-subtle, .shadow-cardHover, .shadow-lg {
+        box-shadow: none !important;
+        border: 1px solid #E2E8F0 !important;
+      }
+      section {
+        page-break-inside: avoid;
+      }
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col antialiased selection:bg-sky-100 selection:text-sky-900">
+
+  <!-- ========================================== -->
+  <!-- BARRA DE NAVEGACIÓN SUPERIOR FIJA (STICKY) -->
+  <!-- ========================================== -->
+  <header class="sticky top-0 z-50 bg-[#0F294A]/95 backdrop-blur-md border-b border-slate-700/60 text-white shadow-md transition-all duration-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      
+      <!-- Identidad y Escudo Institucional -->
+      <a href="#hero" class="flex items-center gap-3 group">
+        <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-sky-400 to-blue-600 flex items-center justify-center font-heading font-black text-white text-xl shadow-md group-hover:scale-105 transition-transform">
+          L
+        </div>
+        <div>
+          <span class="block font-heading font-bold text-sm tracking-wide uppercase text-white group-hover:text-sky-300 transition-colors">
+            Instituto Leibnitz
+          </span>
+          <span class="block text-[11px] text-slate-300 font-medium">
+            Documento Ejecutivo · IFT Córdoba
+          </span>
+        </div>
+      </a>
+
+      <!-- Navegación de Bloques -->
+      <nav class="hidden md:flex items-center gap-1.5 text-xs font-semibold">
+        <a href="#bloque-1" class="px-3 py-2 rounded-lg text-slate-200 hover:text-white hover:bg-white/10 transition-colors flex items-center gap-1.5">
+          <span class="w-2 h-2 rounded-full bg-amber-400"></span>
+          09:00 hs · Apertura
+        </a>
+        <a href="#bloque-2" class="px-3 py-2 rounded-lg text-slate-200 hover:text-white hover:bg-white/10 transition-colors flex items-center gap-1.5">
+          <span class="w-2 h-2 rounded-full bg-sky-400"></span>
+          09:20 hs · Saberes & FP
+        </a>
+        <a href="#bloque-3" class="px-3 py-2 rounded-lg text-slate-200 hover:text-white hover:bg-white/10 transition-colors flex items-center gap-1.5">
+          <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+          10:00 hs · Propedéutico
+        </a>
+      </nav>
+
+      <!-- Botón de Control Global de Acordeones -->
+      <div class="flex items-center gap-2">
+        <button id="toggle-all-btn" onclick="toggleAllAccordions()" class="inline-flex items-center gap-2 px-3 py-1.5 text-xs font-semibold rounded-lg bg-white/10 hover:bg-white/20 text-white border border-white/20 transition-all hover:scale-[1.02] active:scale-95 shadow-sm">
+          <svg id="toggle-icon-expand" class="w-4 h-4 text-sky-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+          </svg>
+          <span id="toggle-all-text">Expandir todo</span>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ========================================== -->
+  <!-- 1. HERO / ENCABEZADO EJECUTIVO             -->
+  <!-- ========================================== -->
+  <section id="hero" class="relative bg-gradient-to-b from-[#0F294A] via-[#13335D] to-[#1E40AF] text-white pt-12 pb-16 px-4 sm:px-6 lg:px-8 border-b-4 border-amber-500 overflow-hidden">
+    <!-- Efecto visual de fondo -->
+    <div class="absolute inset-0 opacity-10 pointer-events-none bg-[radial-gradient(#38bdf8_1px,transparent_1px)] [background-size:20px_20px]"></div>
+
+    <div class="max-w-6xl mx-auto relative z-10">
+      
+      <!-- Etiqueta Superior -->
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-sky-500/20 border border-sky-400/30 text-sky-200 text-xs font-semibold tracking-wider uppercase mb-5 backdrop-blur-sm">
+        <span class="w-2 h-2 rounded-full bg-sky-400 animate-pulse"></span>
+        Política Educativa Provincial · Nivel Superior Técnico
+      </div>
+
+      <!-- Título y Subtítulo -->
+      <h1 class="font-heading font-extrabold text-3xl sm:text-4xl lg:text-5xl tracking-tight leading-tight mb-4 text-white">
+        Reunión Específica para Institutos de Formación Técnica (IFT)
+      </h1>
+      <p class="text-lg sm:text-xl text-sky-100 max-w-4xl font-normal leading-relaxed mb-8">
+        Articulación de trayectorias, Reconocimiento de Saberes y Nuevo Propedéutico 2027
+      </p>
+
+      <!-- Tarjeta de Datos del Encuentro -->
+      <div class="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20 shadow-2xl mb-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        
+        <div class="flex items-start gap-3.5">
+          <div class="p-2.5 rounded-xl bg-amber-500/20 border border-amber-400/30 text-amber-300 shrink-0">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+            </svg>
+          </div>
+          <div>
+            <span class="block text-xs uppercase tracking-wider text-slate-300 font-semibold">Fecha</span>
+            <span class="font-heading font-bold text-sm text-white">Miércoles 18 de noviembre de 2026</span>
+          </div>
+        </div>
+
+        <div class="flex items-start gap-3.5">
+          <div class="p-2.5 rounded-xl bg-sky-500/20 border border-sky-400/30 text-sky-300 shrink-0">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </div>
+          <div>
+            <span class="block text-xs uppercase tracking-wider text-slate-300 font-semibold">Horario</span>
+            <span class="font-heading font-bold text-sm text-white">09:00 a 14:00 hs</span>
+          </div>
+        </div>
+
+        <div class="flex items-start gap-3.5">
+          <div class="p-2.5 rounded-xl bg-blue-500/20 border border-blue-400/30 text-blue-300 shrink-0">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+            </svg>
+          </div>
+          <div>
+            <span class="block text-xs uppercase tracking-wider text-slate-300 font-semibold">Lugar</span>
+            <span class="font-heading font-bold text-sm text-white">IES Simón Bolívar</span>
+            <span class="block text-xs text-slate-300">Agustín Garzón 1225/1255, Córdoba</span>
+          </div>
+        </div>
+
+        <div class="flex items-start gap-3.5">
+          <div class="p-2.5 rounded-xl bg-emerald-500/20 border border-emerald-400/30 text-emerald-300 shrink-0">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+            </svg>
+          </div>
+          <div>
+            <span class="block text-xs uppercase tracking-wider text-slate-300 font-semibold">Convocante</span>
+            <span class="font-heading font-bold text-sm text-white">DGETyFP</span>
+            <span class="block text-xs text-slate-300">Min. de Educación de Córdoba</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Introducción Oficial -->
+      <div class="bg-[#0F294A]/80 border-l-4 border-amber-400 p-5 rounded-r-xl text-slate-200 text-sm sm:text-base leading-relaxed">
+        <strong class="text-white font-semibold block mb-1">Propósito del Encuentro:</strong>
+        El encuentro fue convocado por la Dirección General de Educación Técnica y Formación Profesional para alinear las líneas de política educativa vigentes en el Nivel Superior Técnico, integrando la convergencia normativa para la continuidad de trayectorias, la vinculación socioproductiva y el diseño operativo del nuevo Seminario de Ingreso y las Familias Profesionales.
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CONTENEDOR PRINCIPAL DE CONTENIDOS -->
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 flex-grow space-y-16">
+
+    <!-- ========================================================================= -->
+    <!-- 2. BLOQUE 1 — APERTURA INSTITUCIONAL Y VINCULACIÓN SOCIOPRODUCTIVA       -->
+    <!-- ========================================================================= -->
+    <section id="bloque-1" class="scroll-mt-24">
+      
+      <!-- Encabezado del Bloque con Badge y Disertante -->
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 mb-6 border-b border-slate-200">
+        <div>
+          <div class="flex items-center gap-3 mb-2">
+            <span class="px-3 py-1 rounded-full bg-amber-100 text-amber-800 font-semibold text-xs uppercase tracking-wider border border-amber-300">
+              09:00 hs · Bloque 1
+            </span>
+            <span class="text-xs font-medium text-slate-500 uppercase tracking-wider">Apertura Institucional</span>
+          </div>
+          <h2 class="font-heading font-bold text-2xl sm:text-3xl text-[#0F294A]">
+            Apertura Institucional y Vinculación Socioproductiva
+          </h2>
+        </div>
+        
+        <div class="bg-white p-3.5 rounded-xl border border-slate-200 shadow-sm flex items-center gap-3 shrink-0">
+          <div class="w-10 h-10 rounded-full bg-[#1E40AF] text-white flex items-center justify-center font-bold font-heading text-sm shadow">
+            HF
+          </div>
+          <div>
+            <div class="text-xs text-slate-500 font-semibold">Disertante principal</div>
+            <div class="font-heading font-bold text-sm text-[#0F294A]">Dr. Horacio Ademar Ferreyra</div>
+            <div class="text-[11px] text-slate-600">Ministro de Educación de la Provincia de Córdoba</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tarjetas Interactivas de Ejes Estratégicos -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+        
+        <!-- Eje 1: Articulación Secundario -->
+        <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-subtle hover:shadow-cardHover transition-all flex flex-col justify-between group">
+          <div>
+            <div class="w-12 h-12 rounded-xl bg-sky-50 text-[#0EA5E9] border border-sky-100 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+              </svg>
+            </div>
+            <span class="inline-block px-2.5 py-0.5 rounded text-[11px] font-bold bg-sky-100 text-sky-800 uppercase tracking-wider mb-2">
+              Inmersión al Futuro
+            </span>
+            <h3 class="font-heading font-bold text-lg text-[#0F294A] mb-2">
+              Articulación con Nivel Secundario
+            </h3>
+            <p class="text-slate-600 text-sm leading-relaxed">
+              Implementación de instancias de <strong>cursado anticipado</strong> para estudiantes de nivel medio en el nivel superior técnico, generando puentes efectivos antes del egreso.
+            </p>
+          </div>
+          <div class="mt-4 pt-4 border-t border-slate-100 flex items-center text-xs font-semibold text-[#1E40AF]">
+            <span>Anticipación de trayectorias formativas</span>
+          </div>
+        </div>
+
+        <!-- Eje 2: Sector Productivo -->
+        <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-subtle hover:shadow-cardHover transition-all flex flex-col justify-between group">
+          <div>
+            <div class="w-12 h-12 rounded-xl bg-amber-50 text-[#D97706] border border-amber-100 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+              </svg>
+            </div>
+            <span class="inline-block px-2.5 py-0.5 rounded text-[11px] font-bold bg-amber-100 text-amber-800 uppercase tracking-wider mb-2">
+              Plan Dual & Pasantías
+            </span>
+            <h3 class="font-heading font-bold text-lg text-[#0F294A] mb-2">
+              Vinculación con el Sector Productivo
+            </h3>
+            <p class="text-slate-600 text-sm leading-relaxed">
+              Diseño de actividades formativas generadas desde el propio sector productivo, fortalecimiento del <strong>Plan Dual</strong> y otorgamiento de <strong>certificaciones institucionales a las empresas receptoras de pasantías</strong>.
+            </p>
+          </div>
+          <div class="mt-4 pt-4 border-t border-slate-100 flex items-center text-xs font-semibold text-[#D97706]">
+            <span>Sinergia público-privada</span>
+          </div>
+        </div>
+
+        <!-- Eje 3: Apertura y Certificación Modular -->
+        <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-subtle hover:shadow-cardHover transition-all flex flex-col justify-between group">
+          <div>
+            <div class="w-12 h-12 rounded-xl bg-blue-50 text-[#1E40AF] border border-blue-100 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
+              </svg>
+            </div>
+            <span class="inline-block px-2.5 py-0.5 rounded text-[11px] font-bold bg-blue-100 text-blue-800 uppercase tracking-wider mb-2">
+              Flexibilidad Curricular
+            </span>
+            <h3 class="font-heading font-bold text-lg text-[#0F294A] mb-2">
+              Apertura y Certificación Modular
+            </h3>
+            <ul class="text-slate-600 text-sm space-y-2 leading-relaxed">
+              <li class="flex items-start gap-2">
+                <span class="text-sky-500 font-bold">•</span>
+                <span>Implementación de <strong>Cátedras Abiertas</strong> con certificación por materias aprobadas.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-sky-500 font-bold">•</span>
+                <span>Evaluación e implementación de <strong>microcredenciales</strong>.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-sky-500 font-bold">•</span>
+                <span>Convocatoria activa a <strong>egresados</strong> para actualización y certificaciones continuas.</span>
+              </li>
+            </ul>
+          </div>
+          <div class="mt-4 pt-4 border-t border-slate-100 flex items-center text-xs font-semibold text-[#1E40AF]">
+            <span>Formación a lo largo de la vida</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Acordeón Especial: Priorización Wooclap TransFORMAR@Cba -->
+      <div class="bg-white rounded-2xl border border-slate-200 shadow-subtle overflow-hidden">
+        <button type="button" class="accordion-header w-full px-6 py-4 text-left flex items-center justify-between bg-gradient-to-r from-slate-50 to-white hover:bg-slate-50 transition-colors" onclick="toggleAccordion('acc-wooclap')">
+          <div class="flex items-center gap-3.5">
+            <div class="w-8 h-8 rounded-lg bg-sky-100 text-[#0EA5E9] flex items-center justify-center font-bold text-sm">
+              #
+            </div>
+            <div>
+              <span class="font-heading font-bold text-base text-[#0F294A]">
+                Acordeón Especial — Priorización de Ejes TransFORMAR@Cba (Actividad Wooclap)
+              </span>
+              <p class="text-xs text-slate-500">Orden de priorización resultante de la participación de los directivos</p>
+            </div>
+          </div>
+          <svg id="chevron-acc-wooclap" class="chevron-icon w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+          </svg>
+        </button>
+        
+        <div id="acc-wooclap" class="accordion-content">
+          <div class="p-6 bg-white border-t border-slate-100">
+            <p class="text-sm text-slate-600 mb-4">
+              Durante la sesión inicial se realizó un relevamiento en tiempo real mediante la plataforma <strong>Wooclap</strong>, en el cual los equipos directivos e inspectores priorizaron los 7 ejes de la política <strong>TransFORMAR@Cba</strong> en el siguiente orden de jerarquía:
+            </p>
+            <ol class="space-y-3">
+              <li class="flex items-start gap-3 p-3 rounded-xl bg-slate-50 border border-slate-200/80">
+                <span class="w-6 h-6 rounded-full bg-[#1E40AF] text-white flex items-center justify-center font-heading font-bold text-xs shrink-0 mt-0.5">1</span>
+                <div>
+                  <strong class="text-[#0F294A] text-sm block">Vinculaciones con el sistema productivo, de servicio y comunidad.</strong>
+                  <span class="text-xs text-slate-500">Eje rector de la formación técnica: sinergia con cámaras, empresas y desarrollo local.</span>
+                </div>
+              </li>
+              <li class="flex items-start gap-3 p-3 rounded-xl bg-slate-50 border border-slate-200/80">
+                <span class="w-6 h-6 rounded-full bg-sky-600 text-white flex items-center justify-center font-heading font-bold text-xs shrink-0 mt-0.5">2</span>
+                <div>
+                  <strong class="text-[#0F294A] text-sm block">Desarrollo de la dimensión socioafectiva, bienestar educativo, participación y AIC.</strong>
+                  <span class="text-xs text-slate-500">Acompañamiento integral de los estudiantes y clima institucional democrático.</span>
+                </div>
+              </li>
+              <li class="flex items-start gap-3 p-3 rounded-xl bg-slate-50 border border-slate-200/80">
+                <span class="w-6 h-6 rounded-full bg-slate-700 text-white flex items-center justify-center font-heading font-bold text-xs shrink-0 mt-0.5">3</span>
+                <div>
+                  <strong class="text-[#0F294A] text-sm block">Capacidades fundamentales (oralidad, lectura, escritura y resolución de problemas).</strong>
+                  <span class="text-xs text-slate-500">Competencias troncales aplicadas al campo técnico y profesional.</span>
+                </div>
+              </li>
+              <li class="flex items-start gap-3 p-3 rounded-xl bg-slate-50 border border-slate-200/80">
+                <span class="w-6 h-6 rounded-full bg-slate-700 text-white flex items-center justify-center font-heading font-bold text-xs shrink-0 mt-0.5">4</span>
+                <div>
+                  <strong class="text-[#0F294A] text-sm block">Cuidado de las trayectorias escolares.</strong>
+                  <span class="text-xs text-slate-500">Alertas tempranas de deserción y dispositivos de acompañamiento pedagógico.</span>
+                </div>
+              </li>
+              <li class="flex items-start gap-3 p-3 rounded-xl bg-slate-50 border border-slate-200/80">
+                <span class="w-6 h-6 rounded-full bg-slate-700 text-white flex items-center justify-center font-heading font-bold text-xs shrink-0 mt-0.5">5</span>
+                <div>
+                  <strong class="text-[#0F294A] text-sm block">Escuelas precursoras y expediciones pedagógicas.</strong>
+                  <span class="text-xs text-slate-500">Innovación en prácticas docentes y socialización de experiencias transformadoras.</span>
+                </div>
+              </li>
+              <li class="flex items-start gap-3 p-3 rounded-xl bg-slate-50 border border-slate-200/80">
+                <span class="w-6 h-6 rounded-full bg-slate-700 text-white flex items-center justify-center font-heading font-bold text-xs shrink-0 mt-0.5">6</span>
+                <div>
+                  <strong class="text-[#0F294A] text-sm block">Ingreso, permanencia y egreso.</strong>
+                  <span class="text-xs text-slate-500">Reconfiguración de dispositivos de acogida y titulación efectiva.</span>
+                </div>
+              </li>
+              <li class="flex items-start gap-3 p-3 rounded-xl bg-slate-50 border border-slate-200/80">
+                <span class="w-6 h-6 rounded-full bg-slate-700 text-white flex items-center justify-center font-heading font-bold text-xs shrink-0 mt-0.5">7</span>
+                <div>
+                  <strong class="text-[#0F294A] text-sm block">Vinculación con secundario y ecosistema educativo.</strong>
+                  <span class="text-xs text-slate-500">Articulación vertical y reconocimiento de trayectorias previas.</span>
+                </div>
+              </li>
+            </ol>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- 3. BLOQUE 2 — RECONOCIMIENTO DE SABERES Y FORMACIÓN PROFESIONAL           -->
+    <!-- ========================================================================= -->
+    <section id="bloque-2" class="scroll-mt-24">
+      
+      <!-- Encabezado del Bloque con Badge y Disertante -->
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 mb-6 border-b border-slate-200">
+        <div>
+          <div class="flex items-center gap-3 mb-2">
+            <span class="px-3 py-1 rounded-full bg-sky-100 text-sky-800 font-semibold text-xs uppercase tracking-wider border border-sky-300">
+              09:20 hs · Bloque 2
+            </span>
+            <span class="text-xs font-medium text-slate-500 uppercase tracking-wider">Marco Normativo & Acreditación</span>
+          </div>
+          <h2 class="font-heading font-bold text-2xl sm:text-3xl text-[#0F294A]">
+            Reconocimiento de Saberes, Certificaciones Intermedias y Formación Profesional (FP)
+          </h2>
+        </div>
+        
+        <div class="bg-white p-3.5 rounded-xl border border-slate-200 shadow-sm flex items-center gap-3 shrink-0">
+          <div class="w-10 h-10 rounded-full bg-[#0EA5E9] text-white flex items-center justify-center font-bold font-heading text-sm shadow">
+            DS
+          </div>
+          <div>
+            <div class="text-xs text-slate-500 font-semibold">Disertante principal</div>
+            <div class="font-heading font-bold text-sm text-[#0F294A]">Ing. Diego Suárez</div>
+            <div class="text-[11px] text-slate-600">Director General de ETyFP Córdoba</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- LEMA DESTACADO / BANNER VISUAL -->
+      <div class="bg-gradient-to-r from-[#0F294A] via-[#1E40AF] to-[#0EA5E9] rounded-2xl p-6 sm:p-8 text-white shadow-lg mb-8 relative overflow-hidden">
+        <div class="absolute -right-8 -bottom-8 w-48 h-48 bg-white/5 rounded-full blur-2xl"></div>
+        <div class="relative z-10 text-center md:text-left flex flex-col md:flex-row items-center justify-between gap-6">
+          <div class="space-y-2">
+            <span class="inline-block px-3 py-1 rounded-full bg-amber-400 text-[#0F294A] font-extrabold text-xs uppercase tracking-wider">
+              Consigna Política Central
+            </span>
+            <h3 class="font-heading font-extrabold text-xl sm:text-2xl lg:text-3xl tracking-tight leading-snug">
+              “3 Resoluciones, un solo camino” · “Nadie empieza de cero”
+            </h3>
+            <p class="text-sky-100 text-base font-medium">
+              “Lo que ya aprobaron no se vuelve a cursar”
+            </p>
+          </div>
+          <div class="bg-white/10 backdrop-blur-md px-5 py-4 rounded-xl border border-white/20 text-center shrink-0">
+            <span class="block text-2xl font-black text-amber-300">100%</span>
+            <span class="text-xs text-white uppercase font-bold tracking-wider">Convergencia Normativa</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ACORDEONES NORMATIVOS CON BOTONES DE ENLACE DIRECTO -->
+      <div class="space-y-4 mb-10">
+        
+        <!-- Resolución 1: RM 371/24 -->
+        <div class="bg-white rounded-2xl border border-slate-200 shadow-subtle overflow-hidden">
+          <button type="button" class="accordion-header w-full px-6 py-4 text-left flex items-center justify-between hover:bg-slate-50 transition-colors" onclick="toggleAccordion('norm-371')">
+            <div class="flex items-center gap-3">
+              <span class="px-2.5 py-1 rounded-md bg-blue-100 text-blue-900 font-bold text-xs">RM N° 371/24</span>
+              <span class="font-heading font-bold text-sm sm:text-base text-[#0F294A]">
+                Programa de Articulación Operativa: Secundaria Técnica y Tecnicaturas Superiores
+              </span>
+            </div>
+            <svg id="chevron-norm-371" class="chevron-icon w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+          
+          <div id="norm-371" class="accordion-content">
+            <div class="p-6 bg-slate-50/50 border-t border-slate-100 space-y-4">
+              <p class="text-sm text-slate-700 leading-relaxed">
+                Aprueba el <strong>Programa de Articulación Operativa entre la Educación Secundaria Técnica y las Tecnicaturas de Nivel Superior</strong>, permitiendo validar espacios curriculares aprobados en el secundario técnico para evitar su recursado y acelerar la titulación superior.
+              </p>
+              <div>
+                <a href="https://dges-cba.infd.edu.ar/sitio/wp-content/uploads/2026/09/ResMin_371-2024.pdf" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#1E40AF] hover:bg-[#0F294A] text-white text-xs font-semibold shadow-sm transition-all hover:scale-[1.02] active:scale-95">
+                  <svg class="w-4 h-4 text-sky-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                  </svg>
+                  <span>Ver PDF Oficial RM 371/24</span>
+                  <svg class="w-3.5 h-3.5 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Resolución 2: RM 218/25 -->
+        <div class="bg-white rounded-2xl border border-slate-200 shadow-subtle overflow-hidden">
+          <button type="button" class="accordion-header w-full px-6 py-4 text-left flex items-center justify-between hover:bg-slate-50 transition-colors" onclick="toggleAccordion('norm-218')">
+            <div class="flex items-center gap-3">
+              <span class="px-2.5 py-1 rounded-md bg-amber-100 text-amber-900 font-bold text-xs">RM N° 218/25</span>
+              <span class="font-heading font-bold text-sm sm:text-base text-[#0F294A]">
+                Incorporación Explícita de Instituciones de Gestión Privada (DIPE)
+              </span>
+            </div>
+            <svg id="chevron-norm-218" class="chevron-icon w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+          
+          <div id="norm-218" class="accordion-content">
+            <div class="p-6 bg-slate-50/50 border-t border-slate-100 space-y-4">
+              <p class="text-sm text-slate-700 leading-relaxed">
+                Amplía los alcances de la RM 371/24 incorporando explícitamente a las instituciones de <strong>gestión privada</strong> dentro del esquema operativo de articulación entre secundaria técnica y tecnicaturas superiores, garantizando universalidad e igualdad de condiciones para los estudiantes de toda la provincia.
+              </p>
+              <div>
+                <a href="https://dges-cba.infd.edu.ar/sitio/wp-content/uploads/2026/09/ResMin_08-2026.pdf" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#1E40AF] hover:bg-[#0F294A] text-white text-xs font-semibold shadow-sm transition-all hover:scale-[1.02] active:scale-95">
+                  <svg class="w-4 h-4 text-amber-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                  </svg>
+                  <span>Ver Referencia en RM 08/26 PDF</span>
+                  <svg class="w-3.5 h-3.5 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Resolución 3: Res Conjunta DGES 01/2024 -->
+        <div class="bg-white rounded-2xl border border-slate-200 shadow-subtle overflow-hidden">
+          <button type="button" class="accordion-header w-full px-6 py-4 text-left flex items-center justify-between hover:bg-slate-50 transition-colors" onclick="toggleAccordion('norm-dges01')">
+            <div class="flex items-center gap-3">
+              <span class="px-2.5 py-1 rounded-md bg-emerald-100 text-emerald-900 font-bold text-xs">Res. Conj. DGES 01/24</span>
+              <span class="font-heading font-bold text-sm sm:text-base text-[#0F294A]">
+                Instrumento Formal de Acreditación y Reconocimiento de Saberes
+              </span>
+            </div>
+            <svg id="chevron-norm-dges01" class="chevron-icon w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+          
+          <div id="norm-dges01" class="accordion-content">
+            <div class="p-6 bg-slate-50/50 border-t border-slate-100 space-y-4">
+              <p class="text-sm text-slate-700 leading-relaxed">
+                Aprueba el instrumento formal de <strong>Acreditación y Reconocimiento de Saberes</strong> en el Nivel Superior. Valida aprendizajes previos provenientes de escuelas técnicas, formación profesional o experiencia laboral demostrable bajo la modalidad de <strong>aprobación directa</strong> (sin calificación numérica), jerarquizando las competencias reales adquiridas.
+              </p>
+              <div>
+                <a href="https://dges-cba.edu.ar/wp/institucional/equipo-tecnico/reconocimiento-de-saberes/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#0EA5E9] hover:bg-[#0284C7] text-white text-xs font-semibold shadow-sm transition-all hover:scale-[1.02] active:scale-95">
+                  <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path>
+                  </svg>
+                  <span>Portal Reconocimiento de Saberes</span>
+                  <svg class="w-3.5 h-3.5 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Resolución 4: Res 83/25 Sec. Educación -->
+        <div class="bg-white rounded-2xl border border-slate-200 shadow-subtle overflow-hidden">
+          <button type="button" class="accordion-header w-full px-6 py-4 text-left flex items-center justify-between hover:bg-slate-50 transition-colors" onclick="toggleAccordion('norm-83')">
+            <div class="flex items-center gap-3">
+              <span class="px-2.5 py-1 rounded-md bg-purple-100 text-purple-900 font-bold text-xs">Res. N° 83/25</span>
+              <span class="font-heading font-bold text-sm sm:text-base text-[#0F294A]">
+                Lineamientos de Política Educativa 2026: TransFORMAR@Cba y Certificaciones Intermedias
+              </span>
+            </div>
+            <svg id="chevron-norm-83" class="chevron-icon w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+          
+          <div id="norm-83" class="accordion-content">
+            <div class="p-6 bg-slate-50/50 border-t border-slate-100 space-y-4">
+              <p class="text-sm text-slate-700 leading-relaxed">
+                Define los lineamientos de la Política Educativa 2026 dentro del programa <strong>TransFORMAR@Cba</strong> (Secretaría de Educación), regulando la flexibilización curricular, la estructuración por <strong>familias profesionales</strong> y la expedición sistemática de <strong>certificaciones intermedias</strong> con valor en el mercado productivo.
+              </p>
+              <div class="flex flex-wrap items-center gap-3">
+                <a href="https://dges-cba.edu.ar/wp/transformarcba/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#1E40AF] hover:bg-[#0F294A] text-white text-xs font-semibold shadow-sm transition-all hover:scale-[1.02] active:scale-95">
+                  <svg class="w-4 h-4 text-sky-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                  </svg>
+                  <span>Portal TransFORMAR@Cba</span>
+                  <svg class="w-3.5 h-3.5 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                  </svg>
+                </a>
+                <a href="https://dges-cba.infd.edu.ar/sitio/resoluciones-ministerio-de-educacion/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-semibold border border-slate-300 transition-all hover:scale-[1.02] active:scale-95">
+                  <svg class="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+                  </svg>
+                  <span>Repositorio Resoluciones DGES</span>
+                  <svg class="w-3.5 h-3.5 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- VISUALIZACIÓN DE FLUJO — FAMILIAS PROFESIONALES Y CERTIFICACIÓN POR ETAPAS -->
+      <div class="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-subtle">
+        <div class="max-w-3xl mb-6">
+          <span class="text-xs font-bold uppercase tracking-wider text-[#0EA5E9] block mb-1">
+            Ruta de Aprendizaje Modular
+          </span>
+          <h3 class="font-heading font-bold text-xl text-[#0F294A]">
+            Flujo de Familias Profesionales y Certificación por Etapas
+          </h3>
+          <p class="text-slate-600 text-sm mt-2 leading-relaxed">
+            <strong>Definición oficial:</strong> Agrupamiento de ofertas formativas que comparten un mismo sector socioproductivo y una base común de saberes, ordenando el camino de un curso a otro y hacia la tecnicatura.
+          </p>
+        </div>
+
+        <!-- Esquema en 3 Pasos con Flechas -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 relative">
+          
+          <!-- Paso 1 -->
+          <div class="p-5 rounded-xl bg-slate-50 border-2 border-dashed border-sky-200 relative group hover:border-sky-400 transition-colors">
+            <div class="flex items-center justify-between mb-3">
+              <span class="w-7 h-7 rounded-full bg-sky-500 text-white font-heading font-bold text-xs flex items-center justify-center">1</span>
+              <span class="text-[11px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-sky-100 text-sky-800">Iniciación</span>
+            </div>
+            <h4 class="font-heading font-bold text-[#0F294A] text-base mb-1">Paso 1: Formación Profesional Corta</h4>
+            <p class="text-xs text-slate-600 mb-2">Salida laboral rápida y adquisición de competencias operativas fundamentales.</p>
+            <div class="text-[11px] font-semibold text-sky-700 bg-sky-50 p-2 rounded border border-sky-100">
+              ⚡ Habilitación directa al empleo
+            </div>
+          </div>
+
+          <!-- Flecha conectora (en pantallas medianas) -->
+          <div class="hidden md:flex absolute left-1/3 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10 w-8 h-8 rounded-full bg-white border border-slate-300 items-center justify-center shadow-sm text-slate-400">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"></path>
+            </svg>
+          </div>
+
+          <!-- Paso 2 -->
+          <div class="p-5 rounded-xl bg-slate-50 border-2 border-dashed border-blue-200 relative group hover:border-blue-400 transition-colors">
+            <div class="flex items-center justify-between mb-3">
+              <span class="w-7 h-7 rounded-full bg-[#1E40AF] text-white font-heading font-bold text-xs flex items-center justify-center">2</span>
+              <span class="text-[11px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-blue-100 text-blue-800">Consolidación</span>
+            </div>
+            <h4 class="font-heading font-bold text-[#0F294A] text-base mb-1">Paso 2: Certificaciones Intermedias</h4>
+            <p class="text-xs text-slate-600 mb-2">Reconocimiento formal de bloques modulares cursados y validados.</p>
+            <div class="text-[11px] font-semibold text-blue-700 bg-blue-50 p-2 rounded border border-blue-100">
+              📜 Reconocimiento modular oficial
+            </div>
+          </div>
+
+          <!-- Flecha conectora (en pantallas medianas) -->
+          <div class="hidden md:flex absolute left-2/3 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10 w-8 h-8 rounded-full bg-white border border-slate-300 items-center justify-center shadow-sm text-slate-400">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"></path>
+            </svg>
+          </div>
+
+          <!-- Paso 3 -->
+          <div class="p-5 rounded-xl bg-amber-50/50 border-2 border-dashed border-amber-300 relative group hover:border-amber-500 transition-colors">
+            <div class="flex items-center justify-between mb-3">
+              <span class="w-7 h-7 rounded-full bg-[#D97706] text-white font-heading font-bold text-xs flex items-center justify-center">3</span>
+              <span class="text-[11px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-amber-100 text-amber-800">Titulación</span>
+            </div>
+            <h4 class="font-heading font-bold text-[#0F294A] text-base mb-1">Paso 3: Tecnicatura Superior</h4>
+            <p class="text-xs text-slate-600 mb-2">Continuidad formativa y titulación técnica superior <em>sin reiniciar el trayecto</em>.</p>
+            <div class="text-[11px] font-semibold text-amber-800 bg-amber-100/60 p-2 rounded border border-amber-200">
+              🎓 Grado técnico de validez nacional
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- 4. BLOQUE 3 — TRANSFORMAR EL INGRESO: NUEVO PROPEDÉUTICO                 -->
+    <!-- ========================================================================= -->
+    <section id="bloque-3" class="scroll-mt-24">
+      
+      <!-- Encabezado del Bloque con Badge y Disertante -->
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 mb-6 border-b border-slate-200">
+        <div>
+          <div class="flex items-center gap-3 mb-2">
+            <span class="px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 font-semibold text-xs uppercase tracking-wider border border-emerald-300">
+              10:00 hs · Bloque 3
+            </span>
+            <span class="text-xs font-medium text-slate-500 uppercase tracking-wider">Innovación Pedagógica en el Ingreso</span>
+          </div>
+          <h2 class="font-heading font-bold text-2xl sm:text-3xl text-[#0F294A]">
+            Transformar el Ingreso: Nuevo Propedéutico
+          </h2>
+        </div>
+        
+        <div class="bg-white p-3.5 rounded-xl border border-slate-200 shadow-sm flex items-center gap-3 shrink-0">
+          <div class="w-10 h-10 rounded-full bg-emerald-600 text-white flex items-center justify-center font-bold font-heading text-sm shadow">
+            SL
+          </div>
+          <div>
+            <div class="text-xs text-slate-500 font-semibold">Disertante principal</div>
+            <div class="font-heading font-bold text-sm text-[#0F294A]">Sandra López</div>
+            <div class="text-[11px] text-slate-600">Inspectora General de la DIPE Córdoba</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Enfoque y Criterio Pedagógico -->
+      <div class="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-subtle mb-8 space-y-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          
+          <div class="border-l-4 border-rose-400 bg-rose-50/50 p-4 rounded-r-xl">
+            <span class="text-xs uppercase font-bold text-rose-700 tracking-wider block mb-1">Paradigma en Superación</span>
+            <h4 class="font-heading font-bold text-[#0F294A] text-sm mb-1">Modo Tradicional: "Repaso Escolar"</h4>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              Históricamente centrado en repetir contenidos secundarios de matemática o lengua descontextualizados, fuertemente asociado a la desconexión motivacional y al abandono temprano en el primer mes.
+            </p>
+          </div>
+
+          <div class="border-l-4 border-emerald-500 bg-emerald-50/50 p-4 rounded-r-xl">
+            <span class="text-xs uppercase font-bold text-emerald-700 tracking-wider block mb-1">Nuevo Modelo Propedéutico</span>
+            <h4 class="font-heading font-bold text-[#0F294A] text-sm mb-1">Modelo Integrado de 3 Semanas</h4>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              Centrado enteramente en la <strong>vivencia profesional temprana</strong>, donde cada ingresante experimenta de forma práctica la identidad de su campo formativo desde el día uno.
+            </p>
+          </div>
+
+        </div>
+
+        <!-- Pregunta Disparadora y Criterio -->
+        <div class="bg-gradient-to-br from-[#0F294A] to-[#1E40AF] p-6 rounded-xl text-white space-y-3">
+          <div class="flex items-center gap-2 text-amber-300 text-xs font-bold uppercase tracking-wider">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path>
+            </svg>
+            Pregunta Disparadora Central
+          </div>
+          <blockquote class="font-heading italic text-lg sm:text-xl text-slate-100 font-semibold leading-relaxed border-l-2 border-amber-400 pl-4">
+            “Si tuviéramos solo 3 semanas para brindarle al ingresante su primera vivencia como futuro técnico... ¿Qué debe vivir, conocer y ser capaz de hacer antes de empezar a cursar?”
+          </blockquote>
+          <div class="pt-3 border-t border-white/10 text-xs text-sky-200">
+            <strong class="text-white">Criterio Rector:</strong> “Todo saber propuesto debe responder: ¿qué capacidad profesional debe aprender el estudiante para insertarse en su campo de formación?”
+          </div>
+        </div>
+      </div>
+
+      <!-- GRILLA INTERACTIVA — MATRIZ DE DOBLE ENTRADA (6 MÓDULOS) -->
+      <div class="mb-10">
+        <div class="flex items-center justify-between mb-4">
+          <div>
+            <h3 class="font-heading font-bold text-xl text-[#0F294A]">
+              Estructura Curricular del Propedéutico: Matriz de 6 Módulos
+            </h3>
+            <p class="text-xs text-slate-500">Distribución de carga horaria formativa</p>
+          </div>
+          <span class="text-xs font-semibold px-3 py-1 bg-slate-100 rounded-full border text-slate-600">Duración: 3 Semanas</span>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          
+          <!-- BLOQUE A: Tronco Común Transversal -->
+          <div class="bg-white rounded-2xl p-6 border-2 border-sky-100 shadow-subtle flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between pb-3 mb-4 border-b border-sky-100">
+                <span class="font-heading font-bold text-base text-[#1E40AF]">
+                  Bloque A: Tronco Común Transversal
+                </span>
+                <span class="px-2.5 py-1 rounded-md bg-sky-100 text-sky-800 text-xs font-black">
+                  30% a 40%
+                </span>
+              </div>
+              <p class="text-xs text-slate-500 mb-4">Capacidades básicas compartidas por todas las tecnicaturas técnicas.</p>
+
+              <div class="space-y-3">
+                
+                <!-- Módulo 1 -->
+                <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200">
+                  <div class="flex items-start justify-between gap-2 mb-1">
+                    <span class="font-heading font-bold text-sm text-[#0F294A]">Módulo 1: Descubro mi Profesión</span>
+                    <span class="shrink-0 px-2 py-0.5 rounded-full bg-amber-100 text-amber-800 text-[10px] font-extrabold uppercase tracking-wide border border-amber-300">
+                      ★ Incluye salida al campo
+                    </span>
+                  </div>
+                  <p class="text-xs text-slate-600 leading-relaxed">
+                    Campo ocupacional, perfil de egreso y sectores socioproductivos de inserción real.
+                  </p>
+                </div>
+
+                <!-- Módulo 2 -->
+                <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200">
+                  <div class="font-heading font-bold text-sm text-[#0F294A] mb-1">Módulo 2: Aprendo a Aprender</div>
+                  <p class="text-xs text-slate-600 leading-relaxed">
+                    Lectura técnica comprensiva, desarrollo de autonomía y alfabetización en modalidad combinada / aula virtual.
+                  </p>
+                </div>
+
+                <!-- Módulo 3 -->
+                <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200">
+                  <div class="font-heading font-bold text-sm text-[#0F294A] mb-1">Módulo 3: Tecnologías y Copilotos IA</div>
+                  <p class="text-xs text-slate-600 leading-relaxed">
+                    Cultura de datos, automatización de tareas y uso ético de modelos de Inteligencia Artificial como asistentes formativos.
+                  </p>
+                </div>
+
+                <!-- Módulo 4 -->
+                <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200">
+                  <div class="font-heading font-bold text-sm text-[#0F294A] mb-1">Módulo 4: Capacidades Profesionales Transversales</div>
+                  <p class="text-xs text-slate-600 leading-relaxed">
+                    Trabajo colaborativo interdisciplinario, negociación, resolución de conflictos y formulación inicial de proyectos.
+                  </p>
+                </div>
+
+              </div>
+            </div>
+            
+            <div class="mt-4 pt-3 border-t border-slate-100 text-[11px] text-slate-400 font-medium">
+              Base común y transversal para todos los ingresantes del instituto.
+            </div>
+          </div>
+
+          <!-- BLOQUE B: Inmersión Disciplinar Situada -->
+          <div class="bg-white rounded-2xl p-6 border-2 border-emerald-100 shadow-subtle flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between pb-3 mb-4 border-b border-emerald-100">
+                <span class="font-heading font-bold text-base text-emerald-900">
+                  Bloque B: Inmersión Disciplinar Situada
+                </span>
+                <span class="px-2.5 py-1 rounded-md bg-emerald-100 text-emerald-800 text-xs font-black">
+                  60% a 70%
+                </span>
+              </div>
+              <p class="text-xs text-slate-500 mb-4">Experiencia práctica específica por Familia Profesional elegida.</p>
+
+              <div class="space-y-4">
+                
+                <!-- Módulo 5 -->
+                <div class="p-4 rounded-xl bg-emerald-50/50 border border-emerald-200">
+                  <div class="flex items-center justify-between mb-1.5">
+                    <span class="font-heading font-bold text-sm text-[#0F294A]">Módulo 5: Inmersión Disciplinar Específica</span>
+                    <span class="text-[11px] font-semibold text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded">Taller & Lab</span>
+                  </div>
+                  <p class="text-xs text-slate-700 leading-relaxed">
+                    Prácticas y lenguaje técnico situado en talleres, laboratorios o entornos simulados. El estudiante manipula herramientas, instrumentos y protocolos propios de su especialidad técnica.
+                  </p>
+                </div>
+
+                <!-- Módulo 6 -->
+                <div class="p-4 rounded-xl bg-emerald-50/50 border border-emerald-200">
+                  <div class="flex items-center justify-between mb-1.5">
+                    <span class="font-heading font-bold text-sm text-[#0F294A]">Módulo 6: Desafío de la Especialidad</span>
+                    <span class="text-[11px] font-semibold text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded">Proyecto Integrador</span>
+                  </div>
+                  <p class="text-xs text-slate-700 leading-relaxed">
+                    Investigación aplicada, uso de IA y presentación de una solución profesional viable a un caso técnico concreto, concluyendo con un <em>pitch</em> o demostración técnica en equipo.
+                  </p>
+                </div>
+
+                <!-- Resumen de impacto -->
+                <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-600">
+                  <strong class="text-[#0F294A] block mb-1">Enfoque situado:</strong>
+                  Garantiza que el ingresante no deba esperar al segundo o tercer año para saber "de qué se trata" su profesión, reduciendo drásticamente el desgranamiento inicial.
+                </div>
+
+              </div>
+            </div>
+
+            <div class="mt-4 pt-3 border-t border-slate-100 text-[11px] text-slate-400 font-medium">
+              Carga horaria predominante orientada a la vivencia técnica directa.
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ACORDEONES — FAMILIAS PROFESIONALES: DESAFÍOS REALES Y SALIDAS AL CAMPO -->
+      <div class="mb-10">
+        <div class="mb-4">
+          <h3 class="font-heading font-bold text-xl text-[#0F294A]">
+            Familias Profesionales: Desafíos Reales y Salidas al Campo
+          </h3>
+          <p class="text-xs text-slate-500">Ejemplos concretos de aplicación para el nuevo propedéutico</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          
+          <!-- Familia 1: Administración -->
+          <div class="bg-white rounded-2xl border border-slate-200 shadow-subtle overflow-hidden">
+            <button type="button" class="accordion-header w-full px-5 py-4 text-left flex items-center justify-between hover:bg-slate-50 transition-colors" onclick="toggleAccordion('fp-admin')">
+              <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-lg bg-blue-100 text-blue-700 flex items-center justify-center font-bold text-xs">
+                  ADM
+                </div>
+                <div>
+                  <span class="font-heading font-bold text-sm text-[#0F294A] block">Familia: Administración</span>
+                  <span class="text-xs text-slate-500">Procesos, dashboards y optimización</span>
+                </div>
+              </div>
+              <svg id="chevron-fp-admin" class="chevron-icon w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+            <div id="fp-admin" class="accordion-content">
+              <div class="p-5 bg-slate-50 border-t border-slate-100 text-xs space-y-3">
+                <div>
+                  <strong class="text-slate-800 block mb-1 text-xs uppercase font-bold text-[#1E40AF]">Desafío Real:</strong>
+                  <p class="text-slate-600 leading-relaxed">
+                    Analizar flujos de proceso, procesar métricas en <em>dashboards</em> y presentar propuestas de mejora asistidas por IA.
+                  </p>
+                </div>
+                <div class="p-2.5 rounded-lg bg-white border border-slate-200 flex items-center gap-2 text-slate-700">
+                  <span class="font-bold text-amber-600">Salida al campo:</span>
+                  <span>PyME o estudio contable.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Familia 2: Desarrollo Web -->
+          <div class="bg-white rounded-2xl border border-slate-200 shadow-subtle overflow-hidden">
+            <button type="button" class="accordion-header w-full px-5 py-4 text-left flex items-center justify-between hover:bg-slate-50 transition-colors" onclick="toggleAccordion('fp-web')">
+              <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-lg bg-sky-100 text-[#0EA5E9] flex items-center justify-center font-bold text-xs">
+                  DEV
+                </div>
+                <div>
+                  <span class="font-heading font-bold text-sm text-[#0F294A] block">Familia: Desarrollo Web</span>
+                  <span class="text-xs text-slate-500">Algoritmos, software y automatización</span>
+                </div>
+              </div>
+              <svg id="chevron-fp-web" class="chevron-icon w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+            <div id="fp-web" class="accordion-content">
+              <div class="p-5 bg-slate-50 border-t border-slate-100 text-xs space-y-3">
+                <div>
+                  <strong class="text-slate-800 block mb-1 text-xs uppercase font-bold text-[#0EA5E9]">Desafío Real:</strong>
+                  <p class="text-slate-600 leading-relaxed">
+                    Relevar requerimientos de automatización, estructurar algoritmos y documentar el caso técnico.
+                  </p>
+                </div>
+                <div class="p-2.5 rounded-lg bg-white border border-slate-200 flex items-center gap-2 text-slate-700">
+                  <span class="font-bold text-amber-600">Salida al campo:</span>
+                  <span>Empresa de software o área de sistemas.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Familia 3: Agropecuario -->
+          <div class="bg-white rounded-2xl border border-slate-200 shadow-subtle overflow-hidden">
+            <button type="button" class="accordion-header w-full px-5 py-4 text-left flex items-center justify-between hover:bg-slate-50 transition-colors" onclick="toggleAccordion('fp-agro')">
+              <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold text-xs">
+                  AGR
+                </div>
+                <div>
+                  <span class="font-heading font-bold text-sm text-[#0F294A] block">Familia: Agropecuario</span>
+                  <span class="text-xs text-slate-500">Clima, IoT y agroindustria sustentable</span>
+                </div>
+              </div>
+              <svg id="chevron-fp-agro" class="chevron-icon w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+            <div id="fp-agro" class="accordion-content">
+              <div class="p-5 bg-slate-50 border-t border-slate-100 text-xs space-y-3">
+                <div>
+                  <strong class="text-slate-800 block mb-1 text-xs uppercase font-bold text-emerald-700">Desafío Real:</strong>
+                  <p class="text-slate-600 leading-relaxed">
+                    Optimizar el rendimiento con variables climáticas/IoT y normativas bromatológicas sustentables.
+                  </p>
+                </div>
+                <div class="p-2.5 rounded-lg bg-white border border-slate-200 flex items-center gap-2 text-slate-700">
+                  <span class="font-bold text-amber-600">Salida al campo:</span>
+                  <span>Establecimiento agropecuario o agroindustria.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Familia 4: Salud -->
+          <div class="bg-white rounded-2xl border border-slate-200 shadow-subtle overflow-hidden">
+            <button type="button" class="accordion-header w-full px-5 py-4 text-left flex items-center justify-between hover:bg-slate-50 transition-colors" onclick="toggleAccordion('fp-salud')">
+              <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-lg bg-rose-100 text-rose-700 flex items-center justify-center font-bold text-xs">
+                  SLD
+                </div>
+                <div>
+                  <span class="font-heading font-bold text-sm text-[#0F294A] block">Familia: Salud</span>
+                  <span class="text-xs text-slate-500">Protocolos odontológicos y bioseguridad</span>
+                </div>
+              </div>
+              <svg id="chevron-fp-salud" class="chevron-icon w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+            <div id="fp-salud" class="accordion-content">
+              <div class="p-5 bg-slate-50 border-t border-slate-100 text-xs space-y-3">
+                <div>
+                  <strong class="text-slate-800 block mb-1 text-xs uppercase font-bold text-rose-700">Desafío Real:</strong>
+                  <p class="text-slate-600 leading-relaxed">
+                    Interpretar prescripciones odontológicas, analizar anatomía/oclusión y definir protocolos de diseño y bioseguridad.
+                  </p>
+                </div>
+                <div class="p-2.5 rounded-lg bg-white border border-slate-200 flex items-center gap-2 text-slate-700">
+                  <span class="font-bold text-amber-600">Salida al campo:</span>
+                  <span>Laboratorio dental.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ACORDEÓN: EXPERIENCIAS MÍNIMAS, EVALUACIÓN Y ESTILOS DE APRENDIZAJE -->
+      <div class="bg-white rounded-2xl border border-slate-200 shadow-subtle overflow-hidden">
+        <button type="button" class="accordion-header w-full px-6 py-4 text-left flex items-center justify-between bg-gradient-to-r from-emerald-50/50 to-white hover:bg-emerald-50 transition-colors" onclick="toggleAccordion('acc-eval-experiencias')">
+          <div class="flex items-center gap-3.5">
+            <div class="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-800 flex items-center justify-center font-bold text-sm">
+              ✓
+            </div>
+            <div>
+              <span class="font-heading font-bold text-base text-[#0F294A]">
+                Acordeón — Experiencias Mínimas, Evaluación del Primer Mes y Estilos de Aprendizaje
+              </span>
+              <p class="text-xs text-slate-500">Criterios pedagógicos, dispositivos evaluativos y modelos cognitivos</p>
+            </div>
+          </div>
+          <svg id="chevron-acc-eval-experiencias" class="chevron-icon w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+          </svg>
+        </button>
+
+        <div id="acc-eval-experiencias" class="accordion-content">
+          <div class="p-6 bg-white border-t border-slate-100 space-y-6">
+            
+            <!-- 3 Experiencias Mínimas Obligatorias -->
+            <div>
+              <h4 class="font-heading font-bold text-sm text-[#0F294A] uppercase tracking-wider mb-3 flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                3 Experiencias Mínimas Obligatorias
+              </h4>
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+                  <div class="font-heading font-bold text-xs text-emerald-800 mb-1">1. Práctica Inicial</div>
+                  <p class="text-xs text-slate-600">Inmersión concreta en taller o laboratorio con equipamiento del sector.</p>
+                </div>
+                <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+                  <div class="font-heading font-bold text-xs text-emerald-800 mb-1">2. Salida al Campo</div>
+                  <p class="text-xs text-slate-600">Contacto con el sector productivo, empresas y egresados en actividad.</p>
+                </div>
+                <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+                  <div class="font-heading font-bold text-xs text-emerald-800 mb-1">3. Plataforma y Normativa</div>
+                  <p class="text-xs text-slate-600">Dominio del aula virtual y conocimiento de las normas del nivel superior (AIC / RAM).</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Trabajo Final Viable -->
+            <div class="p-4 rounded-xl bg-amber-50/60 border border-amber-200 text-xs text-slate-700">
+              <strong class="font-heading font-bold text-sm text-[#0F294A] block mb-1">
+                Trabajo Final Viable: Criterio Anti-Saturación Docente
+              </strong>
+              <p class="leading-relaxed">
+                Resolución de un <strong>caso técnico en equipo con pitch breve</strong>. Evalúa criterio profesional, incorporación de IA y capacidad de comunicación técnica <em>sin saturar la carga de corrección del equipo docente</em>.
+              </p>
+            </div>
+
+            <!-- Estilos de Aprendizaje -->
+            <div>
+              <h4 class="font-heading font-bold text-sm text-[#0F294A] uppercase tracking-wider mb-3 flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-sky-500"></span>
+                Estilos y Modelos de Aprendizaje a Contemplar
+              </h4>
+              <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 text-xs">
+                <div class="p-3 rounded-lg bg-slate-50 border border-slate-200">
+                  <strong class="text-[#0F294A] block font-semibold mb-1">PNL (V.A.K.)</strong>
+                  <span class="text-slate-600">Canales visual, auditivo y kinestésico en el diseño instruccional.</span>
+                </div>
+                <div class="p-3 rounded-lg bg-slate-50 border border-slate-200">
+                  <strong class="text-[#0F294A] block font-semibold mb-1">Hemisferios Cerebrales</strong>
+                  <span class="text-slate-600">Equilibrio entre pensamiento lógico/analítico y creatividad/intuición.</span>
+                </div>
+                <div class="p-3 rounded-lg bg-slate-50 border border-slate-200">
+                  <strong class="text-[#0F294A] block font-semibold mb-1">Cuadrantes Cerebrales</strong>
+                  <span class="text-slate-600">Modelo Herrmann: cortical y límbico (izquierdo y derecho).</span>
+                </div>
+                <div class="p-3 rounded-lg bg-slate-50 border border-slate-200">
+                  <strong class="text-[#0F294A] block font-semibold mb-1">Inteligencias Múltiples</strong>
+                  <span class="text-slate-600">Diversidad de perfiles de ingreso según Howard Gardner.</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- ========================================== -->
+  <!-- PIE DE PÁGINA (FOOTER LIMPIO INSTITUCIONAL)-->
+  <!-- ========================================== -->
+  <footer class="bg-[#0F294A] text-white border-t border-slate-800 py-10 mt-16">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
+      
+      <!-- Crédito Institucional -->
+      <div class="flex flex-col items-center justify-center gap-2">
+        <div class="w-8 h-8 rounded-lg bg-sky-400 text-[#0F294A] flex items-center justify-center font-heading font-black text-base shadow">
+          L
+        </div>
+        <div class="font-heading font-bold text-base tracking-wide text-white">
+          Instituto Leibnitz
+        </div>
+        <p class="text-xs text-slate-400 max-w-xl">
+          Documento Ejecutivo elaborado para equipos directivos y docentes en el marco de la Política Educativa de la DGETyFP · Ministerio de Educación de la Provincia de Córdoba.
+        </p>
+      </div>
+
+      <!-- Único Enlace de Contacto Requerido -->
+      <div class="pt-4 border-t border-slate-800">
+        <a href="mailto:marcelomorini@institutoleibnitz.edu.ar" class="inline-flex items-center gap-2 text-xs font-medium text-sky-300 hover:text-white transition-colors bg-white/5 hover:bg-white/10 px-4 py-2 rounded-lg border border-white/10">
+          <svg class="w-4 h-4 text-sky-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+          </svg>
+          <span>marcelomorini@institutoleibnitz.edu.ar</span>
+        </a>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ========================================== -->
+  <!-- JAVASCRIPT VANILLA INTERACTIVO             -->
+  <!-- ========================================== -->
+  <script>
+    // Gestión individual de acordeón
+    function toggleAccordion(id) {
+      const content = document.getElementById(id);
+      const chevron = document.getElementById('chevron-' + id);
+      
+      if (!content) return;
+
+      const isExpanded = content.classList.contains('expanded');
+      
+      if (isExpanded) {
+        content.classList.remove('expanded');
+        if (chevron) chevron.classList.remove('rotate-180');
+      } else {
+        content.classList.add('expanded');
+        if (chevron) chevron.classList.add('rotate-180');
+      }
+      
+      updateToggleAllButtonState();
+    }
+
+    // Expandir o contraer todos los acordeones
+    let allExpandedState = false;
+
+    function toggleAllAccordions() {
+      const allContents = document.querySelectorAll('.accordion-content');
+      allExpandedState = !allExpandedState;
+
+      allContents.forEach(content => {
+        const id = content.id;
+        const chevron = document.getElementById('chevron-' + id);
+        
+        if (allExpandedState) {
+          content.classList.add('expanded');
+          if (chevron) chevron.classList.add('rotate-180');
+        } else {
+          content.classList.remove('expanded');
+          if (chevron) chevron.classList.remove('rotate-180');
+        }
+      });
+
+      renderToggleAllText();
+    }
+
+    function updateToggleAllButtonState() {
+      const allContents = document.querySelectorAll('.accordion-content');
+      const expandedCount = document.querySelectorAll('.accordion-content.expanded').length;
+      
+      if (expandedCount === allContents.length) {
+        allExpandedState = true;
+      } else if (expandedCount === 0) {
+        allExpandedState = false;
+      }
+      renderToggleAllText();
+    }
+
+    function renderToggleAllText() {
+      const textElem = document.getElementById('toggle-all-text');
+      const iconElem = document.getElementById('toggle-icon-expand');
+      
+      if (allExpandedState) {
+        if (textElem) textElem.textContent = 'Contraer todo';
+        if (iconElem) iconElem.classList.add('rotate-180');
+      } else {
+        if (textElem) textElem.textContent = 'Expandir todo';
+        if (iconElem) iconElem.classList.remove('rotate-180');
+      }
+    }
+  </script>
+
+</body>
+</html>
