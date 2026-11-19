@@ -16,6 +16,8 @@
   
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
+  <!-- jsPDF CDN para generación de PDF compacto -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.2/jspdf.umd.min.js"></script>
   <script>
     tailwind.config = {
       theme: {
@@ -200,15 +202,15 @@
       <nav id="desktop-nav" class="hidden lg:flex items-center gap-1.5 text-xs font-semibold" aria-label="Navegación principal de la agenda">
         <a href="#bloque-1" id="nav-bloque-1" class="nav-link px-3 py-2 rounded-lg text-slate-200 hover:text-white hover:bg-white/10 transition-colors flex items-center gap-1.5 border border-transparent focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-400">
           <span class="w-2 h-2 rounded-full bg-amber-400" aria-hidden="true"></span>
-          09:00 hs · Apertura
+          Bloque 1 · Apertura
         </a>
         <a href="#bloque-2" id="nav-bloque-2" class="nav-link px-3 py-2 rounded-lg text-slate-200 hover:text-white hover:bg-white/10 transition-colors flex items-center gap-1.5 border border-transparent focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-400">
           <span class="w-2 h-2 rounded-full bg-sky-400" aria-hidden="true"></span>
-          09:20 hs · Saberes & FP
+          Bloque 2 · Saberes & FP
         </a>
         <a href="#bloque-3" id="nav-bloque-3" class="nav-link px-3 py-2 rounded-lg text-slate-200 hover:text-white hover:bg-white/10 transition-colors flex items-center gap-1.5 border border-transparent focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-400">
           <span class="w-2 h-2 rounded-full bg-emerald-400" aria-hidden="true"></span>
-          10:00 hs · Propedéutico
+          Bloque 3 · Propedéutico
         </a>
         <a href="#marco-conceptual" id="nav-marco-conceptual" class="nav-link px-3 py-2 rounded-lg text-slate-200 hover:text-white hover:bg-white/10 transition-colors flex items-center gap-1.5 border border-transparent focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-400">
           <span class="w-2 h-2 rounded-full bg-amber-400" aria-hidden="true"></span>
@@ -224,7 +226,7 @@
       <div class="flex items-center gap-2">
         
         <!-- Botón Imprimir / PDF -->
-        <button type="button" onclick="window.print()" class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg bg-sky-500/20 hover:bg-sky-500/30 text-sky-200 border border-sky-400/40 transition-all hover:scale-[1.02] active:scale-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-400" title="Imprimir o Guardar como PDF" aria-label="Imprimir documento ejecutivo">
+        <button type="button" onclick="generateSimplifiedPDF()" class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg bg-sky-500/20 hover:bg-sky-500/30 text-sky-200 border border-sky-400/40 transition-all hover:scale-[1.02] active:scale-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-400" title="Imprimir o Guardar como PDF" aria-label="Imprimir documento ejecutivo">
           <svg class="w-4 h-4 text-sky-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path>
           </svg>
@@ -246,13 +248,13 @@
     <!-- Menú Rápido Móvil / Tablet (Sub-barra visible en pantallas menores a lg) -->
     <div class="lg:hidden flex items-center justify-around border-t border-slate-700/50 bg-[#0B213B] px-2 py-1.5 text-[11px] font-semibold text-slate-300">
       <a href="#bloque-1" class="hover:text-white px-2 py-1 flex items-center gap-1">
-        <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>09:00 Apertura
+        <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>Bloque 1
       </a>
       <a href="#bloque-2" class="hover:text-white px-2 py-1 flex items-center gap-1">
-        <span class="w-1.5 h-1.5 rounded-full bg-sky-400"></span>09:20 Saberes
+        <span class="w-1.5 h-1.5 rounded-full bg-sky-400"></span>Bloque 2
       </a>
       <a href="#bloque-3" class="hover:text-white px-2 py-1 flex items-center gap-1">
-        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>10:00 Propedéutico
+        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>Bloque 3
       </a>
       <a href="#marco-conceptual" class="hover:text-white px-2 py-1 flex items-center gap-1">
         <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>Marco
@@ -308,18 +310,6 @@
         </div>
 
         <div class="flex items-start gap-3.5">
-          <div class="p-2.5 rounded-xl bg-sky-500/20 border border-sky-400/30 text-sky-300 shrink-0" aria-hidden="true">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-            </svg>
-          </div>
-          <div>
-            <span class="block text-xs uppercase tracking-wider text-slate-300 font-semibold">Horario</span>
-            <span class="font-heading font-bold text-sm text-white">09:00 a 14:00 hs</span>
-          </div>
-        </div>
-
-        <div class="flex items-start gap-3.5">
           <div class="p-2.5 rounded-xl bg-blue-500/20 border border-blue-400/30 text-blue-300 shrink-0" aria-hidden="true">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
@@ -358,7 +348,7 @@
   </section>
 
   <!-- CONTENEDOR PRINCIPAL DE CONTENIDOS -->
-  <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-24 flex-grow space-y-16">
+  <main id="main-content" class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-24 flex-grow space-y-16">
 
     <!-- ========================================================================= -->
     <!-- 2. BLOQUE 1 — APERTURA INSTITUCIONAL Y VINCULACIÓN SOCIOPRODUCTIVA       -->
@@ -370,7 +360,7 @@
         <div>
           <div class="flex items-center gap-3 mb-2">
             <span class="px-3 py-1 rounded-full bg-amber-100 text-amber-900 font-semibold text-xs uppercase tracking-wider border border-amber-300">
-              09:00 hs · Bloque 1
+              Bloque 1
             </span>
             <span class="text-xs font-medium text-slate-500 uppercase tracking-wider">Apertura institucional</span>
           </div>
@@ -566,7 +556,7 @@
       <div class="pb-4 mb-6 border-b border-slate-200">
         <div class="flex items-center gap-3 mb-2">
           <span class="px-3 py-1 rounded-full bg-sky-100 text-sky-900 font-semibold text-xs uppercase tracking-wider border border-sky-300">
-            09:20 hs · Bloque 2
+            Bloque 2
           </span>
           <span class="text-xs font-medium text-slate-500 uppercase tracking-wider">Marco normativo y acreditación</span>
         </div>
@@ -831,7 +821,7 @@
       <div class="pb-4 mb-6 border-b border-slate-200">
         <div class="flex items-center gap-3 mb-2">
           <span class="px-3 py-1 rounded-full bg-emerald-100 text-emerald-900 font-semibold text-xs uppercase tracking-wider border border-emerald-300">
-            10:00 hs · Bloque 3
+            Bloque 3
           </span>
           <span class="text-xs font-medium text-slate-500 uppercase tracking-wider">Innovación pedagógica en el ingreso</span>
         </div>
@@ -1919,6 +1909,78 @@
       a.click();
       document.body.removeChild(a);
       URL.revokeObjectURL(url);
+    }
+
+    // ─── Generación de PDF compacto (texto plano, 2-3 páginas) ───
+    function generateSimplifiedPDF() {
+      const { jsPDF } = window.jspdf;
+      const doc = new jsPDF({ orientation: 'portrait', unit: 'pt', format: 'a4', compress: true });
+
+      doc.setFont('helvetica', 'normal');
+
+      // Título
+      doc.setFontSize(14);
+      doc.setFont('helvetica', 'bold');
+      doc.setTextColor(15, 41, 74);
+      doc.text('Reunión específica para Institutos de Formación Técnica (IFT)', 40, 40);
+      doc.setFontSize(10);
+      doc.setFont('helvetica', 'normal');
+      doc.setTextColor(71, 85, 105);
+      doc.text('DGETyFP · Ministerio de Educación de la Provincia de Córdoba · Documento ejecutivo', 40, 56);
+      doc.setDrawColor(14, 165, 233);
+      doc.setLineWidth(1.5);
+      doc.line(40, 64, 555, 64);
+
+      var sections = document.querySelectorAll('section[id]');
+      var y = 80;
+      var pageH = doc.internal.pageSize.getHeight();
+      var marginBottom = 40;
+      var lineH = 13;
+
+      function checkPage(needed) {
+        if (y + needed > pageH - marginBottom) { doc.addPage(); y = 40; }
+      }
+
+      sections.forEach(function(sec) {
+        var heading = sec.querySelector('h2');
+        if (!heading) return;
+        var title = heading.innerText.trim();
+
+        checkPage(30);
+        doc.setFontSize(11);
+        doc.setFont('helvetica', 'bold');
+        doc.setTextColor(30, 64, 175);
+        var titleLines = doc.splitTextToSize(title, 500);
+        titleLines.forEach(function(tl) { checkPage(lineH + 4); doc.text(tl, 40, y); y += lineH + 2; });
+        y += 4;
+
+        var clone = sec.cloneNode(true);
+        clone.querySelectorAll('button, svg, .shrink-0').forEach(function(el) { el.remove(); });
+        var cloneH = clone.querySelector('h2');
+        if (cloneH) cloneH.remove();
+
+        var bodyText = clone.innerText.trim();
+        bodyText = bodyText.replace(/\n{3,}/g, '\n\n').replace(/[ \t]+/g, ' ');
+
+        doc.setFontSize(9);
+        doc.setFont('helvetica', 'normal');
+        doc.setTextColor(51, 65, 85);
+
+        var bodyLines = doc.splitTextToSize(bodyText, 515);
+        bodyLines.forEach(function(bl) { checkPage(lineH); doc.text(bl, 40, y); y += lineH; });
+        y += 10;
+      });
+
+      var totalPages = doc.internal.getNumberOfPages();
+      for (var i = 1; i <= totalPages; i++) {
+        doc.setPage(i);
+        doc.setFontSize(7);
+        doc.setTextColor(148, 163, 184);
+        doc.text('Documento generado desde ift-reunion-cordoba · DGETyFP Córdoba', 40, pageH - 20);
+        doc.text('Pág. ' + i + ' / ' + totalPages, 520, pageH - 20);
+      }
+
+      doc.save('IFT_Documento_Ejecutivo_Compacto.pdf');
     }
   </script>
 
