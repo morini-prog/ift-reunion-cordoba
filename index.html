@@ -9,6 +9,13 @@
   <meta name="description" content="Documento ejecutivo e informativo sobre la Reunión específica para Institutos de Formación Técnica (IFT) convocada por la DGETyFP de Córdoba.">
   <meta name="theme-color" content="#0F294A">
 
+  <!-- Open Graph: vista previa al compartir por WhatsApp, correo o redes -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_AR">
+  <meta property="og:site_name" content="DGETyFP Córdoba">
+  <meta property="og:title" content="Reunión específica IFT · Documento ejecutivo">
+  <meta property="og:description" content="Articulación de trayectorias, reconocimiento de saberes y nuevo propedéutico 2027. Institutos de Formación Técnica, Córdoba.">
+
   <!-- Google Fonts: Plus Jakarta Sans & Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,8 +23,6 @@
   
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- jsPDF CDN para generación de PDF compacto -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.2/jspdf.umd.min.js"></script>
   <script>
     tailwind.config = {
       theme: {
@@ -169,6 +174,7 @@
   </style>
 </head>
 <body class="min-h-screen flex flex-col antialiased selection:bg-sky-100 selection:text-sky-900 relative">
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[70] focus:bg-white focus:text-[#0F294A] focus:px-4 focus:py-2 focus:rounded-lg focus:font-semibold focus:shadow-lg">Saltar al contenido</a>
 
   <!-- ========================================== -->
   <!-- BARRA DE PROGRESO DE LECTURA (SUPERIOR)   -->
@@ -222,17 +228,9 @@
         </a>
       </nav>
 
-      <!-- Botones de Acción: Imprimir y Expandir Todo -->
+      <!-- Botones de Acción: Expandir Todo -->
       <div class="flex items-center gap-2">
         
-        <!-- Botón Imprimir / PDF -->
-        <button type="button" onclick="generateSimplifiedPDF()" class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg bg-sky-500/20 hover:bg-sky-500/30 text-sky-200 border border-sky-400/40 transition-all hover:scale-[1.02] active:scale-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-400" title="Imprimir o Guardar como PDF" aria-label="Imprimir documento ejecutivo">
-          <svg class="w-4 h-4 text-sky-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path>
-          </svg>
-          <span class="hidden sm:inline">Imprimir / PDF</span>
-        </button>
-
         <!-- Botón Global de Acordeones -->
         <button id="toggle-all-btn" type="button" onclick="toggleAllAccordions()" class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg bg-white/10 hover:bg-white/20 text-white border border-white/20 transition-all hover:scale-[1.02] active:scale-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-400" aria-label="Expandir o contraer todas las secciones">
           <svg id="toggle-icon-expand" class="w-4 h-4 text-sky-400 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -295,7 +293,7 @@
       </p>
 
       <!-- Tarjeta de Datos del Encuentro -->
-      <div class="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20 shadow-2xl mb-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 card-printable">
+      <div class="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20 shadow-2xl mb-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 card-printable">
         
         <div class="flex items-start gap-3.5">
           <div class="p-2.5 rounded-xl bg-amber-500/20 border border-amber-400/30 text-amber-300 shrink-0" aria-hidden="true">
@@ -763,7 +761,7 @@
             <h4 class="font-heading font-bold text-[#0F294A] text-base mb-1">Paso 1: Formación profesional corta</h4>
             <p class="text-xs text-slate-600 mb-2">Salida laboral rápida y adquisición de competencias operativas fundamentales.</p>
             <div class="text-[11px] font-semibold text-sky-700 bg-sky-50 p-2 rounded border border-sky-100">
-              ⚡ Habilitación directa al empleo
+              <svg class="inline w-3.5 h-3.5 mr-1 -mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>Habilitación directa al empleo
             </div>
           </div>
 
@@ -783,7 +781,7 @@
             <h4 class="font-heading font-bold text-[#0F294A] text-base mb-1">Paso 2: Certificaciones intermedias</h4>
             <p class="text-xs text-slate-600 mb-2">Reconocimiento formal de bloques modulares cursados y validados.</p>
             <div class="text-[11px] font-semibold text-blue-700 bg-blue-50 p-2 rounded border border-blue-100">
-              📜 Reconocimiento modular oficial
+              <svg class="inline w-3.5 h-3.5 mr-1 -mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>Reconocimiento modular oficial
             </div>
           </div>
 
@@ -803,7 +801,7 @@
             <h4 class="font-heading font-bold text-[#0F294A] text-base mb-1">Paso 3: Tecnicatura superior</h4>
             <p class="text-xs text-slate-600 mb-2">Continuidad formativa y titulación técnica superior <em>sin reiniciar el trayecto</em>.</p>
             <div class="text-[11px] font-semibold text-amber-800 bg-amber-100/60 p-2 rounded border border-amber-200">
-              🎓 Grado técnico de validez nacional
+              <svg class="inline w-3.5 h-3.5 mr-1 -mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5zm0 0v6m-7-3.5V17a9 9 0 0014 0v-6.5"></path></svg>Grado técnico de validez nacional
             </div>
           </div>
 
@@ -903,7 +901,7 @@
                   <div class="flex items-start justify-between gap-2 mb-1">
                     <span class="font-heading font-bold text-sm text-[#0F294A]">Módulo 1: Descubro mi profesión</span>
                     <span class="shrink-0 px-2 py-0.5 rounded-full bg-amber-100 text-amber-800 text-[10px] font-extrabold uppercase tracking-wide border border-amber-300">
-                      ★ Incluye salida al campo
+                      Incluye salida al campo
                     </span>
                   </div>
                   <p class="text-xs text-slate-600 leading-relaxed">
@@ -1144,7 +1142,7 @@
         <button type="button" id="btn-acc-eval" aria-expanded="false" aria-controls="acc-eval-experiencias" class="accordion-header w-full px-6 py-4 text-left flex items-center justify-between bg-gradient-to-r from-emerald-50/50 to-white hover:bg-emerald-50 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500" onclick="toggleAccordion('acc-eval-experiencias')">
           <div class="flex items-center gap-3.5">
             <div class="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-800 flex items-center justify-center font-bold text-sm" aria-hidden="true">
-              ✓
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
             </div>
             <div>
               <span class="font-heading font-bold text-base text-[#0F294A]">
@@ -1235,7 +1233,7 @@
         <button type="button" id="btn-marco-conceptual" aria-expanded="true" aria-controls="acc-marco-conceptual" class="accordion-header w-full px-6 py-5 text-left flex items-center justify-between bg-gradient-to-r from-amber-50/60 via-slate-50 to-white hover:bg-slate-50 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500" onclick="toggleAccordion('acc-marco-conceptual')">
           <div class="flex items-center gap-3.5">
             <div class="w-10 h-10 rounded-xl bg-amber-100 text-[#D97706] flex items-center justify-center font-bold text-lg shrink-0 shadow-sm" aria-hidden="true">
-              🏛️
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 21h18M5 21V10m14 11V10M3 10l9-6 9 6M9 21v-6h6v6"></path></svg>
             </div>
             <div>
               <div class="flex items-center gap-2 mb-1">
@@ -1396,29 +1394,6 @@
         <p class="text-slate-600 text-sm sm:text-base leading-relaxed mt-3 max-w-4xl">
           Estas tareas surgen de la reunión del 18 de noviembre de 2026 y están pensadas para los institutos de formación técnica. Ordenan los compromisos institucionales prioritarios para fortalecer las trayectorias estudiantiles y la vinculación con el medio socioproductivo.
         </p>
-      </div>
-
-      <!-- Banner de Descarga de Plantilla Operativa -->
-      <div class="bg-gradient-to-r from-[#0F294A] to-[#1E40AF] rounded-2xl p-6 text-white shadow-md mb-8 flex flex-col sm:flex-row sm:items-center justify-between gap-6 card-printable">
-        <div class="space-y-1.5">
-          <div class="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full bg-sky-400/20 text-sky-200 text-[11px] font-bold uppercase tracking-wider border border-sky-400/30">
-            Herramienta de gestión institucional
-          </div>
-          <h3 class="font-heading font-bold text-lg sm:text-xl text-white">
-            Plantilla de trabajo para equipos directivos
-          </h3>
-          <p class="text-xs sm:text-sm text-sky-100 max-w-2xl leading-relaxed">
-            Descargá la matriz operativa editable para planificar, registrar responsables, establecer plazos y monitorear el cumplimiento de las 10 tareas en tu instituto.
-          </p>
-        </div>
-        <div class="flex flex-wrap items-center gap-3 shrink-0">
-          <button type="button" onclick="downloadWorksheetTemplate()" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-amber-400 hover:bg-amber-500 active:scale-95 text-[#0F294A] font-bold text-xs shadow-md transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-300">
-            <svg class="w-4 h-4 text-[#0F294A]" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
-            </svg>
-            <span>Descargar plantilla de trabajo (.doc)</span>
-          </button>
-        </div>
       </div>
 
       <!-- Lista Numerada de las Diez Tareas -->
@@ -1719,269 +1694,8 @@
 
     // Inicializar accesibilidad por teclado
     document.addEventListener('DOMContentLoaded', () => {
-      document.querySelectorAll('.accordion-header').forEach(header => {
-        header.addEventListener('keydown', (e) => {
-          if (e.key === ' ' || e.key === 'Spacebar') {
-            e.preventDefault();
-            header.click();
-          }
-        });
-      });
       updateScrollSpy();
     });
-    // Función de Descarga de Plantilla de Trabajo Institucional (.doc editable)
-    function downloadWorksheetTemplate() {
-      const docHtml = `
-      <html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'>
-      <head>
-        <meta charset='utf-8'>
-        <title>Matriz de Trabajo Institucional - IFT 2027</title>
-        <style>
-          body { font-family: Calibri, Arial, sans-serif; font-size: 11pt; color: #1E293B; line-height: 1.35; margin: 2cm; }
-          h1 { color: #0F294A; font-size: 15pt; margin-bottom: 2pt; text-transform: uppercase; }
-          h2 { color: #1E40AF; font-size: 12pt; margin-top: 0; margin-bottom: 12pt; }
-          .meta-box { border: 1.5pt solid #CBD5E1; padding: 10pt; background-color: #F8FAFC; margin-bottom: 14pt; font-size: 10pt; }
-          .meta-box td { border: none; padding: 3pt 6pt; }
-          p { margin-bottom: 10pt; font-size: 10pt; color: #334155; }
-          table.data-table { border-collapse: collapse; width: 100%; margin-top: 10pt; }
-          table.data-table th { background-color: #0F294A; color: #FFFFFF; border: 1pt solid #0F294A; padding: 8pt 6pt; font-size: 9.5pt; text-align: left; }
-          table.data-table td { border: 1pt solid #CBD5E1; padding: 7pt 6pt; font-size: 9pt; vertical-align: top; }
-          table.data-table tr:nth-child(even) td { background-color: #F8FAFC; }
-          .task-name { font-weight: bold; color: #0F294A; font-size: 9.5pt; margin-bottom: 3pt; }
-          .task-desc { color: #475569; font-size: 8.5pt; line-height: 1.25; }
-          .status-tag { display: inline-block; font-size: 8pt; color: #64748B; border: 1pt dashed #CBD5E1; padding: 2pt 4pt; margin-top: 4pt; }
-        </style>
-      </head>
-      <body>
-        <h1>Dirección General de Educación Técnica y Formación Profesional</h1>
-        <h2>Matriz de Trabajo Institucional · Líneas Operativas para Institutos Técnicos (Ciclo 2027)</h2>
-        
-        <table class="meta-box" style="width: 100%;">
-          <tr>
-            <td style="width: 25%; font-weight: bold;">Instituto de Formación Técnica:</td>
-            <td style="border-bottom: 1pt solid #94A3B8;">___________________________________________________________</td>
-          </tr>
-          <tr>
-            <td style="font-weight: bold;">Equipo directivo / Coordinación:</td>
-            <td style="border-bottom: 1pt solid #94A3B8;">___________________________________________________________</td>
-          </tr>
-          <tr>
-            <td style="font-weight: bold;">Fecha de elaboración:</td>
-            <td style="border-bottom: 1pt solid #94A3B8;">____ / ____ / 202___</td>
-          </tr>
-        </table>
-
-        <p><strong>Propósito:</strong> Esta plantilla permite a cada instituto técnico estructurar su plan operativo institucional, distribuir la corresponsabilidad interna y definir los plazos para las 10 tareas priorizadas en el encuentro provincial del 18 de noviembre de 2026 (Programa TransFORMAR@Cba).</p>
-
-        <table class="data-table">
-          <thead>
-            <tr>
-              <th style="width: 4%; text-align: center;">N°</th>
-              <th style="width: 32%;">Línea de acción prioritaria</th>
-              <th style="width: 16%;">Estado de avance<br><small style="font-weight: normal;">[ ] No iniciada<br>[ ] En proceso<br>[ ] Cumplida</small></th>
-              <th style="width: 28%;">Acciones planificadas en el Instituto</th>
-              <th style="width: 10%;">Responsables<br><small style="font-weight: normal;">[a definir]</small></th>
-              <th style="width: 10%;">Plazo previsto<br><small style="font-weight: normal;">[a definir]</small></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td style="text-align: center; font-weight: bold;">1</td>
-              <td>
-                <div class="task-name">Fortalecer la vinculación con el sector productivo</div>
-                <div class="task-desc">Diseñar actividades formativas junto a empresas, cámaras y organismos locales, y ampliar el Plan Dual y las pasantías. Fue la prioridad número uno de los directivos en la votación.</div>
-              </td>
-              <td><span class="status-tag">[ &nbsp; ] Sin iniciar<br>[ &nbsp; ] En curso<br>[ &nbsp; ] Lograda</span></td>
-              <td></td>
-              <td>[a definir]</td>
-              <td>[a definir]</td>
-            </tr>
-            <tr>
-              <td style="text-align: center; font-weight: bold;">2</td>
-              <td>
-                <div class="task-name">Ordenar el reconocimiento de saberes previos</div>
-                <div class="task-desc">Revisar las trayectorias de cada estudiante para validar lo ya aprobado en la secundaria técnica, la formación profesional o la experiencia laboral, de modo que nadie recurse materias que ya tiene acreditadas.</div>
-              </td>
-              <td><span class="status-tag">[ &nbsp; ] Sin iniciar<br>[ &nbsp; ] En curso<br>[ &nbsp; ] Lograda</span></td>
-              <td></td>
-              <td>[a definir]</td>
-              <td>[a definir]</td>
-            </tr>
-            <tr>
-              <td style="text-align: center; font-weight: bold;">3</td>
-              <td>
-                <div class="task-name">Articular con el nivel secundario</div>
-                <div class="task-desc">Coordinar con las escuelas técnicas de la zona el cursado anticipado, los espacios compartidos y los recorridos que facilitan el pasaje entre niveles.</div>
-              </td>
-              <td><span class="status-tag">[ &nbsp; ] Sin iniciar<br>[ &nbsp; ] En curso<br>[ &nbsp; ] Lograda</span></td>
-              <td></td>
-              <td>[a definir]</td>
-              <td>[a definir]</td>
-            </tr>
-            <tr>
-              <td style="text-align: center; font-weight: bold;">4</td>
-              <td>
-                <div class="task-name">Implementar el nuevo propedéutico</div>
-                <div class="task-desc">Diseñar el ingreso como un módulo de tres semanas con experiencias prácticas en taller o laboratorio, salida al campo y un trabajo final en equipo, en lugar de un repaso escolar tradicional.</div>
-              </td>
-              <td><span class="status-tag">[ &nbsp; ] Sin iniciar<br>[ &nbsp; ] En curso<br>[ &nbsp; ] Lograda</span></td>
-              <td></td>
-              <td>[a definir]</td>
-              <td>[a definir]</td>
-            </tr>
-            <tr>
-              <td style="text-align: center; font-weight: bold;">5</td>
-              <td>
-                <div class="task-name">Organizar la oferta por familias profesionales</div>
-                <div class="task-desc">Agrupar las carreras por sector socioproductivo y definir las certificaciones intermedias que jalonan cada trayecto hasta la tecnicatura.</div>
-              </td>
-              <td><span class="status-tag">[ &nbsp; ] Sin iniciar<br>[ &nbsp; ] En curso<br>[ &nbsp; ] Lograda</span></td>
-              <td></td>
-              <td>[a definir]</td>
-              <td>[a definir]</td>
-            </tr>
-            <tr>
-              <td style="text-align: center; font-weight: bold;">6</td>
-              <td>
-                <div class="task-name">Acompañar las trayectorias y prevenir el abandono</div>
-                <div class="task-desc">Establecer alertas tempranas, tutorías y dispositivos de apoyo pedagógico, especialmente en el primer mes, cuando se concentra buena parte de la deserción.</div>
-              </td>
-              <td><span class="status-tag">[ &nbsp; ] Sin iniciar<br>[ &nbsp; ] En curso<br>[ &nbsp; ] Lograda</span></td>
-              <td></td>
-              <td>[a definir]</td>
-              <td>[a definir]</td>
-            </tr>
-            <tr>
-              <td style="text-align: center; font-weight: bold;">7</td>
-              <td>
-                <div class="task-name">Desarrollar las capacidades fundamentales</div>
-                <div class="task-desc">Reforzar oralidad, lectura, escritura y resolución de problemas como base transversal de todas las tecnicaturas, no solo como contenido del ingreso.</div>
-              </td>
-              <td><span class="status-tag">[ &nbsp; ] Sin iniciar<br>[ &nbsp; ] En curso<br>[ &nbsp; ] Lograda</span></td>
-              <td></td>
-              <td>[a definir]</td>
-              <td>[a definir]</td>
-            </tr>
-            <tr>
-              <td style="text-align: center; font-weight: bold;">8</td>
-              <td>
-                <div class="task-name">Impulsar la formación continua de egresados</div>
-                <div class="task-desc">Abrir cátedras con certificación modular y microcredenciales para quienes ya egresaron y necesitan actualizarse.</div>
-              </td>
-              <td><span class="status-tag">[ &nbsp; ] Sin iniciar<br>[ &nbsp; ] En curso<br>[ &nbsp; ] Lograda</span></td>
-              <td></td>
-              <td>[a definir]</td>
-              <td>[a definir]</td>
-            </tr>
-            <tr>
-              <td style="text-align: center; font-weight: bold;">9</td>
-              <td>
-                <div class="task-name">Promover la innovación pedagógica</div>
-                <div class="task-desc">Documentar y compartir prácticas transformadoras dentro de la red de institutos, por ejemplo mediante las escuelas precursoras y las expediciones pedagógicas de TransFORMAR@Cba.</div>
-              </td>
-              <td><span class="status-tag">[ &nbsp; ] Sin iniciar<br>[ &nbsp; ] En curso<br>[ &nbsp; ] Lograda</span></td>
-              <td></td>
-              <td>[a definir]</td>
-              <td>[a definir]</td>
-            </tr>
-            <tr>
-              <td style="text-align: center; font-weight: bold;">10</td>
-              <td>
-                <div class="task-name">Cuidar el bienestar y la participación estudiantil</div>
-                <div class="task-desc">Fortalecer la dimensión socioafectiva, el clima institucional democrático y los espacios de participación, que el segundo lugar en la priorización también señaló como central.</div>
-              </td>
-              <td><span class="status-tag">[ &nbsp; ] Sin iniciar<br>[ &nbsp; ] En curso<br>[ &nbsp; ] Lograda</span></td>
-              <td></td>
-              <td>[a definir]</td>
-              <td>[a definir]</td>
-            </tr>
-          </tbody>
-        </table>
-      </body>
-      </html>
-      `;
-      const blob = new Blob(['\ufeff' + docHtml], { type: 'application/msword' });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = 'Matriz_Trabajo_Institucional_IFT_2027.doc';
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-      URL.revokeObjectURL(url);
-    }
-
-    // ─── Generación de PDF compacto (texto plano, 2-3 páginas) ───
-    function generateSimplifiedPDF() {
-      const { jsPDF } = window.jspdf;
-      const doc = new jsPDF({ orientation: 'portrait', unit: 'pt', format: 'a4', compress: true });
-
-      doc.setFont('helvetica', 'normal');
-
-      // Título
-      doc.setFontSize(14);
-      doc.setFont('helvetica', 'bold');
-      doc.setTextColor(15, 41, 74);
-      doc.text('Reunión específica para Institutos de Formación Técnica (IFT)', 40, 40);
-      doc.setFontSize(10);
-      doc.setFont('helvetica', 'normal');
-      doc.setTextColor(71, 85, 105);
-      doc.text('DGETyFP · Ministerio de Educación de la Provincia de Córdoba · Documento ejecutivo', 40, 56);
-      doc.setDrawColor(14, 165, 233);
-      doc.setLineWidth(1.5);
-      doc.line(40, 64, 555, 64);
-
-      var sections = document.querySelectorAll('section[id]');
-      var y = 80;
-      var pageH = doc.internal.pageSize.getHeight();
-      var marginBottom = 40;
-      var lineH = 13;
-
-      function checkPage(needed) {
-        if (y + needed > pageH - marginBottom) { doc.addPage(); y = 40; }
-      }
-
-      sections.forEach(function(sec) {
-        var heading = sec.querySelector('h2');
-        if (!heading) return;
-        var title = heading.innerText.trim();
-
-        checkPage(30);
-        doc.setFontSize(11);
-        doc.setFont('helvetica', 'bold');
-        doc.setTextColor(30, 64, 175);
-        var titleLines = doc.splitTextToSize(title, 500);
-        titleLines.forEach(function(tl) { checkPage(lineH + 4); doc.text(tl, 40, y); y += lineH + 2; });
-        y += 4;
-
-        var clone = sec.cloneNode(true);
-        clone.querySelectorAll('button, svg, .shrink-0').forEach(function(el) { el.remove(); });
-        var cloneH = clone.querySelector('h2');
-        if (cloneH) cloneH.remove();
-
-        var bodyText = clone.innerText.trim();
-        bodyText = bodyText.replace(/\n{3,}/g, '\n\n').replace(/[ \t]+/g, ' ');
-
-        doc.setFontSize(9);
-        doc.setFont('helvetica', 'normal');
-        doc.setTextColor(51, 65, 85);
-
-        var bodyLines = doc.splitTextToSize(bodyText, 515);
-        bodyLines.forEach(function(bl) { checkPage(lineH); doc.text(bl, 40, y); y += lineH; });
-        y += 10;
-      });
-
-      var totalPages = doc.internal.getNumberOfPages();
-      for (var i = 1; i <= totalPages; i++) {
-        doc.setPage(i);
-        doc.setFontSize(7);
-        doc.setTextColor(148, 163, 184);
-        doc.text('Documento generado desde ift-reunion-cordoba · DGETyFP Córdoba', 40, pageH - 20);
-        doc.text('Pág. ' + i + ' / ' + totalPages, 520, pageH - 20);
-      }
-
-      doc.save('IFT_Documento_Ejecutivo_Compacto.pdf');
-    }
   </script>
 
 </body>
