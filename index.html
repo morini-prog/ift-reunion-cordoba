@@ -24,6 +24,14 @@
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
+    (function () {
+      var t = null;
+      try { t = localStorage.getItem('ift-tema'); } catch (e) {}
+      var dark = t ? t === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (dark) document.documentElement.classList.add('dark');
+    })();
+  </script>
+  <script>
     tailwind.config = {
       theme: {
         extend: {
@@ -93,7 +101,7 @@
     /* ======================================================= */
     @media print {
       /* Ocultar elementos de navegación e interactividad de pantalla */
-      header, nav, #progress-bar-container, #print-action-bar, #scroll-top-btn, #toggle-all-btn, .no-print {
+      header, nav, #progress-bar-container, #print-action-bar, #scroll-top-btn, #theme-toggle-btn, .no-print {
         display: none !important;
       }
 
@@ -171,6 +179,46 @@
         display: none;
       }
     }
+
+    /* ===== MODO OSCURO ===== */
+    html.dark { color-scheme: dark; }
+    html.dark body { background-color: #0B1220; color: #E2E8F0; }
+    html.dark .bg-white { background-color: #131E33; }
+    html.dark .bg-slate-50, html.dark .bg-slate-100 { background-color: #0F1A2E; }
+    html.dark .hover\:bg-slate-50:hover { background-color: #182640; }
+    html.dark .hover\:bg-emerald-50:hover { background-color: #132B24; }
+    html.dark .from-slate-50 { --tw-gradient-from: #0F1A2E; }
+    html.dark .to-white { --tw-gradient-to: #131E33; }
+    html.dark .from-amber-50\/60 { --tw-gradient-from: rgba(120, 53, 15, 0.25); }
+    html.dark .from-emerald-50\/50 { --tw-gradient-from: rgba(6, 78, 59, 0.25); }
+    html.dark .text-slate-900, html.dark .text-slate-800, html.dark .text-slate-700 { color: #E2E8F0; }
+    html.dark .text-slate-600 { color: #CBD5E1; }
+    html.dark .text-slate-500 { color: #94A3B8; }
+    html.dark .text-\[\#0F294A\] { color: #F1F5F9; }
+    html.dark .text-\[\#1E40AF\] { color: #93C5FD; }
+    html.dark .border-slate-200, html.dark .border-slate-100 { border-color: #26354F; }
+    html.dark .border-slate-700\/50, html.dark .border-slate-700\/60 { border-color: #26354F; }
+    html.dark .divide-slate-200 > * + * { border-color: #26354F; }
+    html.dark .shadow-subtle, html.dark .shadow-sm, html.dark .shadow-md, html.dark .shadow-cardHover { box-shadow: 0 4px 20px -4px rgba(0, 0, 0, 0.5); }
+    html.dark .bg-\[\#0F294A\]\/80 { background-color: rgba(15, 41, 74, 0.6); }
+    html.dark .bg-sky-50, html.dark .bg-sky-100 { background-color: rgba(30, 41, 59, 0.85) !important; }
+    html.dark .text-sky-700, html.dark .text-sky-800, html.dark .text-sky-900 { color: #BFDBFE; }
+    html.dark .border-sky-100, html.dark .border-sky-200, html.dark .border-sky-300 { border-color: #334155; }
+    html.dark .bg-blue-50, html.dark .bg-blue-100 { background-color: rgba(30, 41, 59, 0.85) !important; }
+    html.dark .text-blue-700, html.dark .text-blue-800, html.dark .text-blue-900 { color: #BFDBFE; }
+    html.dark .border-blue-100, html.dark .border-blue-200, html.dark .border-blue-300 { border-color: #334155; }
+    html.dark .bg-emerald-50, html.dark .bg-emerald-100 { background-color: rgba(30, 41, 59, 0.85) !important; }
+    html.dark .text-emerald-700, html.dark .text-emerald-800, html.dark .text-emerald-900 { color: #BFDBFE; }
+    html.dark .border-emerald-100, html.dark .border-emerald-200, html.dark .border-emerald-300 { border-color: #334155; }
+    html.dark .bg-amber-50, html.dark .bg-amber-100 { background-color: rgba(30, 41, 59, 0.85) !important; }
+    html.dark .text-amber-700, html.dark .text-amber-800, html.dark .text-amber-900 { color: #BFDBFE; }
+    html.dark .border-amber-100, html.dark .border-amber-200, html.dark .border-amber-300 { border-color: #334155; }
+    html.dark .bg-indigo-50, html.dark .bg-indigo-100 { background-color: rgba(30, 41, 59, 0.85) !important; }
+    html.dark .text-indigo-700, html.dark .text-indigo-800, html.dark .text-indigo-900 { color: #BFDBFE; }
+    html.dark .border-indigo-100, html.dark .border-indigo-200, html.dark .border-indigo-300 { border-color: #334155; }
+    html.dark #hero { border-bottom-color: #B45309; }
+    html.dark .nav-link.active-nav { background-color: rgba(56, 189, 248, 0.2); }
+    html.dark ::selection { background: #1E40AF; }
   </style>
 </head>
 <body class="min-h-screen flex flex-col antialiased selection:bg-sky-100 selection:text-sky-900 relative">
@@ -228,15 +276,18 @@
         </a>
       </nav>
 
-      <!-- Botones de Acción: Expandir Todo -->
+      <!-- Botones de Acción: Modo oscuro -->
       <div class="flex items-center gap-2">
         
-        <!-- Botón Global de Acordeones -->
-        <button id="toggle-all-btn" type="button" onclick="toggleAllAccordions()" class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg bg-white/10 hover:bg-white/20 text-white border border-white/20 transition-all hover:scale-[1.02] active:scale-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-400" aria-label="Expandir o contraer todas las secciones">
-          <svg id="toggle-icon-expand" class="w-4 h-4 text-sky-400 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+        <!-- Botón Modo Oscuro / Claro -->
+        <button id="theme-toggle-btn" type="button" onclick="toggleTheme()" class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg bg-white/10 hover:bg-white/20 text-white border border-white/20 transition-all hover:scale-[1.02] active:scale-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-400" aria-label="Activar modo oscuro" aria-pressed="false" title="Modo oscuro">
+          <svg id="theme-icon-moon" class="w-4 h-4 text-sky-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
           </svg>
-          <span id="toggle-all-text">Expandir todo</span>
+          <svg id="theme-icon-sun" class="w-4 h-4 text-amber-300 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+          </svg>
+          <span id="theme-label">Modo oscuro</span>
         </button>
 
       </div>
@@ -353,7 +404,7 @@
     <!-- ========================================================================= -->
     <section id="bloque-1" class="scroll-mt-24">
       
-      <!-- Encabezado del Bloque con Badge y Disertante -->
+      <!-- Encabezado del Bloque con Badge -->
       <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 mb-6 border-b border-slate-200">
         <div>
           <div class="flex items-center gap-3 mb-2">
@@ -367,19 +418,9 @@
           </h2>
         </div>
         
-        <div class="bg-white p-3.5 rounded-xl border border-slate-200 shadow-sm flex items-center gap-3 shrink-0 card-printable">
-          <div class="w-10 h-10 rounded-full bg-[#1E40AF] text-white flex items-center justify-center font-bold font-heading text-sm shadow" aria-hidden="true">
-            HF
-          </div>
-          <div>
-            <div class="text-xs text-slate-500 font-semibold">Disertante principal</div>
-            <div class="font-heading font-bold text-sm text-[#0F294A]">Dr. Horacio Ademar Ferreyra</div>
-            <div class="text-[11px] text-slate-600 font-medium">Ministro de Educación de la Provincia de Córdoba</div>
-          </div>
-        </div>
       </div>
 
-      <!-- Tarjetas Interactivas de Ejes Estratégicos -->
+            <!-- Tarjetas Interactivas de Ejes Estratégicos -->
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
         
         <!-- Eje 1: Articulación Secundario -->
@@ -1590,59 +1631,27 @@
         if (button) button.setAttribute('aria-expanded', 'true');
       }
       
-      updateToggleAllButtonState();
     }
 
-    // Expandir o contraer todos los acordeones
-    let allExpandedState = false;
-
-    function toggleAllAccordions() {
-      const allContents = document.querySelectorAll('.accordion-content');
-      allExpandedState = !allExpandedState;
-
-      allContents.forEach(content => {
-        const id = content.id;
-        const chevron = document.getElementById('chevron-' + id);
-        const button = document.querySelector(`[aria-controls="${id}"]`);
-        
-        if (allExpandedState) {
-          content.classList.add('expanded');
-          if (chevron) chevron.classList.add('rotate-180');
-          if (button) button.setAttribute('aria-expanded', 'true');
-        } else {
-          content.classList.remove('expanded');
-          if (chevron) chevron.classList.remove('rotate-180');
-          if (button) button.setAttribute('aria-expanded', 'false');
-        }
-      });
-
-      renderToggleAllText();
+    // Modo oscuro: preferencia guardada, o la del sistema si no hay ninguna
+    const THEME_KEY = 'ift-tema';
+    function applyTheme(dark) {
+      document.documentElement.classList.toggle('dark', dark);
+      const btn = document.getElementById('theme-toggle-btn');
+      if (!btn) return;
+      btn.setAttribute('aria-pressed', String(dark));
+      btn.setAttribute('aria-label', dark ? 'Activar modo claro' : 'Activar modo oscuro');
+      btn.title = dark ? 'Modo claro' : 'Modo oscuro';
+      document.getElementById('theme-label').textContent = dark ? 'Modo claro' : 'Modo oscuro';
+      document.getElementById('theme-icon-moon').classList.toggle('hidden', dark);
+      document.getElementById('theme-icon-sun').classList.toggle('hidden', !dark);
     }
-
-    function updateToggleAllButtonState() {
-      const allContents = document.querySelectorAll('.accordion-content');
-      const expandedCount = document.querySelectorAll('.accordion-content.expanded').length;
-      
-      if (expandedCount === allContents.length) {
-        allExpandedState = true;
-      } else if (expandedCount === 0) {
-        allExpandedState = false;
-      }
-      renderToggleAllText();
+    function toggleTheme() {
+      const dark = !document.documentElement.classList.contains('dark');
+      applyTheme(dark);
+      try { localStorage.setItem(THEME_KEY, dark ? 'dark' : 'light'); } catch (e) {}
     }
-
-    function renderToggleAllText() {
-      const textElem = document.getElementById('toggle-all-text');
-      const iconElem = document.getElementById('toggle-icon-expand');
-      
-      if (allExpandedState) {
-        if (textElem) textElem.textContent = 'Contraer todo';
-        if (iconElem) iconElem.classList.add('rotate-180');
-      } else {
-        if (textElem) textElem.textContent = 'Expandir todo';
-        if (iconElem) iconElem.classList.remove('rotate-180');
-      }
-    }
+    applyTheme(document.documentElement.classList.contains('dark'));
 
     // Barra de Progreso de Lectura y Botón Volver Arriba
     const progressBar = document.getElementById('reading-progress-bar');
