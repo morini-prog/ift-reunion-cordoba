@@ -21,8 +21,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
   
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Tailwind CSS compilado (ver tailwind.config.js) -->
+  <link rel="stylesheet" href="assets/tailwind.css">
   <script>
     (function () {
       var t = null;
@@ -30,32 +30,6 @@
       var dark = t ? t === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
       if (dark) document.documentElement.classList.add('dark');
     })();
-  </script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            leibnitz: {
-              navy: '#0F294A',
-              blue: '#1E40AF',
-              cyan: '#0EA5E9',
-              amber: '#D97706',
-              bg: '#F8FAFC',
-              card: '#FFFFFF'
-            }
-          },
-          fontFamily: {
-            heading: ['"Plus Jakarta Sans"', 'sans-serif'],
-            sans: ['"Inter"', 'sans-serif']
-          },
-          boxShadow: {
-            subtle: '0 4px 20px -2px rgba(15, 41, 74, 0.06), 0 2px 6px -1px rgba(15, 41, 74, 0.04)',
-            cardHover: '0 12px 30px -4px rgba(15, 41, 74, 0.12), 0 4px 10px -2px rgba(15, 41, 74, 0.06)'
-          }
-        }
-      }
-    }
   </script>
 
   <style>
@@ -161,7 +135,7 @@
         background: #F8FAFC !important;
         border: 1px solid #CBD5E1 !important;
       }
-      #hero .text-amber-300, #hero .text-sky-300, #hero .text-blue-300, #hero .text-emerald-300 {
+      #hero .text-amber-300, #hero .text-blue-300, #hero .text-blue-300, #hero .text-blue-300 {
         color: #0F294A !important;
       }
 
@@ -186,11 +160,11 @@
     html.dark .bg-white { background-color: #131E33; }
     html.dark .bg-slate-50, html.dark .bg-slate-100 { background-color: #0F1A2E; }
     html.dark .hover\:bg-slate-50:hover { background-color: #182640; }
-    html.dark .hover\:bg-emerald-50:hover { background-color: #132B24; }
+    html.dark .hover\:bg-blue-50:hover { background-color: #132B24; }
     html.dark .from-slate-50 { --tw-gradient-from: #0F1A2E; }
     html.dark .to-white { --tw-gradient-to: #131E33; }
     html.dark .from-amber-50\/60 { --tw-gradient-from: rgba(120, 53, 15, 0.25); }
-    html.dark .from-emerald-50\/50 { --tw-gradient-from: rgba(6, 78, 59, 0.25); }
+    html.dark .from-blue-50\/50 { --tw-gradient-from: rgba(6, 78, 59, 0.25); }
     html.dark .text-slate-900, html.dark .text-slate-800, html.dark .text-slate-700 { color: #E2E8F0; }
     html.dark .text-slate-600 { color: #CBD5E1; }
     html.dark .text-slate-500 { color: #94A3B8; }
@@ -199,36 +173,36 @@
     html.dark .border-slate-200, html.dark .border-slate-100 { border-color: #26354F; }
     html.dark .border-slate-700\/50, html.dark .border-slate-700\/60 { border-color: #26354F; }
     html.dark .divide-slate-200 > * + * { border-color: #26354F; }
-    html.dark .shadow-subtle, html.dark .shadow-sm, html.dark .shadow-md, html.dark .shadow-cardHover { box-shadow: 0 4px 20px -4px rgba(0, 0, 0, 0.5); }
+    html.dark .shadow-sm, html.dark .shadow-sm, html.dark .shadow-md, html.dark .shadow-cardHover { box-shadow: 0 4px 20px -4px rgba(0, 0, 0, 0.5); }
     html.dark .bg-\[\#0F294A\]\/80 { background-color: rgba(15, 41, 74, 0.6); }
-    html.dark .bg-sky-50, html.dark .bg-sky-100 { background-color: rgba(30, 41, 59, 0.85) !important; }
-    html.dark .text-sky-700, html.dark .text-sky-800, html.dark .text-sky-900 { color: #BFDBFE; }
-    html.dark .border-sky-100, html.dark .border-sky-200, html.dark .border-sky-300 { border-color: #334155; }
     html.dark .bg-blue-50, html.dark .bg-blue-100 { background-color: rgba(30, 41, 59, 0.85) !important; }
     html.dark .text-blue-700, html.dark .text-blue-800, html.dark .text-blue-900 { color: #BFDBFE; }
     html.dark .border-blue-100, html.dark .border-blue-200, html.dark .border-blue-300 { border-color: #334155; }
-    html.dark .bg-emerald-50, html.dark .bg-emerald-100 { background-color: rgba(30, 41, 59, 0.85) !important; }
-    html.dark .text-emerald-700, html.dark .text-emerald-800, html.dark .text-emerald-900 { color: #BFDBFE; }
-    html.dark .border-emerald-100, html.dark .border-emerald-200, html.dark .border-emerald-300 { border-color: #334155; }
+    html.dark .bg-blue-50, html.dark .bg-blue-100 { background-color: rgba(30, 41, 59, 0.85) !important; }
+    html.dark .text-blue-700, html.dark .text-blue-800, html.dark .text-blue-900 { color: #BFDBFE; }
+    html.dark .border-blue-100, html.dark .border-blue-200, html.dark .border-blue-300 { border-color: #334155; }
+    html.dark .bg-blue-50, html.dark .bg-blue-100 { background-color: rgba(30, 41, 59, 0.85) !important; }
+    html.dark .text-blue-700, html.dark .text-blue-800, html.dark .text-blue-900 { color: #BFDBFE; }
+    html.dark .border-blue-100, html.dark .border-blue-200, html.dark .border-blue-300 { border-color: #334155; }
     html.dark .bg-amber-50, html.dark .bg-amber-100 { background-color: rgba(30, 41, 59, 0.85) !important; }
     html.dark .text-amber-700, html.dark .text-amber-800, html.dark .text-amber-900 { color: #BFDBFE; }
     html.dark .border-amber-100, html.dark .border-amber-200, html.dark .border-amber-300 { border-color: #334155; }
-    html.dark .bg-indigo-50, html.dark .bg-indigo-100 { background-color: rgba(30, 41, 59, 0.85) !important; }
-    html.dark .text-indigo-700, html.dark .text-indigo-800, html.dark .text-indigo-900 { color: #BFDBFE; }
-    html.dark .border-indigo-100, html.dark .border-indigo-200, html.dark .border-indigo-300 { border-color: #334155; }
+    html.dark .bg-blue-50, html.dark .bg-blue-100 { background-color: rgba(30, 41, 59, 0.85) !important; }
+    html.dark .text-blue-700, html.dark .text-blue-800, html.dark .text-blue-900 { color: #BFDBFE; }
+    html.dark .border-blue-100, html.dark .border-blue-200, html.dark .border-blue-300 { border-color: #334155; }
     html.dark #hero { border-bottom-color: #B45309; }
     html.dark .nav-link.active-nav { background-color: rgba(56, 189, 248, 0.2); }
     html.dark ::selection { background: #1E40AF; }
   </style>
 </head>
-<body class="min-h-screen flex flex-col antialiased selection:bg-sky-100 selection:text-sky-900 relative">
+<body class="min-h-screen flex flex-col antialiased selection:bg-blue-100 selection:text-blue-900 relative">
   <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[70] focus:bg-white focus:text-[#0F294A] focus:px-4 focus:py-2 focus:rounded-lg focus:font-semibold focus:shadow-lg">Saltar al contenido</a>
 
   <!-- ========================================== -->
   <!-- BARRA DE PROGRESO DE LECTURA (SUPERIOR)   -->
   <!-- ========================================== -->
   <div id="progress-bar-container" class="fixed top-0 left-0 w-full h-1 bg-transparent z-[60] pointer-events-none">
-    <div id="reading-progress-bar" class="h-full bg-gradient-to-r from-amber-400 via-sky-400 to-blue-600 w-0 transition-all duration-100"></div>
+    <div id="reading-progress-bar" class="h-full bg-gradient-to-r from-amber-400 via-blue-400 to-blue-600 w-0 transition-all duration-100"></div>
   </div>
 
   <!-- ========================================== -->
@@ -238,40 +212,40 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
       
       <!-- Identidad Institucional -->
-      <a href="#hero" class="flex items-center gap-3 group focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-400 rounded-lg p-1">
-        <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-sky-400 to-blue-600 flex items-center justify-center font-heading font-black text-white text-sm shadow-md group-hover:scale-105 transition-transform" aria-hidden="true">
+      <a href="#hero" class="flex items-center gap-3 group focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 rounded-lg p-1">
+        <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center font-heading font-black text-white text-base shadow-md group-hover:scale-105 transition-transform" aria-hidden="true">
           IFT
         </div>
         <div>
-          <span class="block font-heading font-bold text-sm tracking-wide uppercase text-white group-hover:text-sky-300 transition-colors">
+          <span class="block font-heading font-bold text-base tracking-wide uppercase text-white group-hover:text-blue-300 transition-colors">
             DGETyFP · Córdoba
           </span>
-          <span class="block text-[11px] text-slate-300 font-medium">
+          <span class="hidden xl:block text-sm text-slate-300 font-medium">
             Documento ejecutivo · Nivel Superior Técnico
           </span>
         </div>
       </a>
 
       <!-- Navegación de Bloques con ScrollSpy -->
-      <nav id="desktop-nav" class="hidden lg:flex items-center gap-1.5 text-xs font-semibold" aria-label="Navegación principal de la agenda">
-        <a href="#bloque-1" id="nav-bloque-1" class="nav-link px-3 py-2 rounded-lg text-slate-200 hover:text-white hover:bg-white/10 transition-colors flex items-center gap-1.5 border border-transparent focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-400">
+      <nav id="desktop-nav" class="hidden lg:flex items-center gap-1.5 text-sm font-semibold" aria-label="Navegación principal de la agenda">
+        <a href="#bloque-1" id="nav-bloque-1" class="nav-link whitespace-nowrap px-3 py-2 rounded-lg text-slate-200 hover:text-white hover:bg-white/10 transition-colors flex items-center gap-1.5 border border-transparent focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400">
           <span class="w-2 h-2 rounded-full bg-amber-400" aria-hidden="true"></span>
           Bloque 1 · Apertura
         </a>
-        <a href="#bloque-2" id="nav-bloque-2" class="nav-link px-3 py-2 rounded-lg text-slate-200 hover:text-white hover:bg-white/10 transition-colors flex items-center gap-1.5 border border-transparent focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-400">
-          <span class="w-2 h-2 rounded-full bg-sky-400" aria-hidden="true"></span>
+        <a href="#bloque-2" id="nav-bloque-2" class="nav-link whitespace-nowrap px-3 py-2 rounded-lg text-slate-200 hover:text-white hover:bg-white/10 transition-colors flex items-center gap-1.5 border border-transparent focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400">
+          <span class="w-2 h-2 rounded-full bg-blue-400" aria-hidden="true"></span>
           Bloque 2 · Saberes & FP
         </a>
-        <a href="#bloque-3" id="nav-bloque-3" class="nav-link px-3 py-2 rounded-lg text-slate-200 hover:text-white hover:bg-white/10 transition-colors flex items-center gap-1.5 border border-transparent focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-400">
-          <span class="w-2 h-2 rounded-full bg-emerald-400" aria-hidden="true"></span>
+        <a href="#bloque-3" id="nav-bloque-3" class="nav-link whitespace-nowrap px-3 py-2 rounded-lg text-slate-200 hover:text-white hover:bg-white/10 transition-colors flex items-center gap-1.5 border border-transparent focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400">
+          <span class="w-2 h-2 rounded-full bg-blue-400" aria-hidden="true"></span>
           Bloque 3 · Propedéutico
         </a>
-        <a href="#marco-conceptual" id="nav-marco-conceptual" class="nav-link px-3 py-2 rounded-lg text-slate-200 hover:text-white hover:bg-white/10 transition-colors flex items-center gap-1.5 border border-transparent focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-400">
+        <a href="#marco-conceptual" id="nav-marco-conceptual" class="nav-link whitespace-nowrap px-3 py-2 rounded-lg text-slate-200 hover:text-white hover:bg-white/10 transition-colors flex items-center gap-1.5 border border-transparent focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400">
           <span class="w-2 h-2 rounded-full bg-amber-400" aria-hidden="true"></span>
           Marco conceptual
         </a>
-        <a href="#tareas-nivel-superior" id="nav-tareas-nivel-superior" class="nav-link px-3 py-2 rounded-lg text-slate-200 hover:text-white hover:bg-white/10 transition-colors flex items-center gap-1.5 border border-transparent focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-400">
-          <span class="w-2 h-2 rounded-full bg-indigo-400" aria-hidden="true"></span>
+        <a href="#tareas-nivel-superior" id="nav-tareas-nivel-superior" class="nav-link whitespace-nowrap px-3 py-2 rounded-lg text-slate-200 hover:text-white hover:bg-white/10 transition-colors flex items-center gap-1.5 border border-transparent focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400">
+          <span class="w-2 h-2 rounded-full bg-blue-400" aria-hidden="true"></span>
           Tareas para el nivel superior
         </a>
       </nav>
@@ -280,8 +254,8 @@
       <div class="flex items-center gap-2">
         
         <!-- Botón Modo Oscuro / Claro -->
-        <button id="theme-toggle-btn" type="button" onclick="toggleTheme()" class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg bg-white/10 hover:bg-white/20 text-white border border-white/20 transition-all hover:scale-[1.02] active:scale-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-400" aria-label="Activar modo oscuro" aria-pressed="false" title="Modo oscuro">
-          <svg id="theme-icon-moon" class="w-4 h-4 text-sky-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <button id="theme-toggle-btn" type="button" onclick="toggleTheme()" class="whitespace-nowrap inline-flex items-center gap-1.5 px-3 py-1.5 text-sm font-semibold rounded-lg bg-white/10 hover:bg-white/20 text-white border border-white/20 transition-all hover:scale-[1.02] active:scale-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400" aria-label="Activar modo oscuro" aria-pressed="false" title="Modo oscuro">
+          <svg id="theme-icon-moon" class="w-4 h-4 text-blue-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
           </svg>
           <svg id="theme-icon-sun" class="w-4 h-4 text-amber-300 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -295,21 +269,21 @@
     </div>
 
     <!-- Menú Rápido Móvil / Tablet (Sub-barra visible en pantallas menores a lg) -->
-    <div class="lg:hidden flex items-center justify-around border-t border-slate-700/50 bg-[#0B213B] px-2 py-1.5 text-[11px] font-semibold text-slate-300">
+    <div class="lg:hidden flex items-center justify-between gap-1 overflow-x-auto whitespace-nowrap border-t border-slate-700/50 bg-[#0B213B] px-2 py-1.5 text-sm font-semibold text-slate-300">
       <a href="#bloque-1" class="hover:text-white px-2 py-1 flex items-center gap-1">
         <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>Bloque 1
       </a>
       <a href="#bloque-2" class="hover:text-white px-2 py-1 flex items-center gap-1">
-        <span class="w-1.5 h-1.5 rounded-full bg-sky-400"></span>Bloque 2
+        <span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span>Bloque 2
       </a>
       <a href="#bloque-3" class="hover:text-white px-2 py-1 flex items-center gap-1">
-        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>Bloque 3
+        <span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span>Bloque 3
       </a>
       <a href="#marco-conceptual" class="hover:text-white px-2 py-1 flex items-center gap-1">
         <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>Marco
       </a>
       <a href="#tareas-nivel-superior" class="hover:text-white px-2 py-1 flex items-center gap-1">
-        <span class="w-1.5 h-1.5 rounded-full bg-indigo-400"></span>Tareas
+        <span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span>Tareas
       </a>
     </div>
   </header>
@@ -330,8 +304,8 @@
     <div class="max-w-6xl mx-auto relative z-10">
       
       <!-- Etiqueta Superior -->
-      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-sky-500/20 border border-sky-400/30 text-sky-200 text-xs font-semibold tracking-wider uppercase mb-5 backdrop-blur-sm">
-        <span class="w-2 h-2 rounded-full bg-sky-400 animate-pulse" aria-hidden="true"></span>
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-500/20 border border-blue-400/30 text-blue-200 text-sm font-semibold tracking-wide uppercase mb-5 backdrop-blur-sm">
+        <span class="w-2 h-2 rounded-full bg-blue-400 animate-pulse" aria-hidden="true"></span>
         Política Educativa Provincial · Nivel Superior Técnico
       </div>
 
@@ -339,7 +313,7 @@
       <h1 class="font-heading font-extrabold text-3xl sm:text-4xl lg:text-5xl tracking-tight leading-tight mb-4 text-white">
         Reunión específica para Institutos de Formación Técnica (IFT)
       </h1>
-      <p class="text-lg sm:text-xl text-sky-100 max-w-4xl font-normal leading-relaxed mb-8">
+      <p class="text-lg sm:text-xl text-blue-100 max-w-4xl font-normal leading-relaxed mb-8">
         Articulación de trayectorias, reconocimiento de saberes y nuevo propedéutico 2027
       </p>
 
@@ -353,8 +327,8 @@
             </svg>
           </div>
           <div>
-            <span class="block text-xs uppercase tracking-wider text-slate-300 font-semibold">Fecha</span>
-            <span class="font-heading font-bold text-sm text-white">Miércoles 18 de noviembre de 2026</span>
+            <span class="block text-sm uppercase tracking-wide text-slate-300 font-semibold">Fecha</span>
+            <span class="font-heading font-bold text-base text-white">Miércoles 18 de noviembre de 2026</span>
           </div>
         </div>
 
@@ -366,29 +340,29 @@
             </svg>
           </div>
           <div>
-            <span class="block text-xs uppercase tracking-wider text-slate-300 font-semibold">Lugar</span>
-            <span class="font-heading font-bold text-sm text-white">IES Simón Bolívar</span>
-            <span class="block text-xs text-slate-300">Agustín Garzón 1225/1255, Córdoba</span>
+            <span class="block text-sm uppercase tracking-wide text-slate-300 font-semibold">Lugar</span>
+            <span class="font-heading font-bold text-base text-white">IES Simón Bolívar</span>
+            <span class="block text-sm text-slate-300">Agustín Garzón 1225/1255, Córdoba</span>
           </div>
         </div>
 
         <div class="flex items-start gap-3.5">
-          <div class="p-2.5 rounded-xl bg-emerald-500/20 border border-emerald-400/30 text-emerald-300 shrink-0" aria-hidden="true">
+          <div class="p-2.5 rounded-xl bg-blue-500/20 border border-blue-400/30 text-blue-300 shrink-0" aria-hidden="true">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
             </svg>
           </div>
           <div>
-            <span class="block text-xs uppercase tracking-wider text-slate-300 font-semibold">Convocante</span>
-            <span class="font-heading font-bold text-sm text-white">DGETyFP</span>
-            <span class="block text-xs text-slate-300">Min. de Educación de Córdoba</span>
+            <span class="block text-sm uppercase tracking-wide text-slate-300 font-semibold">Convocante</span>
+            <span class="font-heading font-bold text-base text-white">DGETyFP</span>
+            <span class="block text-sm text-slate-300">Min. de Educación de Córdoba</span>
           </div>
         </div>
 
       </div>
 
       <!-- Introducción Oficial -->
-      <div class="bg-[#0F294A]/80 border-l-4 border-amber-400 p-5 rounded-r-xl text-slate-200 text-sm sm:text-base leading-relaxed card-printable">
+      <div class="bg-[#0F294A]/80 border-l-4 border-amber-400 p-5 rounded-r-xl text-slate-200 text-base sm:text-base leading-relaxed card-printable">
         <strong class="text-white font-semibold block mb-1">Propósito del encuentro:</strong>
         El encuentro fue convocado por la Dirección General de Educación Técnica y Formación Profesional para alinear las líneas de política educativa vigentes en el Nivel Superior Técnico, integrando la convergencia normativa para la continuidad de trayectorias, la vinculación socioproductiva y el diseño operativo del nuevo Seminario de Ingreso y las Familias Profesionales.
       </div>
@@ -400,6 +374,28 @@
   <main id="main-content" class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-24 flex-grow space-y-16">
 
     <!-- ========================================================================= -->
+    <!-- RESUMEN EJECUTIVO: las diez tareas de un vistazo                          -->
+    <!-- ========================================================================= -->
+    <section id="resumen" aria-labelledby="resumen-titulo" class="scroll-mt-24 -mt-4">
+      <div class="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 shadow-sm">
+        <h2 id="resumen-titulo" class="font-heading font-bold text-xl sm:text-2xl text-[#0F294A] mb-1">Resumen: las diez tareas para el nivel superior</h2>
+        <p class="text-base text-slate-600 mb-4">Detalle completo en la sección <a href="#tareas-nivel-superior" class="text-[#1E40AF] font-semibold underline underline-offset-2 hover:text-[#0F294A]">Tareas para el nivel superior</a>.</p>
+        <ol class="grid grid-cols-1 md:grid-cols-2 md:gap-x-8">
+          <li class="flex items-start gap-3 py-2 border-b border-slate-200 last:border-0"><span class="font-heading font-bold text-[#1E40AF] w-6 shrink-0">1.</span><span class="text-base text-slate-700">Fortalecer la vinculación con el sector productivo.</span></li>
+          <li class="flex items-start gap-3 py-2 border-b border-slate-200 last:border-0"><span class="font-heading font-bold text-[#1E40AF] w-6 shrink-0">2.</span><span class="text-base text-slate-700">Ordenar el reconocimiento de saberes previos.</span></li>
+          <li class="flex items-start gap-3 py-2 border-b border-slate-200 last:border-0"><span class="font-heading font-bold text-[#1E40AF] w-6 shrink-0">3.</span><span class="text-base text-slate-700">Articular con el nivel secundario.</span></li>
+          <li class="flex items-start gap-3 py-2 border-b border-slate-200 last:border-0"><span class="font-heading font-bold text-[#1E40AF] w-6 shrink-0">4.</span><span class="text-base text-slate-700">Implementar el nuevo propedéutico.</span></li>
+          <li class="flex items-start gap-3 py-2 border-b border-slate-200 last:border-0"><span class="font-heading font-bold text-[#1E40AF] w-6 shrink-0">5.</span><span class="text-base text-slate-700">Organizar la oferta por familias profesionales.</span></li>
+          <li class="flex items-start gap-3 py-2 border-b border-slate-200 last:border-0"><span class="font-heading font-bold text-[#1E40AF] w-6 shrink-0">6.</span><span class="text-base text-slate-700">Acompañar las trayectorias y prevenir el abandono.</span></li>
+          <li class="flex items-start gap-3 py-2 border-b border-slate-200 last:border-0"><span class="font-heading font-bold text-[#1E40AF] w-6 shrink-0">7.</span><span class="text-base text-slate-700">Desarrollar las capacidades fundamentales.</span></li>
+          <li class="flex items-start gap-3 py-2 border-b border-slate-200 last:border-0"><span class="font-heading font-bold text-[#1E40AF] w-6 shrink-0">8.</span><span class="text-base text-slate-700">Impulsar la formación continua de egresados.</span></li>
+          <li class="flex items-start gap-3 py-2 border-b border-slate-200 last:border-0"><span class="font-heading font-bold text-[#1E40AF] w-6 shrink-0">9.</span><span class="text-base text-slate-700">Promover la innovación pedagógica.</span></li>
+          <li class="flex items-start gap-3 py-2 border-b border-slate-200 last:border-0"><span class="font-heading font-bold text-[#1E40AF] w-6 shrink-0">10.</span><span class="text-base text-slate-700">Cuidar el bienestar y la participación estudiantil.</span></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ========================================================================= -->
     <!-- 2. BLOQUE 1 — APERTURA INSTITUCIONAL Y VINCULACIÓN SOCIOPRODUCTIVA       -->
     <!-- ========================================================================= -->
     <section id="bloque-1" class="scroll-mt-24">
@@ -408,10 +404,10 @@
       <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 mb-6 border-b border-slate-200">
         <div>
           <div class="flex items-center gap-3 mb-2">
-            <span class="px-3 py-1 rounded-full bg-amber-100 text-amber-900 font-semibold text-xs uppercase tracking-wider border border-amber-300">
+            <span class="px-3 py-1 rounded-full bg-amber-100 text-amber-900 font-semibold text-sm uppercase tracking-wide border border-amber-300">
               Bloque 1
             </span>
-            <span class="text-xs font-medium text-slate-500 uppercase tracking-wider">Apertura institucional</span>
+            <span class="text-sm font-medium text-slate-500 uppercase tracking-wide">Apertura institucional</span>
           </div>
           <h2 class="font-heading font-bold text-2xl sm:text-3xl text-[#0F294A]">
             Apertura institucional y vinculación socioproductiva
@@ -424,81 +420,81 @@
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
         
         <!-- Eje 1: Articulación Secundario -->
-        <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-subtle hover:shadow-cardHover transition-all flex flex-col justify-between group card-printable">
+        <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm hover:shadow-cardHover transition-all flex flex-col justify-between group card-printable">
           <div>
-            <div class="w-12 h-12 rounded-xl bg-sky-50 text-[#0EA5E9] border border-sky-100 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform" aria-hidden="true">
+            <div class="w-12 h-12 rounded-xl bg-blue-50 text-[#0EA5E9] border border-blue-100 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform" aria-hidden="true">
               <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
               </svg>
             </div>
-            <span class="inline-block px-2.5 py-0.5 rounded text-[11px] font-bold bg-sky-100 text-sky-800 uppercase tracking-wider mb-2">
+            <span class="inline-block px-2.5 py-0.5 rounded text-sm font-bold bg-blue-100 text-blue-800 uppercase tracking-wide mb-2">
               Inmersión al futuro
             </span>
             <h3 class="font-heading font-bold text-lg text-[#0F294A] mb-2">
               Articulación con nivel secundario
             </h3>
-            <p class="text-slate-600 text-sm leading-relaxed">
+            <p class="text-slate-600 text-base leading-relaxed">
               Implementación de instancias de <strong>cursado anticipado</strong> para estudiantes de nivel medio en el nivel superior técnico, generando puentes efectivos antes del egreso.
             </p>
           </div>
-          <div class="mt-4 pt-4 border-t border-slate-100 flex items-center text-xs font-semibold text-[#1E40AF]">
+          <div class="mt-4 pt-4 border-t border-slate-100 flex items-center text-sm font-semibold text-[#1E40AF]">
             <span>Anticipación de trayectorias formativas</span>
           </div>
         </div>
 
         <!-- Eje 2: Sector Productivo -->
-        <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-subtle hover:shadow-cardHover transition-all flex flex-col justify-between group card-printable">
+        <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm hover:shadow-cardHover transition-all flex flex-col justify-between group card-printable">
           <div>
             <div class="w-12 h-12 rounded-xl bg-amber-50 text-[#D97706] border border-amber-100 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform" aria-hidden="true">
               <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
               </svg>
             </div>
-            <span class="inline-block px-2.5 py-0.5 rounded text-[11px] font-bold bg-amber-100 text-amber-800 uppercase tracking-wider mb-2">
+            <span class="inline-block px-2.5 py-0.5 rounded text-sm font-bold bg-amber-100 text-amber-800 uppercase tracking-wide mb-2">
               Plan Dual y pasantías
             </span>
             <h3 class="font-heading font-bold text-lg text-[#0F294A] mb-2">
               Vinculación con el sector productivo
             </h3>
-            <p class="text-slate-600 text-sm leading-relaxed">
+            <p class="text-slate-600 text-base leading-relaxed">
               Diseño de actividades formativas generadas desde el propio sector productivo, fortalecimiento del <strong>Plan Dual</strong> y otorgamiento de <strong>certificaciones institucionales a las empresas receptoras de pasantías</strong>.
             </p>
           </div>
-          <div class="mt-4 pt-4 border-t border-slate-100 flex items-center text-xs font-semibold text-[#D97706]">
+          <div class="mt-4 pt-4 border-t border-slate-100 flex items-center text-sm font-semibold text-[#D97706]">
             <span>Sinergia público-privada</span>
           </div>
         </div>
 
         <!-- Eje 3: Apertura y certificación modular -->
-        <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-subtle hover:shadow-cardHover transition-all flex flex-col justify-between group card-printable">
+        <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm hover:shadow-cardHover transition-all flex flex-col justify-between group card-printable">
           <div>
             <div class="w-12 h-12 rounded-xl bg-blue-50 text-[#1E40AF] border border-blue-100 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform" aria-hidden="true">
               <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138z"></path>
               </svg>
             </div>
-            <span class="inline-block px-2.5 py-0.5 rounded text-[11px] font-bold bg-blue-100 text-blue-800 uppercase tracking-wider mb-2">
+            <span class="inline-block px-2.5 py-0.5 rounded text-sm font-bold bg-blue-100 text-blue-800 uppercase tracking-wide mb-2">
               Flexibilidad curricular
             </span>
             <h3 class="font-heading font-bold text-lg text-[#0F294A] mb-2">
               Apertura y certificación modular
             </h3>
-            <ul class="text-slate-600 text-sm space-y-2 leading-relaxed">
+            <ul class="text-slate-600 text-base space-y-2 leading-relaxed">
               <li class="flex items-start gap-2">
-                <span class="text-sky-500 font-bold" aria-hidden="true">•</span>
+                <span class="text-blue-500 font-bold" aria-hidden="true">•</span>
                 <span>Implementación de <strong>Cátedras Abiertas</strong> con certificación por materias aprobadas.</span>
               </li>
               <li class="flex items-start gap-2">
-                <span class="text-sky-500 font-bold" aria-hidden="true">•</span>
+                <span class="text-blue-500 font-bold" aria-hidden="true">•</span>
                 <span>Evaluación e implementación de <strong>microcredenciales</strong>.</span>
               </li>
               <li class="flex items-start gap-2">
-                <span class="text-sky-500 font-bold" aria-hidden="true">•</span>
+                <span class="text-blue-500 font-bold" aria-hidden="true">•</span>
                 <span>Convocatoria activa a <strong>egresados</strong> para actualización y certificaciones continuas.</span>
               </li>
             </ul>
           </div>
-          <div class="mt-4 pt-4 border-t border-slate-100 flex items-center text-xs font-semibold text-[#1E40AF]">
+          <div class="mt-4 pt-4 border-t border-slate-100 flex items-center text-sm font-semibold text-[#1E40AF]">
             <span>Formación a lo largo de la vida</span>
           </div>
         </div>
@@ -506,77 +502,77 @@
       </div>
 
       <!-- Acordeón Especial: Priorización Wooclap TransFORMAR@Cba -->
-      <div class="bg-white rounded-2xl border border-slate-200 shadow-subtle overflow-hidden card-printable">
-        <button type="button" id="btn-acc-wooclap" aria-expanded="false" aria-controls="acc-wooclap" class="accordion-header w-full px-6 py-4 text-left flex items-center justify-between bg-gradient-to-r from-slate-50 to-white hover:bg-slate-50 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500" onclick="toggleAccordion('acc-wooclap')">
+      <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden card-printable">
+        <button type="button" id="btn-acc-wooclap" aria-expanded="false" aria-controls="acc-wooclap" class="accordion-header w-full px-6 py-4 text-left flex items-center justify-between bg-gradient-to-r from-slate-50 to-white hover:bg-slate-50 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500" onclick="toggleAccordion('acc-wooclap')">
           <div class="flex items-center gap-3.5">
-            <div class="w-8 h-8 rounded-lg bg-sky-100 text-[#0EA5E9] flex items-center justify-center font-bold text-sm" aria-hidden="true">
+            <div class="w-8 h-8 rounded-lg bg-blue-100 text-[#0EA5E9] flex items-center justify-center font-bold text-base" aria-hidden="true">
               #
             </div>
             <div>
               <span class="font-heading font-bold text-base text-[#0F294A]">
                 Priorización de ejes TransFORMAR@Cba (actividad Wooclap)
               </span>
-              <p class="text-xs text-slate-500">Orden de priorización resultante de la participación de los directivos</p>
+              <p class="text-sm text-slate-500">Orden de priorización resultante de la participación de los directivos</p>
             </div>
           </div>
-          <svg id="chevron-acc-wooclap" class="chevron-icon w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <svg id="chevron-acc-wooclap" class="chevron-icon w-5 h-5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
           </svg>
         </button>
         
         <div id="acc-wooclap" role="region" aria-labelledby="btn-acc-wooclap" class="accordion-content">
           <div class="p-6 bg-white border-t border-slate-100">
-            <p class="text-sm text-slate-600 mb-4">
+            <p class="text-base text-slate-600 mb-4">
               Durante la sesión inicial se realizó un relevamiento en tiempo real mediante la plataforma <strong>Wooclap</strong>, en el cual los equipos directivos e inspectores priorizaron los 7 ejes de la política <strong>TransFORMAR@Cba</strong> en el siguiente orden de jerarquía:
             </p>
             <ol class="space-y-3">
               <li class="flex items-start gap-3 p-3 rounded-xl bg-slate-50 border border-slate-200/80">
-                <span class="w-6 h-6 rounded-full bg-[#1E40AF] text-white flex items-center justify-center font-heading font-bold text-xs shrink-0 mt-0.5">1</span>
+                <span class="w-6 h-6 rounded-full bg-[#1E40AF] text-white flex items-center justify-center font-heading font-bold text-sm shrink-0 mt-0.5">1</span>
                 <div>
-                  <strong class="text-[#0F294A] text-sm block">Vinculaciones con el sistema productivo, de servicio y comunidad.</strong>
-                  <span class="text-xs text-slate-500">Eje rector de la formación técnica: sinergia con cámaras, empresas y desarrollo local.</span>
+                  <strong class="text-[#0F294A] text-base block">Vinculaciones con el sistema productivo, de servicio y comunidad.</strong>
+                  <span class="text-sm text-slate-500">Eje rector de la formación técnica: sinergia con cámaras, empresas y desarrollo local.</span>
                 </div>
               </li>
               <li class="flex items-start gap-3 p-3 rounded-xl bg-slate-50 border border-slate-200/80">
-                <span class="w-6 h-6 rounded-full bg-sky-600 text-white flex items-center justify-center font-heading font-bold text-xs shrink-0 mt-0.5">2</span>
+                <span class="w-6 h-6 rounded-full bg-blue-600 text-white flex items-center justify-center font-heading font-bold text-sm shrink-0 mt-0.5">2</span>
                 <div>
-                  <strong class="text-[#0F294A] text-sm block">Desarrollo de la dimensión socioafectiva, bienestar educativo, participación y AIC.</strong>
-                  <span class="text-xs text-slate-500">Acompañamiento integral de los estudiantes y clima institucional democrático.</span>
+                  <strong class="text-[#0F294A] text-base block">Desarrollo de la dimensión socioafectiva, bienestar educativo, participación y AIC.</strong>
+                  <span class="text-sm text-slate-500">Acompañamiento integral de los estudiantes y clima institucional democrático.</span>
                 </div>
               </li>
               <li class="flex items-start gap-3 p-3 rounded-xl bg-slate-50 border border-slate-200/80">
-                <span class="w-6 h-6 rounded-full bg-slate-700 text-white flex items-center justify-center font-heading font-bold text-xs shrink-0 mt-0.5">3</span>
+                <span class="w-6 h-6 rounded-full bg-slate-700 text-white flex items-center justify-center font-heading font-bold text-sm shrink-0 mt-0.5">3</span>
                 <div>
-                  <strong class="text-[#0F294A] text-sm block">Capacidades fundamentales (oralidad, lectura, escritura y resolución de problemas).</strong>
-                  <span class="text-xs text-slate-500">Competencias troncales aplicadas al campo técnico y profesional.</span>
+                  <strong class="text-[#0F294A] text-base block">Capacidades fundamentales (oralidad, lectura, escritura y resolución de problemas).</strong>
+                  <span class="text-sm text-slate-500">Competencias troncales aplicadas al campo técnico y profesional.</span>
                 </div>
               </li>
               <li class="flex items-start gap-3 p-3 rounded-xl bg-slate-50 border border-slate-200/80">
-                <span class="w-6 h-6 rounded-full bg-slate-700 text-white flex items-center justify-center font-heading font-bold text-xs shrink-0 mt-0.5">4</span>
+                <span class="w-6 h-6 rounded-full bg-slate-700 text-white flex items-center justify-center font-heading font-bold text-sm shrink-0 mt-0.5">4</span>
                 <div>
-                  <strong class="text-[#0F294A] text-sm block">Cuidado de las trayectorias escolares.</strong>
-                  <span class="text-xs text-slate-500">Alertas tempranas de deserción y dispositivos de acompañamiento pedagógico.</span>
+                  <strong class="text-[#0F294A] text-base block">Cuidado de las trayectorias escolares.</strong>
+                  <span class="text-sm text-slate-500">Alertas tempranas de deserción y dispositivos de acompañamiento pedagógico.</span>
                 </div>
               </li>
               <li class="flex items-start gap-3 p-3 rounded-xl bg-slate-50 border border-slate-200/80">
-                <span class="w-6 h-6 rounded-full bg-slate-700 text-white flex items-center justify-center font-heading font-bold text-xs shrink-0 mt-0.5">5</span>
+                <span class="w-6 h-6 rounded-full bg-slate-700 text-white flex items-center justify-center font-heading font-bold text-sm shrink-0 mt-0.5">5</span>
                 <div>
-                  <strong class="text-[#0F294A] text-sm block">Escuelas precursoras y expediciones pedagógicas.</strong>
-                  <span class="text-xs text-slate-500">Innovación en prácticas docentes y socialización de experiencias transformadoras.</span>
+                  <strong class="text-[#0F294A] text-base block">Escuelas precursoras y expediciones pedagógicas.</strong>
+                  <span class="text-sm text-slate-500">Innovación en prácticas docentes y socialización de experiencias transformadoras.</span>
                 </div>
               </li>
               <li class="flex items-start gap-3 p-3 rounded-xl bg-slate-50 border border-slate-200/80">
-                <span class="w-6 h-6 rounded-full bg-slate-700 text-white flex items-center justify-center font-heading font-bold text-xs shrink-0 mt-0.5">6</span>
+                <span class="w-6 h-6 rounded-full bg-slate-700 text-white flex items-center justify-center font-heading font-bold text-sm shrink-0 mt-0.5">6</span>
                 <div>
-                  <strong class="text-[#0F294A] text-sm block">Ingreso, permanencia y egreso.</strong>
-                  <span class="text-xs text-slate-500">Reconfiguración de dispositivos de acogida y titulación efectiva.</span>
+                  <strong class="text-[#0F294A] text-base block">Ingreso, permanencia y egreso.</strong>
+                  <span class="text-sm text-slate-500">Reconfiguración de dispositivos de acogida y titulación efectiva.</span>
                 </div>
               </li>
               <li class="flex items-start gap-3 p-3 rounded-xl bg-slate-50 border border-slate-200/80">
-                <span class="w-6 h-6 rounded-full bg-slate-700 text-white flex items-center justify-center font-heading font-bold text-xs shrink-0 mt-0.5">7</span>
+                <span class="w-6 h-6 rounded-full bg-slate-700 text-white flex items-center justify-center font-heading font-bold text-sm shrink-0 mt-0.5">7</span>
                 <div>
-                  <strong class="text-[#0F294A] text-sm block">Vinculación con secundario y ecosistema educativo.</strong>
-                  <span class="text-xs text-slate-500">Articulación vertical y reconocimiento de trayectorias previas.</span>
+                  <strong class="text-[#0F294A] text-base block">Vinculación con secundario y ecosistema educativo.</strong>
+                  <span class="text-sm text-slate-500">Articulación vertical y reconocimiento de trayectorias previas.</span>
                 </div>
               </li>
             </ol>
@@ -594,10 +590,10 @@
       <!-- Encabezado del Bloque con Badge -->
       <div class="pb-4 mb-6 border-b border-slate-200">
         <div class="flex items-center gap-3 mb-2">
-          <span class="px-3 py-1 rounded-full bg-sky-100 text-sky-900 font-semibold text-xs uppercase tracking-wider border border-sky-300">
+          <span class="px-3 py-1 rounded-full bg-blue-100 text-blue-900 font-semibold text-sm uppercase tracking-wide border border-blue-300">
             Bloque 2
           </span>
-          <span class="text-xs font-medium text-slate-500 uppercase tracking-wider">Marco normativo y acreditación</span>
+          <span class="text-sm font-medium text-slate-500 uppercase tracking-wide">Marco normativo y acreditación</span>
         </div>
         <h2 class="font-heading font-bold text-2xl sm:text-3xl text-[#0F294A]">
           Reconocimiento de saberes, certificaciones intermedias y formación profesional (FP)
@@ -609,19 +605,19 @@
         <div class="absolute -right-8 -bottom-8 w-48 h-48 bg-white/5 rounded-full blur-2xl" aria-hidden="true"></div>
         <div class="relative z-10 text-center md:text-left flex flex-col md:flex-row items-center justify-between gap-6">
           <div class="space-y-2">
-            <span class="inline-block px-3 py-1 rounded-full bg-amber-400 text-[#0F294A] font-extrabold text-xs uppercase tracking-wider">
+            <span class="inline-block px-3 py-1 rounded-full bg-amber-400 text-[#0F294A] font-extrabold text-sm uppercase tracking-wide">
               Consigna política central
             </span>
             <h3 class="font-heading font-extrabold text-xl sm:text-2xl lg:text-3xl tracking-tight leading-snug">
               “3 resoluciones, un solo camino” · “Nadie empieza de cero”
             </h3>
-            <p class="text-sky-100 text-base font-medium">
+            <p class="text-blue-100 text-base font-medium">
               “Lo que ya aprobaron no se vuelve a cursar”
             </p>
           </div>
           <div class="bg-white/10 backdrop-blur-md px-5 py-4 rounded-xl border border-white/20 text-center shrink-0">
             <span class="block text-2xl font-black text-amber-300">100%</span>
-            <span class="text-xs text-white uppercase font-bold tracking-wider">Convergencia normativa</span>
+            <span class="text-sm text-white uppercase font-bold tracking-wide">Convergencia normativa</span>
           </div>
         </div>
       </div>
@@ -630,27 +626,27 @@
       <div class="space-y-4 mb-10">
         
         <!-- Resolución 1: RM 371/24 -->
-        <div class="bg-white rounded-2xl border border-slate-200 shadow-subtle overflow-hidden card-printable">
-          <button type="button" id="btn-norm-371" aria-expanded="false" aria-controls="norm-371" class="accordion-header w-full px-6 py-4 text-left flex items-center justify-between hover:bg-slate-50 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500" onclick="toggleAccordion('norm-371')">
+        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden card-printable">
+          <button type="button" id="btn-norm-371" aria-expanded="false" aria-controls="norm-371" class="accordion-header w-full px-6 py-4 text-left flex items-center justify-between hover:bg-slate-50 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500" onclick="toggleAccordion('norm-371')">
             <div class="flex items-center gap-3">
-              <span class="px-2.5 py-1 rounded-md bg-blue-100 text-blue-900 font-bold text-xs shrink-0">RM N° 371/24</span>
-              <span class="font-heading font-bold text-sm sm:text-base text-[#0F294A]">
+              <span class="px-2.5 py-1 rounded-md bg-blue-100 text-blue-900 font-bold text-sm shrink-0">RM N° 371/24</span>
+              <span class="font-heading font-bold text-base sm:text-base text-[#0F294A]">
                 Programa de articulación operativa: secundaria técnica y tecnicaturas superiores
               </span>
             </div>
-            <svg id="chevron-norm-371" class="chevron-icon w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <svg id="chevron-norm-371" class="chevron-icon w-5 h-5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
             </svg>
           </button>
           
           <div id="norm-371" role="region" aria-labelledby="btn-norm-371" class="accordion-content">
             <div class="p-6 bg-slate-50/50 border-t border-slate-100 space-y-4">
-              <p class="text-sm text-slate-700 leading-relaxed">
+              <p class="text-base text-slate-700 leading-relaxed">
                 Aprueba el <strong>Programa de Articulación Operativa entre la Educación Secundaria Técnica y las Tecnicaturas de Nivel Superior</strong>, permitiendo validar espacios curriculares aprobados en el secundario técnico para evitar su recursado y acelerar la titulación superior.
               </p>
               <div>
-                <a href="https://dges-cba.infd.edu.ar/sitio/wp-content/uploads/2026/09/ResMin_371-2024.pdf" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#1E40AF] hover:bg-[#0F294A] text-white text-xs font-semibold shadow-sm transition-all hover:scale-[1.02] active:scale-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-400">
-                  <svg class="w-4 h-4 text-sky-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <a href="https://dges-cba.infd.edu.ar/sitio/wp-content/uploads/2026/09/ResMin_371-2024.pdf" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#1E40AF] hover:bg-[#0F294A] text-white text-sm font-semibold shadow-sm transition-all hover:scale-[1.02] active:scale-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400">
+                  <svg class="w-4 h-4 text-blue-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
                   </svg>
                   <span>Ver PDF oficial RM 371/24</span>
@@ -664,26 +660,26 @@
         </div>
 
         <!-- Resolución 2: RM 218/25 -->
-        <div class="bg-white rounded-2xl border border-slate-200 shadow-subtle overflow-hidden card-printable">
-          <button type="button" id="btn-norm-218" aria-expanded="false" aria-controls="norm-218" class="accordion-header w-full px-6 py-4 text-left flex items-center justify-between hover:bg-slate-50 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500" onclick="toggleAccordion('norm-218')">
+        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden card-printable">
+          <button type="button" id="btn-norm-218" aria-expanded="false" aria-controls="norm-218" class="accordion-header w-full px-6 py-4 text-left flex items-center justify-between hover:bg-slate-50 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500" onclick="toggleAccordion('norm-218')">
             <div class="flex items-center gap-3">
-              <span class="px-2.5 py-1 rounded-md bg-amber-100 text-amber-900 font-bold text-xs shrink-0">RM N° 218/25</span>
-              <span class="font-heading font-bold text-sm sm:text-base text-[#0F294A]">
+              <span class="px-2.5 py-1 rounded-md bg-amber-100 text-amber-900 font-bold text-sm shrink-0">RM N° 218/25</span>
+              <span class="font-heading font-bold text-base sm:text-base text-[#0F294A]">
                 Incorporación explícita de instituciones de gestión privada (DIPE)
               </span>
             </div>
-            <svg id="chevron-norm-218" class="chevron-icon w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <svg id="chevron-norm-218" class="chevron-icon w-5 h-5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
             </svg>
           </button>
           
           <div id="norm-218" role="region" aria-labelledby="btn-norm-218" class="accordion-content">
             <div class="p-6 bg-slate-50/50 border-t border-slate-100 space-y-4">
-              <p class="text-sm text-slate-700 leading-relaxed">
+              <p class="text-base text-slate-700 leading-relaxed">
                 Amplía los alcances de la RM 371/24 incorporando explícitamente a las instituciones de <strong>gestión privada</strong> dentro del esquema operativo de articulación entre secundaria técnica y tecnicaturas superiores, garantizando universalidad e igualdad de condiciones para los estudiantes de toda la provincia.
               </p>
               <div>
-                <a href="https://dges-cba.infd.edu.ar/sitio/wp-content/uploads/2026/09/ResMin_08-2026.pdf" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#1E40AF] hover:bg-[#0F294A] text-white text-xs font-semibold shadow-sm transition-all hover:scale-[1.02] active:scale-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-400">
+                <a href="https://dges-cba.infd.edu.ar/sitio/wp-content/uploads/2026/09/ResMin_08-2026.pdf" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#1E40AF] hover:bg-[#0F294A] text-white text-sm font-semibold shadow-sm transition-all hover:scale-[1.02] active:scale-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400">
                   <svg class="w-4 h-4 text-amber-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
                   </svg>
@@ -698,26 +694,26 @@
         </div>
 
         <!-- Resolución 3: Res Conjunta DGES 01/2024 -->
-        <div class="bg-white rounded-2xl border border-slate-200 shadow-subtle overflow-hidden card-printable">
-          <button type="button" id="btn-norm-dges01" aria-expanded="false" aria-controls="norm-dges01" class="accordion-header w-full px-6 py-4 text-left flex items-center justify-between hover:bg-slate-50 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500" onclick="toggleAccordion('norm-dges01')">
+        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden card-printable">
+          <button type="button" id="btn-norm-dges01" aria-expanded="false" aria-controls="norm-dges01" class="accordion-header w-full px-6 py-4 text-left flex items-center justify-between hover:bg-slate-50 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500" onclick="toggleAccordion('norm-dges01')">
             <div class="flex items-center gap-3">
-              <span class="px-2.5 py-1 rounded-md bg-emerald-100 text-emerald-900 font-bold text-xs shrink-0">Res. Conj. DGES 01/24</span>
-              <span class="font-heading font-bold text-sm sm:text-base text-[#0F294A]">
+              <span class="px-2.5 py-1 rounded-md bg-blue-100 text-blue-900 font-bold text-sm shrink-0">Res. Conj. DGES 01/24</span>
+              <span class="font-heading font-bold text-base sm:text-base text-[#0F294A]">
                 Instrumento formal de acreditación y reconocimiento de saberes
               </span>
             </div>
-            <svg id="chevron-norm-dges01" class="chevron-icon w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <svg id="chevron-norm-dges01" class="chevron-icon w-5 h-5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
             </svg>
           </button>
           
           <div id="norm-dges01" role="region" aria-labelledby="btn-norm-dges01" class="accordion-content">
             <div class="p-6 bg-slate-50/50 border-t border-slate-100 space-y-4">
-              <p class="text-sm text-slate-700 leading-relaxed">
+              <p class="text-base text-slate-700 leading-relaxed">
                 Aprueba el instrumento formal de <strong>Acreditación y Reconocimiento de Saberes</strong> en el Nivel Superior. Valida aprendizajes previos provenientes de escuelas técnicas, formación profesional o experiencia laboral demostrable bajo la modalidad de <strong>aprobación directa</strong> (sin calificación numérica), jerarquizando las competencias reales adquiridas.
               </p>
               <div>
-                <a href="https://dges-cba.edu.ar/wp/institucional/equipo-tecnico/reconocimiento-de-saberes/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#0EA5E9] hover:bg-[#0284C7] text-white text-xs font-semibold shadow-sm transition-all hover:scale-[1.02] active:scale-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-400">
+                <a href="https://dges-cba.edu.ar/wp/institucional/equipo-tecnico/reconocimiento-de-saberes/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#0EA5E9] hover:bg-[#0284C7] text-white text-sm font-semibold shadow-sm transition-all hover:scale-[1.02] active:scale-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400">
                   <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path>
                   </svg>
@@ -732,27 +728,27 @@
         </div>
 
         <!-- Resolución 4: Res 83/25 Sec. Educación -->
-        <div class="bg-white rounded-2xl border border-slate-200 shadow-subtle overflow-hidden card-printable">
-          <button type="button" id="btn-norm-83" aria-expanded="false" aria-controls="norm-83" class="accordion-header w-full px-6 py-4 text-left flex items-center justify-between hover:bg-slate-50 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500" onclick="toggleAccordion('norm-83')">
+        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden card-printable">
+          <button type="button" id="btn-norm-83" aria-expanded="false" aria-controls="norm-83" class="accordion-header w-full px-6 py-4 text-left flex items-center justify-between hover:bg-slate-50 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500" onclick="toggleAccordion('norm-83')">
             <div class="flex items-center gap-3">
-              <span class="px-2.5 py-1 rounded-md bg-purple-100 text-purple-900 font-bold text-xs shrink-0">Res. N° 83/25</span>
-              <span class="font-heading font-bold text-sm sm:text-base text-[#0F294A]">
+              <span class="px-2.5 py-1 rounded-md bg-purple-100 text-purple-900 font-bold text-sm shrink-0">Res. N° 83/25</span>
+              <span class="font-heading font-bold text-base sm:text-base text-[#0F294A]">
                 Lineamientos de política educativa 2026: TransFORMAR@Cba y certificaciones intermedias
               </span>
             </div>
-            <svg id="chevron-norm-83" class="chevron-icon w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <svg id="chevron-norm-83" class="chevron-icon w-5 h-5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
             </svg>
           </button>
           
           <div id="norm-83" role="region" aria-labelledby="btn-norm-83" class="accordion-content">
             <div class="p-6 bg-slate-50/50 border-t border-slate-100 space-y-4">
-              <p class="text-sm text-slate-700 leading-relaxed">
+              <p class="text-base text-slate-700 leading-relaxed">
                 Define los lineamientos de la Política Educativa 2026 dentro del programa <strong>TransFORMAR@Cba</strong> (Secretaría de Educación), regulando la flexibilización curricular, la estructuración por <strong>familias profesionales</strong> y la expedición sistemática de <strong>certificaciones intermedias</strong> con valor en el mercado productivo.
               </p>
               <div class="flex flex-wrap items-center gap-3">
-                <a href="https://dges-cba.edu.ar/wp/transformarcba/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#1E40AF] hover:bg-[#0F294A] text-white text-xs font-semibold shadow-sm transition-all hover:scale-[1.02] active:scale-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-400">
-                  <svg class="w-4 h-4 text-sky-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <a href="https://dges-cba.edu.ar/wp/transformarcba/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#1E40AF] hover:bg-[#0F294A] text-white text-sm font-semibold shadow-sm transition-all hover:scale-[1.02] active:scale-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400">
+                  <svg class="w-4 h-4 text-blue-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
                   </svg>
                   <span>Portal TransFORMAR@Cba</span>
@@ -760,7 +756,7 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
                   </svg>
                 </a>
-                <a href="https://dges-cba.infd.edu.ar/sitio/resoluciones-ministerio-de-educacion/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-semibold border border-slate-300 transition-all hover:scale-[1.02] active:scale-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-400">
+                <a href="https://dges-cba.infd.edu.ar/sitio/resoluciones-ministerio-de-educacion/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 text-sm font-semibold border border-slate-300 transition-all hover:scale-[1.02] active:scale-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400">
                   <svg class="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
                   </svg>
@@ -777,15 +773,15 @@
       </div>
 
       <!-- VISUALIZACIÓN DE FLUJO — FAMILIAS PROFESIONALES Y CERTIFICACIÓN POR ETAPAS -->
-      <div class="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-subtle card-printable">
+      <div class="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm card-printable">
         <div class="max-w-3xl mb-6">
-          <span class="text-xs font-bold uppercase tracking-wider text-[#0EA5E9] block mb-1">
+          <span class="text-sm font-bold uppercase tracking-wide text-[#0EA5E9] block mb-1">
             Ruta de aprendizaje modular
           </span>
           <h3 class="font-heading font-bold text-xl text-[#0F294A]">
             Flujo de familias profesionales y certificación por etapas
           </h3>
-          <p class="text-slate-600 text-sm mt-2 leading-relaxed">
+          <p class="text-slate-600 text-base mt-2 leading-relaxed">
             <strong>Definición oficial:</strong> Agrupamiento de ofertas formativas que comparten un mismo sector socioproductivo y una base común de saberes, ordenando el camino de un curso a otro y hacia la tecnicatura.
           </p>
         </div>
@@ -794,20 +790,20 @@
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4 relative">
           
           <!-- Paso 1 -->
-          <div class="p-5 rounded-xl bg-slate-50 border-2 border-dashed border-sky-200 relative group hover:border-sky-400 transition-colors card-printable">
+          <div class="p-5 rounded-xl bg-slate-50 border-2 border-dashed border-blue-200 relative group hover:border-blue-400 transition-colors card-printable">
             <div class="flex items-center justify-between mb-3">
-              <span class="w-7 h-7 rounded-full bg-sky-500 text-white font-heading font-bold text-xs flex items-center justify-center">1</span>
-              <span class="text-[11px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-sky-100 text-sky-800">Iniciación</span>
+              <span class="w-7 h-7 rounded-full bg-blue-500 text-white font-heading font-bold text-sm flex items-center justify-center">1</span>
+              <span class="text-sm font-bold uppercase tracking-wide px-2 py-0.5 rounded bg-blue-100 text-blue-800">Iniciación</span>
             </div>
             <h4 class="font-heading font-bold text-[#0F294A] text-base mb-1">Paso 1: Formación profesional corta</h4>
-            <p class="text-xs text-slate-600 mb-2">Salida laboral rápida y adquisición de competencias operativas fundamentales.</p>
-            <div class="text-[11px] font-semibold text-sky-700 bg-sky-50 p-2 rounded border border-sky-100">
+            <p class="text-sm text-slate-600 mb-2">Salida laboral rápida y adquisición de competencias operativas fundamentales.</p>
+            <div class="text-sm font-semibold text-blue-700 bg-blue-50 p-2 rounded border border-blue-100">
               <svg class="inline w-3.5 h-3.5 mr-1 -mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>Habilitación directa al empleo
             </div>
           </div>
 
           <!-- Flecha conectora (en pantallas medianas) -->
-          <div class="hidden md:flex absolute left-1/3 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10 w-8 h-8 rounded-full bg-white border border-slate-300 items-center justify-center shadow-sm text-slate-400" aria-hidden="true">
+          <div class="hidden md:flex absolute left-1/3 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10 w-8 h-8 rounded-full bg-white border border-slate-300 items-center justify-center shadow-sm text-slate-500" aria-hidden="true">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"></path>
             </svg>
@@ -816,18 +812,18 @@
           <!-- Paso 2 -->
           <div class="p-5 rounded-xl bg-slate-50 border-2 border-dashed border-blue-200 relative group hover:border-blue-400 transition-colors card-printable">
             <div class="flex items-center justify-between mb-3">
-              <span class="w-7 h-7 rounded-full bg-[#1E40AF] text-white font-heading font-bold text-xs flex items-center justify-center">2</span>
-              <span class="text-[11px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-blue-100 text-blue-800">Consolidación</span>
+              <span class="w-7 h-7 rounded-full bg-[#1E40AF] text-white font-heading font-bold text-sm flex items-center justify-center">2</span>
+              <span class="text-sm font-bold uppercase tracking-wide px-2 py-0.5 rounded bg-blue-100 text-blue-800">Consolidación</span>
             </div>
             <h4 class="font-heading font-bold text-[#0F294A] text-base mb-1">Paso 2: Certificaciones intermedias</h4>
-            <p class="text-xs text-slate-600 mb-2">Reconocimiento formal de bloques modulares cursados y validados.</p>
-            <div class="text-[11px] font-semibold text-blue-700 bg-blue-50 p-2 rounded border border-blue-100">
+            <p class="text-sm text-slate-600 mb-2">Reconocimiento formal de bloques modulares cursados y validados.</p>
+            <div class="text-sm font-semibold text-blue-700 bg-blue-50 p-2 rounded border border-blue-100">
               <svg class="inline w-3.5 h-3.5 mr-1 -mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>Reconocimiento modular oficial
             </div>
           </div>
 
           <!-- Flecha conectora (en pantallas medianas) -->
-          <div class="hidden md:flex absolute left-2/3 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10 w-8 h-8 rounded-full bg-white border border-slate-300 items-center justify-center shadow-sm text-slate-400" aria-hidden="true">
+          <div class="hidden md:flex absolute left-2/3 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10 w-8 h-8 rounded-full bg-white border border-slate-300 items-center justify-center shadow-sm text-slate-500" aria-hidden="true">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"></path>
             </svg>
@@ -836,12 +832,12 @@
           <!-- Paso 3 -->
           <div class="p-5 rounded-xl bg-amber-50/50 border-2 border-dashed border-amber-300 relative group hover:border-amber-500 transition-colors card-printable">
             <div class="flex items-center justify-between mb-3">
-              <span class="w-7 h-7 rounded-full bg-[#D97706] text-white font-heading font-bold text-xs flex items-center justify-center">3</span>
-              <span class="text-[11px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-amber-100 text-amber-800">Titulación</span>
+              <span class="w-7 h-7 rounded-full bg-[#D97706] text-white font-heading font-bold text-sm flex items-center justify-center">3</span>
+              <span class="text-sm font-bold uppercase tracking-wide px-2 py-0.5 rounded bg-amber-100 text-amber-800">Titulación</span>
             </div>
             <h4 class="font-heading font-bold text-[#0F294A] text-base mb-1">Paso 3: Tecnicatura superior</h4>
-            <p class="text-xs text-slate-600 mb-2">Continuidad formativa y titulación técnica superior <em>sin reiniciar el trayecto</em>.</p>
-            <div class="text-[11px] font-semibold text-amber-800 bg-amber-100/60 p-2 rounded border border-amber-200">
+            <p class="text-sm text-slate-600 mb-2">Continuidad formativa y titulación técnica superior <em>sin reiniciar el trayecto</em>.</p>
+            <div class="text-sm font-semibold text-amber-800 bg-amber-100/60 p-2 rounded border border-amber-200">
               <svg class="inline w-3.5 h-3.5 mr-1 -mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5zm0 0v6m-7-3.5V17a9 9 0 0014 0v-6.5"></path></svg>Grado técnico de validez nacional
             </div>
           </div>
@@ -859,10 +855,10 @@
       <!-- Encabezado del Bloque con Badge -->
       <div class="pb-4 mb-6 border-b border-slate-200">
         <div class="flex items-center gap-3 mb-2">
-          <span class="px-3 py-1 rounded-full bg-emerald-100 text-emerald-900 font-semibold text-xs uppercase tracking-wider border border-emerald-300">
+          <span class="px-3 py-1 rounded-full bg-blue-100 text-blue-900 font-semibold text-sm uppercase tracking-wide border border-blue-300">
             Bloque 3
           </span>
-          <span class="text-xs font-medium text-slate-500 uppercase tracking-wider">Innovación pedagógica en el ingreso</span>
+          <span class="text-sm font-medium text-slate-500 uppercase tracking-wide">Innovación pedagógica en el ingreso</span>
         </div>
         <h2 class="font-heading font-bold text-2xl sm:text-3xl text-[#0F294A]">
           Transformar el ingreso: nuevo propedéutico
@@ -870,21 +866,21 @@
       </div>
 
       <!-- Enfoque y Criterio Pedagógico -->
-      <div class="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-subtle mb-8 space-y-6 card-printable">
+      <div class="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm mb-8 space-y-6 card-printable">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
           
           <div class="border-l-4 border-rose-400 bg-rose-50/50 p-4 rounded-r-xl">
-            <span class="text-xs uppercase font-bold text-rose-700 tracking-wider block mb-1">Paradigma en superación</span>
-            <h4 class="font-heading font-bold text-[#0F294A] text-sm mb-1">Modo tradicional: "repaso escolar"</h4>
-            <p class="text-xs text-slate-600 leading-relaxed">
+            <span class="text-sm uppercase font-bold text-rose-700 tracking-wide block mb-1">Paradigma en superación</span>
+            <h4 class="font-heading font-bold text-[#0F294A] text-base mb-1">Modo tradicional: "repaso escolar"</h4>
+            <p class="text-sm text-slate-600 leading-relaxed">
               Históricamente centrado en repetir contenidos secundarios de matemática o lengua descontextualizados, fuertemente asociado a la desconexión motivacional y al abandono temprano en el primer mes.
             </p>
           </div>
 
-          <div class="border-l-4 border-emerald-500 bg-emerald-50/50 p-4 rounded-r-xl">
-            <span class="text-xs uppercase font-bold text-emerald-700 tracking-wider block mb-1">Nuevo modelo propedéutico</span>
-            <h4 class="font-heading font-bold text-[#0F294A] text-sm mb-1">Modelo integrado de 3 semanas</h4>
-            <p class="text-xs text-slate-600 leading-relaxed">
+          <div class="border-l-4 border-blue-500 bg-blue-50/50 p-4 rounded-r-xl">
+            <span class="text-sm uppercase font-bold text-blue-700 tracking-wide block mb-1">Nuevo modelo propedéutico</span>
+            <h4 class="font-heading font-bold text-[#0F294A] text-base mb-1">Modelo integrado de 3 semanas</h4>
+            <p class="text-sm text-slate-600 leading-relaxed">
               Centrado enteramente en la <strong>vivencia profesional temprana</strong>, donde cada ingresante experimenta de forma práctica la identidad de su campo formativo desde el día uno.
             </p>
           </div>
@@ -893,7 +889,7 @@
 
         <!-- Pregunta Disparadora y Criterio -->
         <div class="bg-gradient-to-br from-[#0F294A] to-[#1E40AF] p-6 rounded-xl text-white space-y-3 card-printable">
-          <div class="flex items-center gap-2 text-amber-300 text-xs font-bold uppercase tracking-wider">
+          <div class="flex items-center gap-2 text-amber-300 text-sm font-bold uppercase tracking-wide">
             <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
               <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path>
             </svg>
@@ -902,7 +898,7 @@
           <blockquote class="font-heading italic text-lg sm:text-xl text-slate-100 font-semibold leading-relaxed border-l-2 border-amber-400 pl-4">
             “Si tuviéramos solo 3 semanas para brindarle al ingresante su primera vivencia como futuro técnico... ¿Qué debe vivir, conocer y ser capaz de hacer antes de empezar a cursar?”
           </blockquote>
-          <div class="pt-3 border-t border-white/10 text-xs text-sky-200">
+          <div class="pt-3 border-t border-white/10 text-sm text-blue-200">
             <strong class="text-white">Criterio rector:</strong> “Todo saber propuesto debe responder: ¿qué capacidad profesional debe aprender el estudiante para insertarse en su campo de formación?”
           </div>
         </div>
@@ -915,61 +911,61 @@
             <h3 class="font-heading font-bold text-xl text-[#0F294A]">
               Estructura curricular del propedéutico: matriz de 6 módulos
             </h3>
-            <p class="text-xs text-slate-500">Distribución de carga horaria formativa</p>
+            <p class="text-sm text-slate-500">Distribución de carga horaria formativa</p>
           </div>
-          <span class="text-xs font-semibold px-3 py-1 bg-slate-100 rounded-full border text-slate-600">Duración: 3 semanas</span>
+          <span class="text-sm font-semibold px-3 py-1 bg-slate-100 rounded-full border text-slate-600">Duración: 3 semanas</span>
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
           
           <!-- BLOQUE A: Tronco Común Transversal -->
-          <div class="bg-white rounded-2xl p-6 border-2 border-sky-100 shadow-subtle flex flex-col justify-between card-printable">
+          <div class="bg-white rounded-2xl p-6 border-2 border-blue-100 shadow-sm flex flex-col justify-between card-printable">
             <div>
-              <div class="flex items-center justify-between pb-3 mb-4 border-b border-sky-100">
+              <div class="flex items-center justify-between pb-3 mb-4 border-b border-blue-100">
                 <span class="font-heading font-bold text-base text-[#1E40AF]">
                   Bloque A: Tronco común transversal
                 </span>
-                <span class="px-2.5 py-1 rounded-md bg-sky-100 text-sky-800 text-xs font-black">
+                <span class="px-2.5 py-1 rounded-md bg-blue-100 text-blue-800 text-sm font-black">
                   30% a 40%
                 </span>
               </div>
-              <p class="text-xs text-slate-500 mb-4">Capacidades básicas compartidas por todas las tecnicaturas técnicas.</p>
+              <p class="text-sm text-slate-500 mb-4">Capacidades básicas compartidas por todas las tecnicaturas técnicas.</p>
 
               <div class="space-y-3">
                 
                 <!-- Módulo 1 -->
                 <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200">
                   <div class="flex items-start justify-between gap-2 mb-1">
-                    <span class="font-heading font-bold text-sm text-[#0F294A]">Módulo 1: Descubro mi profesión</span>
-                    <span class="shrink-0 px-2 py-0.5 rounded-full bg-amber-100 text-amber-800 text-[10px] font-extrabold uppercase tracking-wide border border-amber-300">
+                    <span class="font-heading font-bold text-base text-[#0F294A]">Módulo 1: Descubro mi profesión</span>
+                    <span class="shrink-0 px-2 py-0.5 rounded-full bg-amber-100 text-amber-800 text-sm font-extrabold uppercase tracking-wide border border-amber-300">
                       Incluye salida al campo
                     </span>
                   </div>
-                  <p class="text-xs text-slate-600 leading-relaxed">
+                  <p class="text-sm text-slate-600 leading-relaxed">
                     Campo ocupacional, perfil de egreso y sectores socioproductivos de inserción real.
                   </p>
                 </div>
 
                 <!-- Módulo 2 -->
                 <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200">
-                  <div class="font-heading font-bold text-sm text-[#0F294A] mb-1">Módulo 2: Aprendo a aprender</div>
-                  <p class="text-xs text-slate-600 leading-relaxed">
+                  <div class="font-heading font-bold text-base text-[#0F294A] mb-1">Módulo 2: Aprendo a aprender</div>
+                  <p class="text-sm text-slate-600 leading-relaxed">
                     Lectura técnica comprensiva, desarrollo de autonomía y alfabetización en modalidad combinada / aula virtual.
                   </p>
                 </div>
 
                 <!-- Módulo 3 -->
                 <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200">
-                  <div class="font-heading font-bold text-sm text-[#0F294A] mb-1">Módulo 3: Tecnologías y copilotos IA</div>
-                  <p class="text-xs text-slate-600 leading-relaxed">
+                  <div class="font-heading font-bold text-base text-[#0F294A] mb-1">Módulo 3: Tecnologías y copilotos IA</div>
+                  <p class="text-sm text-slate-600 leading-relaxed">
                     Cultura de datos, automatización de tareas y uso ético de modelos de Inteligencia Artificial como asistentes formativos.
                   </p>
                 </div>
 
                 <!-- Módulo 4 -->
                 <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200">
-                  <div class="font-heading font-bold text-sm text-[#0F294A] mb-1">Módulo 4: Capacidades profesionales transversales</div>
-                  <p class="text-xs text-slate-600 leading-relaxed">
+                  <div class="font-heading font-bold text-base text-[#0F294A] mb-1">Módulo 4: Capacidades profesionales transversales</div>
+                  <p class="text-sm text-slate-600 leading-relaxed">
                     Trabajo colaborativo interdisciplinario, negociación, resolución de conflictos y formulación inicial de proyectos.
                   </p>
                 </div>
@@ -977,50 +973,50 @@
               </div>
             </div>
             
-            <div class="mt-4 pt-3 border-t border-slate-100 text-[11px] text-slate-400 font-medium">
+            <div class="mt-4 pt-3 border-t border-slate-100 text-sm text-slate-500 font-medium">
               Base común y transversal para todos los ingresantes del instituto.
             </div>
           </div>
 
           <!-- BLOQUE B: Inmersión Disciplinar Situada -->
-          <div class="bg-white rounded-2xl p-6 border-2 border-emerald-100 shadow-subtle flex flex-col justify-between card-printable">
+          <div class="bg-white rounded-2xl p-6 border-2 border-blue-100 shadow-sm flex flex-col justify-between card-printable">
             <div>
-              <div class="flex items-center justify-between pb-3 mb-4 border-b border-emerald-100">
-                <span class="font-heading font-bold text-base text-emerald-900">
+              <div class="flex items-center justify-between pb-3 mb-4 border-b border-blue-100">
+                <span class="font-heading font-bold text-base text-blue-900">
                   Bloque B: Inmersión disciplinar situada
                 </span>
-                <span class="px-2.5 py-1 rounded-md bg-emerald-100 text-emerald-800 text-xs font-black">
+                <span class="px-2.5 py-1 rounded-md bg-blue-100 text-blue-800 text-sm font-black">
                   60% a 70%
                 </span>
               </div>
-              <p class="text-xs text-slate-500 mb-4">Experiencia práctica específica por Familia Profesional elegida.</p>
+              <p class="text-sm text-slate-500 mb-4">Experiencia práctica específica por Familia Profesional elegida.</p>
 
               <div class="space-y-4">
                 
                 <!-- Módulo 5 -->
-                <div class="p-4 rounded-xl bg-emerald-50/50 border border-emerald-200">
+                <div class="p-4 rounded-xl bg-blue-50/50 border border-blue-200">
                   <div class="flex items-center justify-between mb-1.5">
-                    <span class="font-heading font-bold text-sm text-[#0F294A]">Módulo 5: Inmersión disciplinar específica</span>
-                    <span class="text-[11px] font-semibold text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded">Taller y laboratorio</span>
+                    <span class="font-heading font-bold text-base text-[#0F294A]">Módulo 5: Inmersión disciplinar específica</span>
+                    <span class="text-sm font-semibold text-blue-700 bg-blue-100 px-2 py-0.5 rounded">Taller y laboratorio</span>
                   </div>
-                  <p class="text-xs text-slate-700 leading-relaxed">
+                  <p class="text-sm text-slate-700 leading-relaxed">
                     Prácticas y lenguaje técnico situado en talleres, laboratorios o entornos simulados. El estudiante manipula herramientas, instrumentos y protocolos propios de su especialidad técnica.
                   </p>
                 </div>
 
                 <!-- Módulo 6 -->
-                <div class="p-4 rounded-xl bg-emerald-50/50 border border-emerald-200">
+                <div class="p-4 rounded-xl bg-blue-50/50 border border-blue-200">
                   <div class="flex items-center justify-between mb-1.5">
-                    <span class="font-heading font-bold text-sm text-[#0F294A]">Módulo 6: Desafío de la especialidad</span>
-                    <span class="text-[11px] font-semibold text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded">Proyecto integrador</span>
+                    <span class="font-heading font-bold text-base text-[#0F294A]">Módulo 6: Desafío de la especialidad</span>
+                    <span class="text-sm font-semibold text-blue-700 bg-blue-100 px-2 py-0.5 rounded">Proyecto integrador</span>
                   </div>
-                  <p class="text-xs text-slate-700 leading-relaxed">
+                  <p class="text-sm text-slate-700 leading-relaxed">
                     Investigación aplicada, uso de IA y presentación de una solución profesional viable a un caso técnico concreto, concluyendo con un <em>pitch</em> o demostración técnica en equipo.
                   </p>
                 </div>
 
                 <!-- Resumen de impacto -->
-                <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-600">
+                <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-600">
                   <strong class="text-[#0F294A] block mb-1">Enfoque situado:</strong>
                   Garantiza que el ingresante no deba esperar al segundo o tercer año para saber "de qué se trata" su profesión, reduciendo drásticamente el desgranamiento inicial.
                 </div>
@@ -1028,7 +1024,7 @@
               </div>
             </div>
 
-            <div class="mt-4 pt-3 border-t border-slate-100 text-[11px] text-slate-400 font-medium">
+            <div class="mt-4 pt-3 border-t border-slate-100 text-sm text-slate-500 font-medium">
               Carga horaria predominante orientada a la vivencia técnica directa.
             </div>
           </div>
@@ -1042,31 +1038,31 @@
           <h3 class="font-heading font-bold text-xl text-[#0F294A]">
             Familias profesionales: desafíos reales y salidas al campo
           </h3>
-          <p class="text-xs text-slate-500">Ejemplos concretos de aplicación para el nuevo propedéutico</p>
+          <p class="text-sm text-slate-500">Ejemplos concretos de aplicación para el nuevo propedéutico</p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
           
           <!-- Familia 1: Administración -->
-          <div class="bg-white rounded-2xl border border-slate-200 shadow-subtle overflow-hidden card-printable">
-            <button type="button" id="btn-fp-admin" aria-expanded="false" aria-controls="fp-admin" class="accordion-header w-full px-5 py-4 text-left flex items-center justify-between hover:bg-slate-50 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500" onclick="toggleAccordion('fp-admin')">
+          <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden card-printable">
+            <button type="button" id="btn-fp-admin" aria-expanded="false" aria-controls="fp-admin" class="accordion-header w-full px-5 py-4 text-left flex items-center justify-between hover:bg-slate-50 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500" onclick="toggleAccordion('fp-admin')">
               <div class="flex items-center gap-3">
-                <div class="w-8 h-8 rounded-lg bg-blue-100 text-blue-700 flex items-center justify-center font-bold text-xs" aria-hidden="true">
+                <div class="w-8 h-8 rounded-lg bg-blue-100 text-blue-700 flex items-center justify-center font-bold text-sm" aria-hidden="true">
                   ADM
                 </div>
                 <div>
-                  <span class="font-heading font-bold text-sm text-[#0F294A] block">Familia: Administración</span>
-                  <span class="text-xs text-slate-500">Procesos, dashboards y optimización</span>
+                  <span class="font-heading font-bold text-base text-[#0F294A] block">Familia: Administración</span>
+                  <span class="text-sm text-slate-500">Procesos, dashboards y optimización</span>
                 </div>
               </div>
-              <svg id="chevron-fp-admin" class="chevron-icon w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <svg id="chevron-fp-admin" class="chevron-icon w-5 h-5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
               </svg>
             </button>
             <div id="fp-admin" role="region" aria-labelledby="btn-fp-admin" class="accordion-content">
-              <div class="p-5 bg-slate-50 border-t border-slate-100 text-xs space-y-3">
+              <div class="p-5 bg-slate-50 border-t border-slate-100 text-sm space-y-3">
                 <div>
-                  <strong class="text-slate-800 block mb-1 text-xs uppercase font-bold text-[#1E40AF]">Desafío real:</strong>
+                  <strong class="text-slate-800 block mb-1 text-sm uppercase font-bold text-[#1E40AF]">Desafío real:</strong>
                   <p class="text-slate-600 leading-relaxed">
                     Analizar flujos de proceso, procesar métricas en <em>dashboards</em> y presentar propuestas de mejora asistidas por IA.
                   </p>
@@ -1080,25 +1076,25 @@
           </div>
 
           <!-- Familia 2: Desarrollo Web -->
-          <div class="bg-white rounded-2xl border border-slate-200 shadow-subtle overflow-hidden card-printable">
-            <button type="button" id="btn-fp-web" aria-expanded="false" aria-controls="fp-web" class="accordion-header w-full px-5 py-4 text-left flex items-center justify-between hover:bg-slate-50 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500" onclick="toggleAccordion('fp-web')">
+          <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden card-printable">
+            <button type="button" id="btn-fp-web" aria-expanded="false" aria-controls="fp-web" class="accordion-header w-full px-5 py-4 text-left flex items-center justify-between hover:bg-slate-50 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500" onclick="toggleAccordion('fp-web')">
               <div class="flex items-center gap-3">
-                <div class="w-8 h-8 rounded-lg bg-sky-100 text-[#0EA5E9] flex items-center justify-center font-bold text-xs" aria-hidden="true">
+                <div class="w-8 h-8 rounded-lg bg-blue-100 text-[#0EA5E9] flex items-center justify-center font-bold text-sm" aria-hidden="true">
                   DEV
                 </div>
                 <div>
-                  <span class="font-heading font-bold text-sm text-[#0F294A] block">Familia: Desarrollo web</span>
-                  <span class="text-xs text-slate-500">Algoritmos, software y automatización</span>
+                  <span class="font-heading font-bold text-base text-[#0F294A] block">Familia: Desarrollo web</span>
+                  <span class="text-sm text-slate-500">Algoritmos, software y automatización</span>
                 </div>
               </div>
-              <svg id="chevron-fp-web" class="chevron-icon w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <svg id="chevron-fp-web" class="chevron-icon w-5 h-5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
               </svg>
             </button>
             <div id="fp-web" role="region" aria-labelledby="btn-fp-web" class="accordion-content">
-              <div class="p-5 bg-slate-50 border-t border-slate-100 text-xs space-y-3">
+              <div class="p-5 bg-slate-50 border-t border-slate-100 text-sm space-y-3">
                 <div>
-                  <strong class="text-slate-800 block mb-1 text-xs uppercase font-bold text-[#0EA5E9]">Desafío real:</strong>
+                  <strong class="text-slate-800 block mb-1 text-sm uppercase font-bold text-[#0EA5E9]">Desafío real:</strong>
                   <p class="text-slate-600 leading-relaxed">
                     Relevar requerimientos de automatización, estructurar algoritmos y documentar el caso técnico.
                   </p>
@@ -1112,25 +1108,25 @@
           </div>
 
           <!-- Familia 3: Agropecuario -->
-          <div class="bg-white rounded-2xl border border-slate-200 shadow-subtle overflow-hidden card-printable">
-            <button type="button" id="btn-fp-agro" aria-expanded="false" aria-controls="fp-agro" class="accordion-header w-full px-5 py-4 text-left flex items-center justify-between hover:bg-slate-50 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500" onclick="toggleAccordion('fp-agro')">
+          <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden card-printable">
+            <button type="button" id="btn-fp-agro" aria-expanded="false" aria-controls="fp-agro" class="accordion-header w-full px-5 py-4 text-left flex items-center justify-between hover:bg-slate-50 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500" onclick="toggleAccordion('fp-agro')">
               <div class="flex items-center gap-3">
-                <div class="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold text-xs" aria-hidden="true">
+                <div class="w-8 h-8 rounded-lg bg-blue-100 text-blue-700 flex items-center justify-center font-bold text-sm" aria-hidden="true">
                   AGR
                 </div>
                 <div>
-                  <span class="font-heading font-bold text-sm text-[#0F294A] block">Familia: Agropecuario</span>
-                  <span class="text-xs text-slate-500">Clima, IoT y agroindustria sustentable</span>
+                  <span class="font-heading font-bold text-base text-[#0F294A] block">Familia: Agropecuario</span>
+                  <span class="text-sm text-slate-500">Clima, IoT y agroindustria sustentable</span>
                 </div>
               </div>
-              <svg id="chevron-fp-agro" class="chevron-icon w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <svg id="chevron-fp-agro" class="chevron-icon w-5 h-5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
               </svg>
             </button>
             <div id="fp-agro" role="region" aria-labelledby="btn-fp-agro" class="accordion-content">
-              <div class="p-5 bg-slate-50 border-t border-slate-100 text-xs space-y-3">
+              <div class="p-5 bg-slate-50 border-t border-slate-100 text-sm space-y-3">
                 <div>
-                  <strong class="text-slate-800 block mb-1 text-xs uppercase font-bold text-emerald-700">Desafío real:</strong>
+                  <strong class="text-slate-800 block mb-1 text-sm uppercase font-bold text-blue-700">Desafío real:</strong>
                   <p class="text-slate-600 leading-relaxed">
                     Optimizar el rendimiento con variables climáticas/IoT y normativas bromatológicas sustentables.
                   </p>
@@ -1144,25 +1140,25 @@
           </div>
 
           <!-- Familia 4: Salud -->
-          <div class="bg-white rounded-2xl border border-slate-200 shadow-subtle overflow-hidden card-printable">
-            <button type="button" id="btn-fp-salud" aria-expanded="false" aria-controls="fp-salud" class="accordion-header w-full px-5 py-4 text-left flex items-center justify-between hover:bg-slate-50 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500" onclick="toggleAccordion('fp-salud')">
+          <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden card-printable">
+            <button type="button" id="btn-fp-salud" aria-expanded="false" aria-controls="fp-salud" class="accordion-header w-full px-5 py-4 text-left flex items-center justify-between hover:bg-slate-50 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500" onclick="toggleAccordion('fp-salud')">
               <div class="flex items-center gap-3">
-                <div class="w-8 h-8 rounded-lg bg-rose-100 text-rose-700 flex items-center justify-center font-bold text-xs" aria-hidden="true">
+                <div class="w-8 h-8 rounded-lg bg-rose-100 text-rose-700 flex items-center justify-center font-bold text-sm" aria-hidden="true">
                   SLD
                 </div>
                 <div>
-                  <span class="font-heading font-bold text-sm text-[#0F294A] block">Familia: Salud</span>
-                  <span class="text-xs text-slate-500">Protocolos odontológicos y bioseguridad</span>
+                  <span class="font-heading font-bold text-base text-[#0F294A] block">Familia: Salud</span>
+                  <span class="text-sm text-slate-500">Protocolos odontológicos y bioseguridad</span>
                 </div>
               </div>
-              <svg id="chevron-fp-salud" class="chevron-icon w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <svg id="chevron-fp-salud" class="chevron-icon w-5 h-5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
               </svg>
             </button>
             <div id="fp-salud" role="region" aria-labelledby="btn-fp-salud" class="accordion-content">
-              <div class="p-5 bg-slate-50 border-t border-slate-100 text-xs space-y-3">
+              <div class="p-5 bg-slate-50 border-t border-slate-100 text-sm space-y-3">
                 <div>
-                  <strong class="text-slate-800 block mb-1 text-xs uppercase font-bold text-rose-700">Desafío real:</strong>
+                  <strong class="text-slate-800 block mb-1 text-sm uppercase font-bold text-rose-700">Desafío real:</strong>
                   <p class="text-slate-600 leading-relaxed">
                     Interpretar prescripciones odontológicas, analizar anatomía/oclusión y definir protocolos de diseño y bioseguridad.
                   </p>
@@ -1179,20 +1175,20 @@
       </div>
 
       <!-- ACORDEÓN: EXPERIENCIAS MÍNIMAS, EVALUACIÓN Y ESTILOS DE APRENDIZAJE -->
-      <div class="bg-white rounded-2xl border border-slate-200 shadow-subtle overflow-hidden card-printable">
-        <button type="button" id="btn-acc-eval" aria-expanded="false" aria-controls="acc-eval-experiencias" class="accordion-header w-full px-6 py-4 text-left flex items-center justify-between bg-gradient-to-r from-emerald-50/50 to-white hover:bg-emerald-50 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500" onclick="toggleAccordion('acc-eval-experiencias')">
+      <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden card-printable">
+        <button type="button" id="btn-acc-eval" aria-expanded="false" aria-controls="acc-eval-experiencias" class="accordion-header w-full px-6 py-4 text-left flex items-center justify-between bg-gradient-to-r from-blue-50/50 to-white hover:bg-blue-50 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500" onclick="toggleAccordion('acc-eval-experiencias')">
           <div class="flex items-center gap-3.5">
-            <div class="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-800 flex items-center justify-center font-bold text-sm" aria-hidden="true">
+            <div class="w-8 h-8 rounded-lg bg-blue-100 text-blue-800 flex items-center justify-center font-bold text-base" aria-hidden="true">
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
             </div>
             <div>
               <span class="font-heading font-bold text-base text-[#0F294A]">
                 Experiencias mínimas, evaluación del primer mes y estilos de aprendizaje
               </span>
-              <p class="text-xs text-slate-500">Criterios pedagógicos, dispositivos evaluativos y modelos cognitivos</p>
+              <p class="text-sm text-slate-500">Criterios pedagógicos, dispositivos evaluativos y modelos cognitivos</p>
             </div>
           </div>
-          <svg id="chevron-acc-eval-experiencias" class="chevron-icon w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <svg id="chevron-acc-eval-experiencias" class="chevron-icon w-5 h-5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
           </svg>
         </button>
@@ -1202,29 +1198,29 @@
             
             <!-- 3 experiencias mínimas obligatorias -->
             <div>
-              <h4 class="font-heading font-bold text-sm text-[#0F294A] uppercase tracking-wider mb-3 flex items-center gap-2">
-                <span class="w-2 h-2 rounded-full bg-emerald-500" aria-hidden="true"></span>
+              <h4 class="font-heading font-bold text-base text-[#0F294A] uppercase tracking-wide mb-3 flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-blue-500" aria-hidden="true"></span>
                 3 experiencias mínimas obligatorias
               </h4>
               <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
                 <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
-                  <div class="font-heading font-bold text-xs text-emerald-800 mb-1">1. Práctica inicial</div>
-                  <p class="text-xs text-slate-600">Inmersión concreta en taller o laboratorio con equipamiento del sector.</p>
+                  <div class="font-heading font-bold text-sm text-blue-800 mb-1">1. Práctica inicial</div>
+                  <p class="text-sm text-slate-600">Inmersión concreta en taller o laboratorio con equipamiento del sector.</p>
                 </div>
                 <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
-                  <div class="font-heading font-bold text-xs text-emerald-800 mb-1">2. Salida al campo</div>
-                  <p class="text-xs text-slate-600">Contacto con el sector productivo, empresas y egresados en actividad.</p>
+                  <div class="font-heading font-bold text-sm text-blue-800 mb-1">2. Salida al campo</div>
+                  <p class="text-sm text-slate-600">Contacto con el sector productivo, empresas y egresados en actividad.</p>
                 </div>
                 <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
-                  <div class="font-heading font-bold text-xs text-emerald-800 mb-1">3. Plataforma y normativa</div>
-                  <p class="text-xs text-slate-600">Dominio del aula virtual y conocimiento de las normas del nivel superior (AIC / RAM).</p>
+                  <div class="font-heading font-bold text-sm text-blue-800 mb-1">3. Plataforma y normativa</div>
+                  <p class="text-sm text-slate-600">Dominio del aula virtual y conocimiento de las normas del nivel superior (AIC / RAM).</p>
                 </div>
               </div>
             </div>
 
             <!-- Trabajo Final Viable -->
-            <div class="p-4 rounded-xl bg-amber-50/60 border border-amber-200 text-xs text-slate-700">
-              <strong class="font-heading font-bold text-sm text-[#0F294A] block mb-1">
+            <div class="p-4 rounded-xl bg-amber-50/60 border border-amber-200 text-sm text-slate-700">
+              <strong class="font-heading font-bold text-base text-[#0F294A] block mb-1">
                 Trabajo final viable: criterio antisaturación docente
               </strong>
               <p class="leading-relaxed">
@@ -1234,11 +1230,11 @@
 
             <!-- Estilos de Aprendizaje -->
             <div>
-              <h4 class="font-heading font-bold text-sm text-[#0F294A] uppercase tracking-wider mb-3 flex items-center gap-2">
-                <span class="w-2 h-2 rounded-full bg-sky-500" aria-hidden="true"></span>
+              <h4 class="font-heading font-bold text-base text-[#0F294A] uppercase tracking-wide mb-3 flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-blue-500" aria-hidden="true"></span>
                 Estilos y modelos de aprendizaje a contemplar
               </h4>
-              <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 text-xs">
+              <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 text-sm">
                 <div class="p-3 rounded-lg bg-slate-50 border border-slate-200">
                   <strong class="text-[#0F294A] block font-semibold mb-1">PNL (V.A.K.)</strong>
                   <span class="text-slate-600">Canales visual, auditivo y kinestésico en el diseño instruccional.</span>
@@ -1270,7 +1266,7 @@
     <section id="marco-conceptual" class="scroll-mt-24">
       
       <!-- Acordeón del Marco Conceptual -->
-      <div class="bg-white rounded-2xl border border-slate-200 shadow-subtle overflow-hidden card-printable">
+      <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden card-printable">
         <button type="button" id="btn-marco-conceptual" aria-expanded="true" aria-controls="acc-marco-conceptual" class="accordion-header w-full px-6 py-5 text-left flex items-center justify-between bg-gradient-to-r from-amber-50/60 via-slate-50 to-white hover:bg-slate-50 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500" onclick="toggleAccordion('acc-marco-conceptual')">
           <div class="flex items-center gap-3.5">
             <div class="w-10 h-10 rounded-xl bg-amber-100 text-[#D97706] flex items-center justify-center font-bold text-lg shrink-0 shadow-sm" aria-hidden="true">
@@ -1278,7 +1274,7 @@
             </div>
             <div>
               <div class="flex items-center gap-2 mb-1">
-                <span class="px-2.5 py-0.5 rounded-full bg-amber-100 text-amber-900 font-bold text-[10px] uppercase tracking-wider border border-amber-300">
+                <span class="px-2.5 py-0.5 rounded-full bg-amber-100 text-amber-900 font-bold text-sm uppercase tracking-wide border border-amber-300">
                   Fundamento pedagógico · TransFORMAR@Cba
                 </span>
               </div>
@@ -1287,7 +1283,7 @@
               </h2>
             </div>
           </div>
-          <svg id="chevron-acc-marco-conceptual" class="chevron-icon w-6 h-6 text-slate-400 shrink-0 rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <svg id="chevron-acc-marco-conceptual" class="chevron-icon w-6 h-6 text-slate-500 shrink-0 rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
           </svg>
         </button>
@@ -1297,10 +1293,10 @@
             
             <!-- Cita textual de Calvino -->
             <div class="bg-slate-50/80 border-l-4 border-[#0F294A] p-6 rounded-r-2xl shadow-sm space-y-3">
-              <span class="text-xs uppercase font-bold tracking-wider text-[#1E40AF] block">
+              <span class="text-sm uppercase font-bold tracking-wide text-[#1E40AF] block">
                 Cita textual
               </span>
-              <blockquote class="italic text-sm sm:text-base text-slate-800 leading-relaxed font-serif space-y-1">
+              <blockquote class="italic text-base sm:text-base text-slate-800 leading-relaxed font-serif space-y-1">
                 <p>“Marco Polo describe un puente, piedra por piedra.</p>
                 <p>—¿Pero cuál es la piedra que sostiene el puente? —pregunta Kublai Kan.</p>
                 <p>—El puente no está sostenido por esta piedra o aquella —responde Marco—, sino por la línea del arco que ellas forman.</p>
@@ -1308,7 +1304,7 @@
                 <p>—¿Por qué me hablas de las piedras? Es solo el arco lo que me importa.</p>
                 <p>Polo responde: —Sin piedras no hay arco.”</p>
               </blockquote>
-              <div class="pt-2 text-xs text-slate-500 font-medium font-sans">
+              <div class="pt-2 text-sm text-slate-500 font-medium font-sans">
                 (Italo Calvino, <em>Las ciudades invisibles</em>)
               </div>
             </div>
@@ -1318,20 +1314,20 @@
               <h3 class="font-heading font-bold text-base text-[#0F294A] mb-3">
                 Análisis literario y conceptual del fragmento
               </h3>
-              <p class="text-sm text-slate-600 leading-relaxed mb-4">
+              <p class="text-base text-slate-600 leading-relaxed mb-4">
                 Este fragmento pertenece a <em>Las ciudades invisibles</em> (1972), de Italo Calvino, y resume la relación entre el detalle concreto y la estructura general en los diálogos entre Marco Polo y Kublai Kan:
               </p>
-              <ul class="space-y-2.5 text-sm text-slate-700">
+              <ul class="space-y-2.5 text-base text-slate-700">
                 <li class="flex items-start gap-2.5 p-3 rounded-xl bg-slate-50 border border-slate-100">
-                  <span class="text-sky-500 font-bold shrink-0 mt-0.5">•</span>
+                  <span class="text-blue-500 font-bold shrink-0 mt-0.5">•</span>
                   <span><strong>La forma frente a los elementos:</strong> El puente no depende de una piedra aislada, sino de la geometría del arco que resulta de su disposición conjunta.</span>
                 </li>
                 <li class="flex items-start gap-2.5 p-3 rounded-xl bg-slate-50 border border-slate-100">
-                  <span class="text-sky-500 font-bold shrink-0 mt-0.5">•</span>
+                  <span class="text-blue-500 font-bold shrink-0 mt-0.5">•</span>
                   <span><strong>Lo abstracto y lo material:</strong> A Kublai Kan le interesa la visión global o el principio rector («solo el arco»), mientras que Marco Polo recuerda que esa abstracción solo existe gracias a partes singulares y tangibles («sin piedras no hay arco»).</span>
                 </li>
                 <li class="flex items-start gap-2.5 p-3 rounded-xl bg-slate-50 border border-slate-100">
-                  <span class="text-sky-500 font-bold shrink-0 mt-0.5">•</span>
+                  <span class="text-blue-500 font-bold shrink-0 mt-0.5">•</span>
                   <span><strong>Sentido en la novela:</strong> Refleja cómo las ciudades descritas por Polo se construyen mediante relatos, imágenes y fragmentos particulares que, reunidos, dan forma a un todo comprensible pero frágil.</span>
                 </li>
               </ul>
@@ -1345,64 +1341,64 @@
               <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 
                 <!-- Tarjeta 1: Las Piedras -->
-                <div class="bg-amber-50/40 rounded-2xl p-6 border-2 border-amber-200/80 shadow-subtle hover:shadow-cardHover transition-all flex flex-col justify-between card-printable">
+                <div class="bg-amber-50/40 rounded-2xl p-6 border-2 border-amber-200/80 shadow-sm hover:shadow-cardHover transition-all flex flex-col justify-between card-printable">
                   <div>
                     <div class="w-12 h-12 rounded-xl bg-amber-100 text-[#D97706] border border-amber-200 flex items-center justify-center font-heading font-bold text-lg mb-4">
                       1
                     </div>
-                    <span class="inline-block px-2.5 py-0.5 rounded text-[11px] font-bold bg-amber-200/60 text-amber-900 uppercase tracking-wider mb-2">
+                    <span class="inline-block px-2.5 py-0.5 rounded text-sm font-bold bg-amber-200/60 text-amber-900 uppercase tracking-wide mb-2">
                       Base operativa
                     </span>
                     <h4 class="font-heading font-bold text-lg text-[#0F294A] mb-2">
                       Las piedras (base operativa)
                     </h4>
-                    <p class="text-slate-700 text-sm leading-relaxed">
+                    <p class="text-slate-700 text-base leading-relaxed">
                       Representan las normativas actualizadas (Régimen Académico Institucional - RAI), los diseños curriculares y las experiencias de innovación pedagógica y tecnológica concretas implementadas en los institutos técnicos.
                     </p>
                   </div>
-                  <div class="mt-4 pt-4 border-t border-amber-200/60 text-xs font-semibold text-amber-800">
+                  <div class="mt-4 pt-4 border-t border-amber-200/60 text-sm font-semibold text-amber-800">
                     Sustento concreto e innovación situada
                   </div>
                 </div>
 
                 <!-- Tarjeta 2: El Arco -->
-                <div class="bg-blue-50/40 rounded-2xl p-6 border-2 border-blue-200/80 shadow-subtle hover:shadow-cardHover transition-all flex flex-col justify-between card-printable">
+                <div class="bg-blue-50/40 rounded-2xl p-6 border-2 border-blue-200/80 shadow-sm hover:shadow-cardHover transition-all flex flex-col justify-between card-printable">
                   <div>
                     <div class="w-12 h-12 rounded-xl bg-blue-100 text-[#1E40AF] border border-blue-200 flex items-center justify-center font-heading font-bold text-lg mb-4">
                       2
                     </div>
-                    <span class="inline-block px-2.5 py-0.5 rounded text-[11px] font-bold bg-blue-200/60 text-blue-900 uppercase tracking-wider mb-2">
+                    <span class="inline-block px-2.5 py-0.5 rounded text-sm font-bold bg-blue-200/60 text-blue-900 uppercase tracking-wide mb-2">
                       Sostén colectivo
                     </span>
                     <h4 class="font-heading font-bold text-lg text-[#0F294A] mb-2">
                       El arco (sostén colectivo)
                     </h4>
-                    <p class="text-slate-700 text-sm leading-relaxed">
+                    <p class="text-slate-700 text-base leading-relaxed">
                       Simboliza la articulación corresponsable entre el equipo directivo, los docentes y los estudiantes, cuya cohesión y trabajo conjunto sostienen la estructura académica para fortalecer la retención y evitar el desgranamiento.
                     </p>
                   </div>
-                  <div class="mt-4 pt-4 border-t border-blue-200/60 text-xs font-semibold text-[#1E40AF]">
+                  <div class="mt-4 pt-4 border-t border-blue-200/60 text-sm font-semibold text-[#1E40AF]">
                     Corresponsabilidad y comunidad educativa
                   </div>
                 </div>
 
                 <!-- Tarjeta 3: El Puente -->
-                <div class="bg-sky-50/40 rounded-2xl p-6 border-2 border-sky-200/80 shadow-subtle hover:shadow-cardHover transition-all flex flex-col justify-between card-printable">
+                <div class="bg-blue-50/40 rounded-2xl p-6 border-2 border-blue-200/80 shadow-sm hover:shadow-cardHover transition-all flex flex-col justify-between card-printable">
                   <div>
-                    <div class="w-12 h-12 rounded-xl bg-sky-100 text-[#0EA5E9] border border-sky-200 flex items-center justify-center font-heading font-bold text-lg mb-4">
+                    <div class="w-12 h-12 rounded-xl bg-blue-100 text-[#0EA5E9] border border-blue-200 flex items-center justify-center font-heading font-bold text-lg mb-4">
                       3
                     </div>
-                    <span class="inline-block px-2.5 py-0.5 rounded text-[11px] font-bold bg-sky-200/60 text-sky-900 uppercase tracking-wider mb-2">
+                    <span class="inline-block px-2.5 py-0.5 rounded text-sm font-bold bg-blue-200/60 text-blue-900 uppercase tracking-wide mb-2">
                       Propósito pedagógico
                     </span>
                     <h4 class="font-heading font-bold text-lg text-[#0F294A] mb-2">
                       El puente (propósito pedagógico)
                     </h4>
-                    <p class="text-slate-700 text-sm leading-relaxed">
+                    <p class="text-slate-700 text-base leading-relaxed">
                       Constituye el tránsito efectivo de las trayectorias estudiantiles —garantizando el ingreso, la permanencia y el egreso— y el vínculo directo entre la formación técnica superior y el entorno socioproductivo local y regional.
                     </p>
                   </div>
-                  <div class="mt-4 pt-4 border-t border-sky-200/60 text-xs font-semibold text-[#0284C7]">
+                  <div class="mt-4 pt-4 border-t border-blue-200/60 text-sm font-semibold text-[#0284C7]">
                     Trayectorias efectivas e inserción regional
                   </div>
                 </div>
@@ -1424,15 +1420,15 @@
       <!-- Encabezado de la Sección -->
       <div class="pb-4 mb-6 border-b border-slate-200">
         <div class="flex items-center gap-3 mb-2">
-          <span class="px-3 py-1 rounded-full bg-indigo-100 text-indigo-900 font-semibold text-xs uppercase tracking-wider border border-indigo-300">
+          <span class="px-3 py-1 rounded-full bg-blue-100 text-blue-900 font-semibold text-sm uppercase tracking-wide border border-blue-300">
             Agenda operativa · Institutos técnicos
           </span>
-          <span class="text-xs font-medium text-slate-500 uppercase tracking-wider">Líneas de acción prioritarias</span>
+          <span class="text-sm font-medium text-slate-500 uppercase tracking-wide">Líneas de acción prioritarias</span>
         </div>
         <h2 class="font-heading font-bold text-2xl sm:text-3xl text-[#0F294A]">
           Tareas para el nivel superior
         </h2>
-        <p class="text-slate-600 text-sm sm:text-base leading-relaxed mt-3 max-w-4xl">
+        <p class="text-slate-600 text-base sm:text-base leading-relaxed mt-3 max-w-4xl">
           Estas tareas surgen de la reunión del 18 de noviembre de 2026 y están pensadas para los institutos de formación técnica. Ordenan los compromisos institucionales prioritarios para fortalecer las trayectorias estudiantiles y la vinculación con el medio socioproductivo.
         </p>
       </div>
@@ -1441,11 +1437,11 @@
       <ol class="space-y-4">
         
         <!-- Tarea 1 -->
-        <li class="bg-white rounded-2xl p-6 border border-slate-200 shadow-subtle flex items-start gap-4 card-printable">
-          <span class="w-9 h-9 rounded-xl bg-indigo-50 border border-indigo-200 text-indigo-900 font-heading font-bold text-sm flex items-center justify-center shrink-0 mt-0.5">
+        <li class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm flex items-start gap-4 card-printable">
+          <span class="w-9 h-9 rounded-xl bg-blue-50 border border-blue-200 text-blue-900 font-heading font-bold text-base flex items-center justify-center shrink-0 mt-0.5">
             1
           </span>
-          <div class="text-sm text-slate-700 leading-relaxed space-y-1">
+          <div class="text-base text-slate-700 leading-relaxed space-y-1">
             <strong class="font-heading font-bold text-base text-[#0F294A] block">
               Fortalecer la vinculación con el sector productivo.
             </strong>
@@ -1456,11 +1452,11 @@
         </li>
 
         <!-- Tarea 2 -->
-        <li class="bg-white rounded-2xl p-6 border border-slate-200 shadow-subtle flex items-start gap-4 card-printable">
-          <span class="w-9 h-9 rounded-xl bg-indigo-50 border border-indigo-200 text-indigo-900 font-heading font-bold text-sm flex items-center justify-center shrink-0 mt-0.5">
+        <li class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm flex items-start gap-4 card-printable">
+          <span class="w-9 h-9 rounded-xl bg-blue-50 border border-blue-200 text-blue-900 font-heading font-bold text-base flex items-center justify-center shrink-0 mt-0.5">
             2
           </span>
-          <div class="text-sm text-slate-700 leading-relaxed space-y-1">
+          <div class="text-base text-slate-700 leading-relaxed space-y-1">
             <strong class="font-heading font-bold text-base text-[#0F294A] block">
               Ordenar el reconocimiento de saberes previos.
             </strong>
@@ -1471,11 +1467,11 @@
         </li>
 
         <!-- Tarea 3 -->
-        <li class="bg-white rounded-2xl p-6 border border-slate-200 shadow-subtle flex items-start gap-4 card-printable">
-          <span class="w-9 h-9 rounded-xl bg-indigo-50 border border-indigo-200 text-indigo-900 font-heading font-bold text-sm flex items-center justify-center shrink-0 mt-0.5">
+        <li class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm flex items-start gap-4 card-printable">
+          <span class="w-9 h-9 rounded-xl bg-blue-50 border border-blue-200 text-blue-900 font-heading font-bold text-base flex items-center justify-center shrink-0 mt-0.5">
             3
           </span>
-          <div class="text-sm text-slate-700 leading-relaxed space-y-1">
+          <div class="text-base text-slate-700 leading-relaxed space-y-1">
             <strong class="font-heading font-bold text-base text-[#0F294A] block">
               Articular con el nivel secundario.
             </strong>
@@ -1486,11 +1482,11 @@
         </li>
 
         <!-- Tarea 4 -->
-        <li class="bg-white rounded-2xl p-6 border border-slate-200 shadow-subtle flex items-start gap-4 card-printable">
-          <span class="w-9 h-9 rounded-xl bg-indigo-50 border border-indigo-200 text-indigo-900 font-heading font-bold text-sm flex items-center justify-center shrink-0 mt-0.5">
+        <li class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm flex items-start gap-4 card-printable">
+          <span class="w-9 h-9 rounded-xl bg-blue-50 border border-blue-200 text-blue-900 font-heading font-bold text-base flex items-center justify-center shrink-0 mt-0.5">
             4
           </span>
-          <div class="text-sm text-slate-700 leading-relaxed space-y-1">
+          <div class="text-base text-slate-700 leading-relaxed space-y-1">
             <strong class="font-heading font-bold text-base text-[#0F294A] block">
               Implementar el nuevo propedéutico.
             </strong>
@@ -1501,11 +1497,11 @@
         </li>
 
         <!-- Tarea 5 -->
-        <li class="bg-white rounded-2xl p-6 border border-slate-200 shadow-subtle flex items-start gap-4 card-printable">
-          <span class="w-9 h-9 rounded-xl bg-indigo-50 border border-indigo-200 text-indigo-900 font-heading font-bold text-sm flex items-center justify-center shrink-0 mt-0.5">
+        <li class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm flex items-start gap-4 card-printable">
+          <span class="w-9 h-9 rounded-xl bg-blue-50 border border-blue-200 text-blue-900 font-heading font-bold text-base flex items-center justify-center shrink-0 mt-0.5">
             5
           </span>
-          <div class="text-sm text-slate-700 leading-relaxed space-y-1">
+          <div class="text-base text-slate-700 leading-relaxed space-y-1">
             <strong class="font-heading font-bold text-base text-[#0F294A] block">
               Organizar la oferta por familias profesionales.
             </strong>
@@ -1516,11 +1512,11 @@
         </li>
 
         <!-- Tarea 6 -->
-        <li class="bg-white rounded-2xl p-6 border border-slate-200 shadow-subtle flex items-start gap-4 card-printable">
-          <span class="w-9 h-9 rounded-xl bg-indigo-50 border border-indigo-200 text-indigo-900 font-heading font-bold text-sm flex items-center justify-center shrink-0 mt-0.5">
+        <li class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm flex items-start gap-4 card-printable">
+          <span class="w-9 h-9 rounded-xl bg-blue-50 border border-blue-200 text-blue-900 font-heading font-bold text-base flex items-center justify-center shrink-0 mt-0.5">
             6
           </span>
-          <div class="text-sm text-slate-700 leading-relaxed space-y-1">
+          <div class="text-base text-slate-700 leading-relaxed space-y-1">
             <strong class="font-heading font-bold text-base text-[#0F294A] block">
               Acompañar las trayectorias y prevenir el abandono.
             </strong>
@@ -1531,11 +1527,11 @@
         </li>
 
         <!-- Tarea 7 -->
-        <li class="bg-white rounded-2xl p-6 border border-slate-200 shadow-subtle flex items-start gap-4 card-printable">
-          <span class="w-9 h-9 rounded-xl bg-indigo-50 border border-indigo-200 text-indigo-900 font-heading font-bold text-sm flex items-center justify-center shrink-0 mt-0.5">
+        <li class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm flex items-start gap-4 card-printable">
+          <span class="w-9 h-9 rounded-xl bg-blue-50 border border-blue-200 text-blue-900 font-heading font-bold text-base flex items-center justify-center shrink-0 mt-0.5">
             7
           </span>
-          <div class="text-sm text-slate-700 leading-relaxed space-y-1">
+          <div class="text-base text-slate-700 leading-relaxed space-y-1">
             <strong class="font-heading font-bold text-base text-[#0F294A] block">
               Desarrollar las capacidades fundamentales.
             </strong>
@@ -1546,11 +1542,11 @@
         </li>
 
         <!-- Tarea 8 -->
-        <li class="bg-white rounded-2xl p-6 border border-slate-200 shadow-subtle flex items-start gap-4 card-printable">
-          <span class="w-9 h-9 rounded-xl bg-indigo-50 border border-indigo-200 text-indigo-900 font-heading font-bold text-sm flex items-center justify-center shrink-0 mt-0.5">
+        <li class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm flex items-start gap-4 card-printable">
+          <span class="w-9 h-9 rounded-xl bg-blue-50 border border-blue-200 text-blue-900 font-heading font-bold text-base flex items-center justify-center shrink-0 mt-0.5">
             8
           </span>
-          <div class="text-sm text-slate-700 leading-relaxed space-y-1">
+          <div class="text-base text-slate-700 leading-relaxed space-y-1">
             <strong class="font-heading font-bold text-base text-[#0F294A] block">
               Impulsar la formación continua de egresados.
             </strong>
@@ -1561,11 +1557,11 @@
         </li>
 
         <!-- Tarea 9 -->
-        <li class="bg-white rounded-2xl p-6 border border-slate-200 shadow-subtle flex items-start gap-4 card-printable">
-          <span class="w-9 h-9 rounded-xl bg-indigo-50 border border-indigo-200 text-indigo-900 font-heading font-bold text-sm flex items-center justify-center shrink-0 mt-0.5">
+        <li class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm flex items-start gap-4 card-printable">
+          <span class="w-9 h-9 rounded-xl bg-blue-50 border border-blue-200 text-blue-900 font-heading font-bold text-base flex items-center justify-center shrink-0 mt-0.5">
             9
           </span>
-          <div class="text-sm text-slate-700 leading-relaxed space-y-1">
+          <div class="text-base text-slate-700 leading-relaxed space-y-1">
             <strong class="font-heading font-bold text-base text-[#0F294A] block">
               Promover la innovación pedagógica.
             </strong>
@@ -1576,11 +1572,11 @@
         </li>
 
         <!-- Tarea 10 -->
-        <li class="bg-white rounded-2xl p-6 border border-slate-200 shadow-subtle flex items-start gap-4 card-printable">
-          <span class="w-9 h-9 rounded-xl bg-indigo-50 border border-indigo-200 text-indigo-900 font-heading font-bold text-sm flex items-center justify-center shrink-0 mt-0.5">
+        <li class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm flex items-start gap-4 card-printable">
+          <span class="w-9 h-9 rounded-xl bg-blue-50 border border-blue-200 text-blue-900 font-heading font-bold text-base flex items-center justify-center shrink-0 mt-0.5">
             10
           </span>
-          <div class="text-sm text-slate-700 leading-relaxed space-y-1">
+          <div class="text-base text-slate-700 leading-relaxed space-y-1">
             <strong class="font-heading font-bold text-base text-[#0F294A] block">
               Cuidar el bienestar y la participación estudiantil.
             </strong>
@@ -1599,8 +1595,8 @@
   <!-- ========================================== -->
   <!-- BOTÓN FLOTANTE: VOLVER ARRIBA             -->
   <!-- ========================================== -->
-  <button id="scroll-top-btn" type="button" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="fixed bottom-6 right-6 z-40 p-3 rounded-full bg-[#0F294A] text-white shadow-xl border border-white/20 hover:bg-[#1E40AF] transition-all opacity-0 pointer-events-none translate-y-3 hover:scale-110 active:scale-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-400" aria-label="Volver arriba">
-    <svg class="w-5 h-5 text-sky-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+  <button id="scroll-top-btn" type="button" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="fixed bottom-6 right-6 z-40 p-3 rounded-full bg-[#0F294A] text-white shadow-xl border border-white/20 hover:bg-[#1E40AF] transition-all opacity-0 pointer-events-none translate-y-3 hover:scale-110 active:scale-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400" aria-label="Volver arriba">
+    <svg class="w-5 h-5 text-blue-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
     </svg>
   </button>
