@@ -270,7 +270,7 @@
     /* Prioridades Wooclap */
     .rank-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 14px; }
     .rank-list li { display: grid; grid-template-columns: 40px 1fr; gap: 16px; align-items: start; }
-    .rank { width: 32px; height: 32px; border-radius: 50%; display: grid; place-items: center; background: var(--iridescent); color: #fff; font-size: 15px; font-weight: 600; }
+    .rank { width: 32px; height: 32px; border-radius: 50%; display: grid; place-items: center; background: var(--accent); color: #fff; font-size: 15px; font-weight: 600; }
     .rank-list strong { display: block; color: var(--text); font-size: 17px; }
     .rank-list span { font-size: 15px; color: var(--text-2); }
 
@@ -310,7 +310,7 @@
     @media (min-width: 880px) { .compare { grid-template-columns: 1fr 1fr; } }
     .compare .card { padding: 48px 40px; }
     .compare .card h4 { font-size: 24px; margin-bottom: 12px; letter-spacing: -.02em; }
-    .compare .card.old { opacity: .72; }
+    .compare .card.old { box-shadow: inset 0 0 0 2px var(--accent); }
     .compare .card.new { box-shadow: inset 0 0 0 2px var(--accent); }
 
     .question {
@@ -332,8 +332,7 @@
     .block-head { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; flex-wrap: wrap; }
     .block-head h3 { font-size: 26px; }
     .pct { font-size: 15px; font-weight: 600; color: var(--accent); white-space: nowrap; }
-    .module { background: var(--bg); border-radius: 18px; padding: 22px 24px; }
-    .module.key { box-shadow: inset 0 0 0 2px rgb(0 113 227 / .35); }
+    .module { background: var(--bg); border-radius: 18px; padding: 22px 24px; box-shadow: inset 0 0 0 2px rgb(0 113 227 / .35); }
     .module-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 6px; }
     .module h4 { font-size: 18px; }
     .module p { font-size: 15px; }
@@ -380,11 +379,11 @@
     .quote-hero footer { margin-top: 24px; font-size: 17px; color: var(--text-2); }
     .concept-grid { display: grid; gap: 20px; grid-template-columns: 1fr; }
     @media (min-width: 880px) { .concept-grid { grid-template-columns: repeat(3, 1fr); } }
-    .concept-grid .card { padding: 44px 36px; }
+    .concept-grid .card { padding: 44px 36px; border: 1px solid var(--line); }
     .concept-grid .num { width: 52px; height: 52px; border-radius: 50%; display: grid; place-items: center; background: var(--bg-alt); color: var(--accent); font-size: 20px; font-weight: 600; margin-bottom: 18px; }
     .concept-grid .card.amber .num { background: var(--amber-soft); color: var(--amber); }
-    .concept-grid h4 { font-size: 22px; margin-bottom: 10px; letter-spacing: -.02em; }
-    .concept-grid p { font-size: 17px; }
+    .concept-grid h4 { font-size: 24px; font-weight: 700; color: var(--text); margin-bottom: 10px; letter-spacing: -.02em; }
+    .concept-grid p { font-size: 17px; color: var(--text-2); }
     .analysis { list-style: none; padding: 0; margin: 0 0 96px; display: grid; gap: 0; border-top: 1px solid var(--line); }
     .analysis li { padding: 26px 0; border-bottom: 1px solid var(--line); font-size: 19px; line-height: 1.45; color: var(--text-2); }
     .analysis li strong { display: block; color: var(--text); font-size: 21px; margin-bottom: 4px; letter-spacing: -.02em; }
@@ -730,16 +729,16 @@
               <div class="module-head"><h4>Módulo 1 · Descubro mi profesión</h4><span class="pill pill--amber">Incluye salida al campo</span></div>
               <p>Campo ocupacional, perfil de egreso y sectores socioproductivos de inserción real.</p>
             </div>
-            <div class="module">
-              <h4>Módulo 2 · Aprendo a aprender</h4>
+            <div class="module key">
+              <div class="module-head"><h4>Módulo 2 · Aprendo a aprender</h4><span class="pill">Autonomía y virtualidad</span></div>
               <p>Lectura técnica comprensiva, desarrollo de autonomía y alfabetización en modalidad combinada / aula virtual.</p>
             </div>
-            <div class="module">
-              <h4>Módulo 3 · Tecnologías y copilotos IA</h4>
+            <div class="module key">
+              <div class="module-head"><h4>Módulo 3 · Tecnologías y copilotos IA</h4><span class="pill">Datos e IA</span></div>
               <p>Cultura de datos, automatización de tareas y uso ético de modelos de Inteligencia Artificial como asistentes formativos.</p>
             </div>
-            <div class="module">
-              <h4>Módulo 4 · Capacidades profesionales transversales</h4>
+            <div class="module key">
+              <div class="module-head"><h4>Módulo 4 · Capacidades profesionales transversales</h4><span class="pill">Trabajo en equipo</span></div>
               <p>Trabajo colaborativo interdisciplinario, negociación, resolución de conflictos y formulación inicial de proyectos.</p>
             </div>
 
@@ -851,7 +850,7 @@
     </section>
 
     <!-- ============ MARCO CONCEPTUAL ============ -->
-    <section class="band band--dark" id="marco" aria-labelledby="mc-titulo">
+    <section class="band" id="marco" aria-labelledby="mc-titulo">
       <div class="wrap">
         <div class="head reveal">
           <span class="eyebrow">Fundamento pedagógico · TransFORMAR@Cba</span>
@@ -865,7 +864,7 @@
         </figure>
 
         <div class="reveal">
-          <p class="analysis-title" style="color:var(--text-on-dark)">Lectura conceptual</p>
+          <p class="analysis-title">Lectura conceptual</p>
           <ul class="analysis">
             <li><strong>La forma frente a los elementos</strong>El puente no depende de una piedra aislada, sino de la geometría del arco que resulta de su disposición conjunta.</li>
             <li><strong>Lo abstracto y lo material</strong>A Kublai Kan le interesa el principio rector; Marco Polo recuerda que esa abstracción solo existe gracias a partes singulares y tangibles.</li>
@@ -874,7 +873,7 @@
         </div>
 
         <div class="concept-grid reveal">
-          <article class="card amber" style="background:var(--card)">
+          <article class="card amber">
             <div>
               <div class="num">1</div>
               <span class="tag tag--amber">Base operativa</span>
@@ -883,7 +882,7 @@
             </div>
             <span class="foot foot--amber">Sustento concreto e innovación situada</span>
           </article>
-          <article class="card" style="background:var(--card)">
+          <article class="card">
             <div>
               <div class="num">2</div>
               <span class="tag">Sostén colectivo</span>
@@ -892,7 +891,7 @@
             </div>
             <span class="foot">Corresponsabilidad y comunidad educativa</span>
           </article>
-          <article class="card" style="background:var(--card)">
+          <article class="card">
             <div>
               <div class="num">3</div>
               <span class="tag">Propósito pedagógico</span>
